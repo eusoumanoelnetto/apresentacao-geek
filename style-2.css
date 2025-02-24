@@ -84,7 +84,6 @@ body {
     padding: 20px 0;
     margin-right: 55px;
     border-radius: 16px;
-   /* font-size: 24px; */
     font-weight: 600;
     text-decoration: none;
     color: yellow;
@@ -119,4 +118,46 @@ body {
 .footer p {
     margin: 0;
     color: #61dafb;
+}
+
+/* Adicione esta seção ao final do seu arquivo style-2.css */
+
+/* Estilos para dispositivos móveis */
+@media (max-width: 768px) {
+    .header__title {
+        font-size: 1.5em;
+    }
+
+    .apresentacao {
+        flex-direction: column;
+        margin: 5%;
+    }
+
+    .apresentacao__conteudo {
+        width: 100%;
+        height: auto;
+    }
+
+    .apresentacao__conteudo__titulo {
+        font-size: 28px;
+    }
+
+    .apresentacao__conteudo__texto {
+        font-size: 18px;
+    }
+
+    .apresentacao__links {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .apresentacao__links__link {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .apresentacao__imagem {
+        max-width: 80%;
+        margin-top: 10px;
+    }
 }
