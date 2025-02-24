@@ -15,22 +15,6 @@ O projeto contém os seguintes arquivos:
 - `style-2.css`: Arquivo CSS para estilização das páginas.
 - Pasta `assets/`: Contém as imagens utilizadas nas páginas.
 
-## Como Usar
-
-1. Clone o repositório para sua máquina local:
-   ```sh
-   git clone https://github.com/eusoumanoelnetto/apresentacao-geek.git
-   ```
-
-2. Navegue até a pasta do projeto:
-   ```sh
-   cd apresentacao-geek
-   ```
-
-3. Abra o arquivo `index.html` no seu navegador para ver a página principal.
-
-4. Clique nos links para navegar entre as páginas e acessar minhas redes sociais.
-
 ## Tecnologias Utilizadas
 
 - HTML
@@ -42,6 +26,8 @@ O projeto contém os seguintes arquivos:
 - [LinkedIn](https://www.linkedin.com/in/eusoumanoelnetto)
 - [GitHub](https://github.com/eusoumanoelnetto)
 
+  
+Clique nos links para navegar entre as páginas e acessar minhas redes sociais.
 ---
 
 &copy; 2025 Manoel Coelho. Todos os direitos reservados.
