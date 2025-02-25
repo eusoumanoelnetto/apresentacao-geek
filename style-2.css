@@ -7,7 +7,7 @@
 }
 
 body {
-    height: 100vh;
+  /*  height: 100vh; */
     background-color: #031e2a;
     color: #f6f6f6;
     font-family: 'Montserrat', sans-serif;
@@ -41,10 +41,13 @@ body {
 }
 
 .apresentacao {
-    margin: 10% 20%;
+    margin: 0% 5%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-left: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 .apresentacao__conteudo {
@@ -103,7 +106,7 @@ body {
     max-width: 40%;
     height: auto;
     border-radius: 10px;
-    margin-top: 20px;
+    margin-bottom: auto;
 }
 
 .footer {
@@ -131,6 +134,7 @@ body {
     .apresentacao {
         flex-direction: column;
         margin: 5%;
+        padding-bottom: 35%;
     }
 
     .apresentacao__conteudo {
@@ -199,4 +203,12 @@ body {
         max-width: 70%;
         margin-top: 15px;
     }
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #282c34; /* Ajuste conforme necessário */
+    text-align: center; /* Ajuste conforme necessário */
 }
