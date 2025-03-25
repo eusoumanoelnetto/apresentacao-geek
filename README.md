@@ -4,8 +4,6 @@
 [![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-222222?style=for-the-badge&logo=github&logoColor=white)](https://pages.github.com/)
 
-![Preview do Projeto](https://eusoumanoelnetto.github.io/apresentacao-geek/assets/geek.gif)
-
 ## ✨ Recursos Principais
 
 - **Design Espacial**: Animação de estrelas e foguetes em tempo real
