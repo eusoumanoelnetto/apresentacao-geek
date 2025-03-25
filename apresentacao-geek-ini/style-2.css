@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: #f6f6f6;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(to bottom, #031e2a 0%, #000000 100%);
+    overflow: hidden;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle var(--duration) ease-in-out infinite;
+}
+
+.firework {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #ff5555;
+    animation: explode var(--explosion-duration) ease-out forwards;
+    border-radius: 50%;
+}
+
+.planet {
+    position: absolute;
+    border-radius: 50%;
+    animation: float 20s ease-in-out infinite;
+    opacity: 0.8;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes explode {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(5); opacity: 0; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+.header {
+    background-color: #282c34;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.header__title {
+    margin: 0;
+    font-size: 2em;
+    color: #61dafb;
+}
+
+.titulo-destaque {
+    color: chartreuse;
+}
+
+.titulo-destaque-2 {
+    color: red;
+}
+
+.apresentacao {
+    margin: 0% 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.apresentacao__conteudo {
+    width: 650px;
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.apresentacao__conteudo__titulo {
+    font-size: 36px;
+    font-family: 'Krona One', serif;
+}
+
+.apresentacao__conteudo__texto {
+    font-size: 24px;
+    font-family: 'Montserrat', serif;
+}
+
+.apresentacao__links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.apresentacao__links__subtitulo {
+    font-family: 'Krona One', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+}
+
+.apresentacao__links__link {
+    background-color: black;
+    width: 280px;
+    text-align: center;
+    padding: 20px 0;
+    margin-right: 55px;
+    border-radius: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    color: yellow;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.apresentacao__links__link img {
+    width: 24px;
+    height: 24px;
+}
+
+.apresentacao__imagem {
+    max-width: 40%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: auto;
+}
+
+.footer {
+    background-color: #282c34;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+}
+
+.footer p {
+    margin: 0;
+    color: #61dafb;
+}
+
+@media (max-width: 768px) {
+    .header__title {
+        font-size: 1.5em;
+    }
+
+    .apresentacao {
+        flex-direction: column;
+        margin: 5%;
+        padding-bottom: 35%;
+    }
+
+    .apresentacao__conteudo {
+        width: 100%;
+        height: auto;
+    }
+
+    .apresentacao__conteudo__titulo {
+        font-size: 28px;
+    }
+
+    .apresentacao__conteudo__texto {
+        font-size: 18px;
+    }
+
+    .apresentacao__links {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .apresentacao__links__link {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .apresentacao__imagem {
+        max-width: 80%;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 1024px) and (max-height: 900px) {
+    .header__title {
+        font-size: 1.8em;
+    }
+
+    .apresentacao {
+        flex-direction: column;
+        margin: 5%;
+    }
+
+    .apresentacao__conteudo {
+        width: 90%;
+        height: auto;
+    }
+
+    .apresentacao__conteudo__titulo {
+        font-size: 32px;
+    }
+
+    .apresentacao__conteudo__texto {
+        font-size: 20px;
+    }
+
+    .apresentacao__links {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .apresentacao__links__link {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .apresentacao__imagem {
+        max-width: 70%;
+        margin-top: 15px;
+    }
+}
