@@ -75,3 +75,11 @@ document.addEventListener('DOMContentLoaded', () => {
     for(let i = 0; i < (isMobile ? 20 : 50); i++) createStar();
     for(let i = 0; i < 3; i++) createPlanet();
 });
+
+// Função para abrir e fechar o menu hambúrguer
+const hamburgerMenu = document.getElementById('hamburger-menu');
+const menu = document.getElementById('menu');
+
+hamburgerMenu.addEventListener('click', () => {
+    menu.classList.toggle('menu--open');
+});
