@@ -35,14 +35,14 @@
         <img src="https://eusoumanoelnetto.github.io/apresentacao-geek/assets/geek.gif" alt="Desenvolvedor Geek" class="apresentacao__imagem">
     </main>
 
-    <!-- Adicionando o menu hambúrguer -->
+    <!-- Botão Hambúrguer -->
     <div class="hamburger-menu" id="hamburger-menu">
         <div></div>
         <div></div>
         <div></div>
     </div>
 
-    <!-- Adicionando o menu de navegação -->
+    <!-- Menu Lateral -->
     <nav class="menu" id="menu">
         <ul>
             <li><a href="#">Início</a></li>
@@ -57,5 +57,18 @@
     </footer>
 
     <script src="animations.js"></script>
+
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const btn = document.getElementById("hamburger-menu");
+    const menu = document.getElementById("menu");
+
+    btn.addEventListener("click", () => {
+      menu.classList.toggle("menu--open");
+      btn.classList.toggle("is-active");
+    });
+  });
+</script>
+
 </body>
 </html>
