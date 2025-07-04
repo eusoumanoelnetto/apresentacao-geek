@@ -133,6 +133,22 @@ body {
   }
 }
 
+/* Ajustando o título para caber na versão mobile */
+@media (max-width: 768px) {
+  .header__title {
+    font-size: 1.5rem; /* Reduzindo tamanho do texto no mobile */
+    text-align: center; /* Mantendo centralizado */
+  }
+}
+
+/* Ajustando o título para caber na versão mobile de 425px */
+@media (max-width: 425px) {
+  .header__title {
+    font-size: 1.2rem; /* Reduzindo tamanho do texto para telas menores */
+    text-align: center; /* Mantendo centralizado */
+  }
+}
+
 /* Ajustes para 1024px */
 @media (max-width: 1024px) and (max-height: 900px) {
   .header__title {
