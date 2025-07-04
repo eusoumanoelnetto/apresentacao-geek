@@ -234,9 +234,9 @@ body {
 }
 
 .apresentacao__links__link:hover {
-    box-shadow: 0 0 20px 10px magenta; /* Efeito de brilho */
-    transform: scale(1.1); /* Efeito de pulsar */
-    background: linear-gradient(90deg, magenta, chartreuse); /* Mudança de cor estilo barra de energia */
+    box-shadow: 0 0 25px 10px #00FF00, 0 0 25px 10px #0000FF; /* Efeito neon verde e azul */
+    transform: scale(1.05); /* Efeito de leve aumento */
+    background: linear-gradient(90deg, #00FF00, #0000FF); /* Gradiente neon estilo gamer */
 }
 
 .apresentacao__links__link img {
@@ -459,11 +459,16 @@ p, span, li {
         top: 30px; /* Mantendo alinhamento no desktop */
         right: 10px; /* Mantendo alinhamento no desktop */
     }
+
+    .header__title {
+        text-align: center;
+        margin: 0 auto;
+    }
 }
 
 @media (min-width: 1024px) {
     .header__title {
-        font-size: clamp(2rem, 4vw, 3rem); /* Aumentando o tamanho do título em telas maiores */
+        font-size: clamp(1.5rem, 3vw, 2.5rem); /* Reduzindo o tamanho do título no desktop */
         text-align: left; /* Alinhamento conforme o print */
     }
 
@@ -749,4 +754,185 @@ p, span, li {
   opacity: 0.3; /* Reduzindo ainda mais a visibilidade */
 }
 
-/* Corrigindo fechamento de bloco */
+/* Estilo para o formulário de contato */
+.contact-section {
+  padding: 2rem;
+  background-color: #282c34;
+  color: #61dafb;
+  text-align: center;
+}
+
+.contact-section h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+#contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+#contact-form label {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  text-align: left;
+}
+
+#contact-form input,
+#contact-form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #61dafb;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+}
+
+#contact-form button {
+  padding: 0.7rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #61dafb;
+  color: #282c34;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#contact-form button:hover {
+  background-color: #0078d7;
+}
+
+.feedback-message {
+  margin-top: 1rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: #7FFF00;
+}
+
+/* Estilo para o formulário minimizável */
+.form-container {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  max-width: 400px;
+  background-color: #1a1a1a;
+  color: #61dafb;
+  border-top: 2px solid #61dafb;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.6);
+  font-family: 'Orbitron', sans-serif;
+  z-index: 999;
+}
+
+.form-header {
+  text-align: center;
+  padding: 0.7rem;
+  cursor: pointer;
+  background-color: #0f0f0f;
+  border-bottom: 1px solid #61dafb;
+}
+
+.form-header:hover {
+  background-color: #222;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 1rem;
+}
+
+form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+}
+
+input, textarea {
+  padding: 0.5rem;
+  background-color: #0f0f0f;
+  border: 1px solid #61dafb;
+  color: #fff;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #00bfff;
+  color: #000;
+  border: none;
+  padding: 0.6rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: transform 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+.hidden {
+  display: none;
+}
+
+/* Estilo para o formulário minimizável */
+.contact-drawer {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    background-color: #282c34;
+    border: 2px solid #00FF00;
+    box-shadow: 0 0 10px #00FF00;
+    border-radius: 8px 8px 0 0;
+    text-align: center;
+    z-index: 1000;
+    transition: height 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.contact-drawer.minimized {
+    height: 50px; /* Altura mínima quando recolhido */
+}
+
+.contact-drawer.expanded {
+    height: 300px; /* Altura expandida */
+}
+
+.contact-drawer .toggle-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background-color: #282c34;
+    border: 2px solid #00FF00;
+    box-shadow: 0 0 10px #00FF00;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-drawer .toggle-button:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 15px #00FF00;
+}
+
+.contact-drawer .form-content {
+    display: none; /* Escondido quando minimizado */
+    padding: 1rem;
+}
+
+.contact-drawer.expanded .form-content {
+    display: block; /* Mostra o conteúdo quando expandido */
+}
+

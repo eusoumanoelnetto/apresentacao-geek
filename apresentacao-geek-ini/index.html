@@ -55,6 +55,24 @@
         </button>
     </nav>
 
+    <!-- Formulário de Contato -->
+    <section id="contact" class="contact-section">
+      <h2>Entre em Contato</h2>
+      <form id="contact-form">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name" placeholder="Seu nome" required>
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" placeholder="Seu e-mail" required>
+
+        <label for="message">Mensagem:</label>
+        <textarea id="message" name="message" placeholder="Sua mensagem" required></textarea>
+
+        <button type="submit">Enviar</button>
+      </form>
+      <p id="form-feedback" class="feedback-message"></p>
+    </section>
+
     <footer class="footer">
         <p>&copy; 2025 Manoel Coelho. Todos os direitos reservados.</p>
     </footer>
@@ -108,6 +126,46 @@ themeToggle.addEventListener('click', () => {
   const current = root.getAttribute('data-theme');
   setTheme(current === 'dark' ? 'light' : 'dark');
 });
+</script>
+
+<script>
+  emailjs.init('2jJfFDoTtluxM6jA4'); // Inicializa com a chave pública fornecida
+
+  document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+    const feedback = document.getElementById('form-feedback');
+
+    // Validação
+    if (!name || !email || !message) {
+      feedback.textContent = 'Por favor, preencha todos os campos.';
+      feedback.style.color = 'red';
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      feedback.textContent = 'Por favor, insira um e-mail válido.';
+      feedback.style.color = 'red';
+      return;
+    }
+
+    // Integração com EmailJS
+    emailjs.send('service_zzelyg3', 'template_ra7we6f', {
+      name: name,
+      email: email,
+      message: message
+    }).then(function(response) {
+      feedback.textContent = 'Mensagem enviada com sucesso!';
+      feedback.style.color = 'green';
+    }).catch(function(error) {
+      feedback.textContent = 'Erro ao enviar a mensagem. Tente novamente mais tarde.';
+      feedback.style.color = 'red';
+    });
+  });
 </script>
 
 </body>
