@@ -62,9 +62,18 @@
     const btn = document.getElementById("hamburger-menu");
     const menu = document.getElementById("menu");
 
-    btn.addEventListener("click", () => {
-      menu.classList.toggle("menu--open");
-      btn.classList.toggle("is-active");
+    btn.addEventListener("click", function (e) {
+        e.stopPropagation(); // impedir propagação
+        menu.classList.toggle("menu-open");
+        btn.classList.toggle("is-active");
+    });
+
+    // se clicar fora do menu, fecha
+    document.addEventListener("click", function (e) {
+        if (!menu.contains(e.target) && !btn.contains(e.target)) {
+            menu.classList.remove("menu-open");
+            btn.classList.remove("is-active");
+        }
     });
   });
 </script>

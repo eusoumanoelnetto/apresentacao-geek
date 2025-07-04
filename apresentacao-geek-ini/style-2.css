@@ -518,7 +518,7 @@ p, span, li {
   top: 50%;
   right: 20px;
   transform: translateY(-50%);
-  z-index: 5; /* Garantindo que não sobreponha o texto */
+  z-index: 9999; /* garante que fique acima do menu */
   width: 40px;
   height: 40px;
   background-color: #61dafb;
@@ -543,19 +543,18 @@ p, span, li {
 .menu {
   position: fixed;
   top: 0;
-  right: 0;
+  right: -250px; /* Escondido fora da tela no lado direito */
   width: 250px;
-  height: 100vh;
-  background-color: #031E2A;
-  box-shadow: -4px 0 12px rgba(0,0,0,0.6);
-  transform: translateX(100%);
-  transition: transform 0.3s ease-in-out;
-  z-index: 99;
+  height: 100%;
+  background-color: #333;
+  color: #fff;
+  transition: right 0.3s ease;
   padding: 2rem 1rem;
+  z-index: 9998; /* abaixo do botão */
 }
 
 .menu.menu--open {
-  transform: translateX(0);
+  right: 0; /* Visível na tela no lado direito */
 }
 
 .menu ul {
@@ -589,4 +588,8 @@ p, span, li {
 }
 .hamburger-menu.is-active div:nth-child(3) {
   transform: translateY(-10px) rotate(-45deg);
+}
+
+.hamburger-menu.is-active div {
+    background-color: #fff; /* Alteração visual do botão */
 }
