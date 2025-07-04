@@ -1,6 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;700&display=swap');
 
+:root {
+  --bg-color: #031E2A;
+  --text-color: #F6F6F6;
+  --header-bg: #282c34;
+  --header-title: #61dafb;
+  --menu-bg: #333;
+  --menu-link: #61dafb;
+  --menu-link-hover: #7FFF00;
+}
+
+[data-theme="light"] {
+  --bg-color: #f6f6f6;
+  --text-color: #222;
+  --header-bg: #e0e0e0;
+  --header-title: #0078d7;
+  --menu-bg: #fff;
+  --menu-link: #0078d7;
+  --menu-link-hover: #ff6600;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -8,8 +28,8 @@
 }
 
 body {
-    background-color: #031E2A; /* Azul escuro */
-    color: #F6F6F6; /* Cinza claro */
+    background-color: var(--bg-color);
+    color: var(--text-color);
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     line-height: 1.5;
@@ -90,7 +110,7 @@ body {
 }
 
 .header {
-    background-color: #282c34;
+    background-color: var(--header-bg);
     padding: 20px;
     width: 100%;
     text-align: center;
@@ -100,10 +120,10 @@ body {
 .header__title {
     margin: 0;
     font-size: clamp(1.5rem, 3vw, 2.5rem); /* Responsivo para diferentes tamanhos de tela */
-    color: #61dafb;
+    color: var(--header-title);
     overflow: hidden;
     white-space: nowrap;
-    border-right: 3px solid #61dafb;
+    border-right: 3px solid var(--header-title);
     animation: typing 3s steps(30, end), blink-caret 0.5s step-end infinite;
     text-align: center; /* Centralizando o texto */
 }
@@ -112,10 +132,10 @@ body {
 .header__title {
   font-size: clamp(1.5rem, 3vw, 2.5rem); /* Tamanho responsivo */
   text-align: center; /* Centralizando o texto */
-  color: #61dafb; /* Cor do texto */
+  color: var(--header-title); /* Cor do texto */
   overflow: hidden; /* Evitando quebra de linha */
   white-space: nowrap; /* Mantendo o texto em uma linha */
-  border-right: 3px solid #61dafb; /* Estilo do cursor */
+  border-right: 3px solid var(--header-title); /* Estilo do cursor */
   animation: typing 3s steps(30, end), blink-caret 0.5s step-end infinite; /* Animação */
 }
 
@@ -128,7 +148,6 @@ body {
         margin: 0;
         text-align: center;
     }
-}
   .hamburger-menu {
     top: 15px; /* Ajuste refinado para alinhamento no mobile */
     right: 15px; /* Ajuste refinado para alinhamento no mobile */
@@ -358,7 +377,7 @@ p, span, li {
 
     .apresentacao__imagem {
         max-width: 80%;
-        margin-top: 10px;
+        margin-top: 23%;
     }
 
     .footer {
@@ -401,8 +420,8 @@ p, span, li {
     }
 
     .apresentacao__imagem {
-        max-width: 70%;
-        margin-top: 15px;
+        max-width: 80%;
+        margin-top: 23%;
     }
 
     /* Ajustando posicionamento do botão hambúrguer para evitar sobreposição do texto */
@@ -551,14 +570,29 @@ p, span, li {
 
 .menu a {
   text-decoration: none;
-  color: #61dafb;
+  color: var(--menu-link);
   font-family: 'Orbitron', sans-serif;
   font-size: 1.1rem;
   transition: color 0.2s;
 }
 
 .menu a:hover {
-  color: #7FFF00;
+  color: var(--menu-link-hover);
+}
+
+/* Botão toggle de tema */
+.theme-toggle {
+  margin-left: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: var(--header-title);
+  transition: color 0.3s;
+  z-index: 10000;
+}
+.theme-toggle:focus {
+  outline: 2px solid var(--header-title);
 }
 
 /* Animação do botão para “X” */
@@ -574,4 +608,83 @@ p, span, li {
 
 .hamburger-menu.is-active div {
     background-color: #fff; /* Alteração visual do botão */
+}
+
+/* Modern toggle button - melhorias para alternar cor, texto e ícone */
+.modern-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.8rem 0;
+  margin-top: 2rem;
+  background: var(--header-title); /* Azul padrão do tema claro */
+  border: 2px solid #FFD700; /* Borda neon dourada para modo claro */
+  border-radius: 30px;
+  color: #FFD700; /* Texto neon dourado */
+  font-size: 1.1rem;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  box-shadow: 0 0 15px #FFD700;
+  cursor: pointer;
+  transition: box-shadow 0.3s, transform 0.3s, background 0.3s, color 0.3s, border 0.3s;
+}
+.modern-toggle:hover {
+  box-shadow: 0 0 25px #FFD700;
+  transform: scale(1.05);
+}
+.toggle-icon {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  background: currentColor;
+  mask: url('data:image/svg+xml;utf8,<svg fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="5"/><path d="M5 12H1m16.95 7.07l-1.41-1.41M6.34 6.34L4.93 4.93m12.02 0l-1.41 1.41M6.34 17.66l-1.41 1.41"/></svg>') center/contain no-repeat; /* Ícone de sol padrão */
+  background-color: #FFD700;
+  transition: background-color 0.3s, mask 0.3s;
+}
+.toggle-label {
+  font-size: 1rem;
+  letter-spacing: 1px;
+  content: "Dia";
+}
+
+[data-theme="dark"] .modern-toggle {
+  background: #000; /* Preto para modo escuro */
+  border-color: #7FFF00; /* Verde neon */
+  color: #7FFF00;
+  box-shadow: 0 0 15px #7FFF00;
+}
+[data-theme="dark"] .modern-toggle:hover {
+  box-shadow: 0 0 25px #7FFF00;
+}
+[data-theme="dark"] .toggle-icon {
+  background-color: #7FFF00;
+  mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 12.79A9 9 0 1111 3a7 7 0 1010 9.79z"/></svg>') center/contain no-repeat;
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 12.79A9 9 0 1111 3a7 7 0 1010 9.79z"/></svg>') center/contain no-repeat;
+  background-size: contain; /* Garantindo que o tamanho seja ajustado corretamente */
+}
+[data-theme="dark"] .toggle-label {
+  color: #7FFF00;
+}
+
+/* Esconde o texto padrão do botão, mostra só o ::after controlado por JS */
+.toggle-label {
+  position: relative;
+}
+.toggle-label span {
+  display: none;
+}
+
+[data-theme="light"] .modern-toggle {
+  background: var(--header-title); /* Azul vibrante no modo claro */
+  border-color: #FFD700;
+  color: #FFD700;
+  box-shadow: 0 0 15px #FFD700;
+}
+[data-theme="light"] .toggle-label::after {
+  content: "Dia";
+}
+[data-theme="dark"] .toggle-label::after {
+  content: "Noite";
 }
