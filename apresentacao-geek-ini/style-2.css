@@ -120,50 +120,22 @@ body {
 }
 
 /* Ajustes para mobile */
-@media (max-width: 768px) {
-  .header__title {
-    font-size: clamp(1rem, 2vw, 1.5rem); /* Reduzindo tamanho do texto */
-    text-align: left; /* Alinhando à esquerda para ficar ao lado do menu */
-    white-space: nowrap; /* Garantindo que o texto não quebre */
-  }
-
+@media (max-width: 425px) {
+    .header__title {
+        font-size: 130%;
+        letter-spacing: -1px;
+        padding: 2px 0;
+        margin: 0;
+        text-align: center;
+    }
+}
   .hamburger-menu {
     top: 15px; /* Ajuste refinado para alinhamento no mobile */
     right: 15px; /* Ajuste refinado para alinhamento no mobile */
   }
 }
 
-/* Ajustando o título para caber na versão mobile */
-@media (max-width: 768px) {
-  .header__title {
-    font-size: 1.5rem; /* Reduzindo tamanho do texto no mobile */
-    text-align: center; /* Mantendo centralizado */
-  }
-}
 
-/* Ajustando o título para caber na versão mobile de 425px */
-@media (max-width: 425px) {
-  .header__title {
-    font-size: 1.2rem; /* Reduzindo tamanho do texto para telas menores */
-    text-align: center; /* Mantendo centralizado */
-  }
-}
-
-/* Ajustes para 1024px */
-@media (max-width: 1024px) and (max-height: 900px) {
-  .header__title {
-    font-size: clamp(1.8rem, 3vw, 2.2rem); /* Ajuste refinado para 1024px */
-    text-align: center; /* Mantendo centralizado */
-  }
-}
-
-/* Ajustes para desktop */
-@media (min-width: 1024px) {
-  .header__title {
-    font-size: clamp(2rem, 4vw, 3rem); /* Tamanho maior para telas grandes */
-    text-align: center; /* Mantendo centralizado */
-  }
-}
 
 .titulo-destaque {
     color: #7FFF00; /* Chartreuse */
@@ -347,7 +319,6 @@ p, span, li {
 /* Garantindo layout fluido no mobile */
 @media (max-width: 768px) {
     .header__title {
-        font-size: 1.8rem; /* Ajuste para telas menores */
         text-align: center; /* Centralizado no mobile */
     }
 
@@ -400,11 +371,6 @@ p, span, li {
         right: 15px; /* Ajuste refinado para alinhamento no mobile */
     }
 }
-
-@media (max-width: 1024px) and (max-height: 900px) {
-    .header__title {
-        font-size: 1.8em;
-    }
 
     .apresentacao {
         flex-direction: column;
