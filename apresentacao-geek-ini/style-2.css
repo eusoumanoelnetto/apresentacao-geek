@@ -153,7 +153,7 @@ body {
         text-align: center;
     }
   .hamburger-menu {
-    top: 15px; /* Ajuste refinado para alinhamento no mobile */
+    top: 8px; /* Ajuste refinado para alinhamento no mobile */
     right: 15px; /* Ajuste refinado para alinhamento no mobile */
   }
 }
@@ -212,31 +212,26 @@ body {
 }
 
 .apresentacao__links__link {
-    background-color: #031E2A; /* Azul escuro */
-    color: #FF00FF; /* Magenta */
-    text-shadow: 0 0 8px #FF00FF;
-    width: 280px;
-    text-align: center;
-    padding: 20px 0;
-    margin-right: 55px;
-    border-radius: 16px;
-    font-weight: 600;
-    text-decoration: none;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    transition: all 0.3s ease-in-out;
-}
-
-.apresentacao__links__link.linkedin {
-    width: 400px; /* Aumentando a largura para maior destaque */
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--menu-link-hover); /* Borda neon acompanha tema */
+    border-radius: 8px;
+    background: var(--menu-bg); /* Fundo acompanha tema */
+    color: var(--text-color); /* Texto acompanha tema */
+    text-decoration: none; /* Remover sublinhado */
+    gap: 0.5rem; /* Espaço entre o ícone e o nome */
 }
 
 .apresentacao__links__link:hover {
-    box-shadow: 0 0 25px 10px #00FF00, 0 0 25px 10px #0000FF; /* Efeito neon verde e azul */
-    transform: scale(1.05); /* Efeito de leve aumento */
-    background: linear-gradient(90deg, #00FF00, #0000FF); /* Gradiente neon estilo gamer */
+    box-shadow: 0 0 10px 2px var(--menu-link-hover);
+    border-color: var(--menu-link-hover);
+}
+
+.apresentacao__links__link:active {
+    transform: scale(1.1); /* Leve aumento no clique */
+    box-shadow: 0 0 20px 8px var(--menu-link-hover); /* Neon mais intenso ao clicar */
 }
 
 .apresentacao__links__link img {
@@ -246,14 +241,17 @@ body {
 
 /* Ajustando estilo para ícones SVG maiores */
 .apresentacao__links__link svg {
-    width: 32px;
-    height: 32px;
-    fill: magenta; /* Cor do ícone */
-    transition: transform 0.3s ease-in-out;
+    width: 24px;
+    height: 24px;
+    color: var(--menu-link-hover); /* Ícone acompanha tema */
+    filter: none;
+    transition: color 0.3s, transform 0.3s;
 }
 
 .apresentacao__links__link:hover svg {
-    transform: scale(1.2); /* Efeito de aumento no hover */
+    color: #00FF00;
+    filter: drop-shadow(0 0 4px #00FF00);
+    transform: scale(1.2);
 }
 
 /* Ajustando a imagem para silhueta com borda neon */
@@ -390,7 +388,7 @@ p, span, li {
 
     /* Ajustando alinhamento do botão hambúrguer para mobile e desktop */
     .hamburger-menu {
-        top: 15px; /* Ajuste refinado para alinhamento no mobile */
+        top: 8px; /* Ajuste refinado para alinhamento no mobile */
         right: 15px; /* Ajuste refinado para alinhamento no mobile */
     }
 }
@@ -430,7 +428,7 @@ p, span, li {
 
     /* Ajustando posicionamento do botão hambúrguer para evitar sobreposição do texto */
     .hamburger-menu {
-      top: 20px; /* Ajuste refinado para 1024px */
+      top: 8px; /* Ajuste refinado para 1024px */
       right: 25px; /* Ajuste refinado para 1024px */
       transform: none; /* Removendo transform para evitar conflitos */
     }
@@ -456,13 +454,10 @@ p, span, li {
 
     /* Ajuste para alinhamento no desktop */
     .hamburger-menu {
-        top: 30px; /* Mantendo alinhamento no desktop */
-        right: 10px; /* Mantendo alinhamento no desktop */
-    }
-
-    .header__title {
-        text-align: center;
-        margin: 0 auto;
+        position: fixed;
+        top: 8px;
+        right: 25px;
+        z-index: 1000;
     }
 }
 
@@ -505,7 +500,7 @@ p, span, li {
 
 @media (min-width: 1024px) and (max-width: 1280px) {
   .hamburger-menu {
-    top: 20px; /* Ajuste para alinhamento em 1024px */
+    top: 8px; /* Ajuste para alinhamento em 1024px */
     right: 25px; /* Ajuste para alinhamento em 1024px */
   }
 }
@@ -1014,11 +1009,15 @@ p, span, li {
   right: 20px;
 }
 
-/* Corrigir erro de sintaxe */
-@media (max-width: 1024px) {
-  .hamburger-menu {
-    top: 20px;
-    right: 25px;
-    transform: none;
-  }
+/* Estilos específicos para o modo noite */
+[data-theme="dark"] .apresentacao__links__link {
+    border: 2px solid #00FF00; /* Borda neon verde */
+    background: rgba(0, 0, 0, 0.8); /* Fundo escuro */
+    color: #fff; /* Texto branco */
 }
+
+[data-theme="dark"] .apresentacao__links__link:hover {
+    box-shadow: 0 0 10px 2px #00FF00; /* Efeito neon no hover */
+    border-color: #00FF00;
+}
+
