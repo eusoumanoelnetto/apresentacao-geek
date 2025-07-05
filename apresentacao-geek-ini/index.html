@@ -7,6 +7,8 @@
     <title>Portifolio</title>
     <link rel="stylesheet" href="style-2.css">
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
 <body>
     <div class="background" id="background"></div>
@@ -54,6 +56,37 @@
           <span class="toggle-icon"></span>
           <span class="toggle-label"></span>
         </button>
+
+        <!-- Redes sociais e ferramentas recomendadas -->
+        <div class="social-icons">
+          <a href="https://www.freecodecamp.org/" target="_blank">
+            <i class="fab fa-free-code-camp" aria-hidden="true"></i>
+          </a>
+          <a href="https://gazeta.dev/" target="_blank">
+            <i class="fas fa-newspaper" aria-hidden="true"></i>
+          </a>
+          <a href="https://dev.to/" target="_blank">
+            <i class="fab fa-dev" aria-hidden="true"></i>
+          </a>
+          <a href="https://stackoverflow.com/" target="_blank">
+            <i class="fab fa-stack-overflow" aria-hidden="true"></i>
+          </a>
+          <a href="https://github.com/" target="_blank">
+            <i class="fab fa-github" aria-hidden="true"></i>
+          </a>
+          <a href="https://codepen.io/" target="_blank">
+            <i class="fab fa-codepen" aria-hidden="true"></i>
+          </a>
+          <a href="https://gitlab.com/" target="_blank">
+            <i class="fab fa-gitlab" aria-hidden="true"></i>
+          </a>
+          <a href="https://twitter.com/" target="_blank">
+            <i class="fas fa-x" aria-hidden="true"></i>
+          </a>
+          <a href="https://instagram.com/" target="_blank">
+            <i class="fab fa-instagram" aria-hidden="true"></i>
+          </a>
+        </div>
     </nav>
 
     <!-- Formulário de Contato -->
@@ -78,6 +111,13 @@
     <footer class="footer">
         <p>&copy; 2025 Feito com ❤️ por Manoel Coelho usando 🤖 GPT-4o</p>
     </footer>
+
+    <!-- Botão flutuante do chat acima do rodapé -->
+<div class="chat-floating" id="chatFloating">
+  <button class="chat-toggle" id="chatToggleBtn" title="Fale comigo">
+    <span style="font-size:1.7rem;">📩</span>
+  </button>
+</div>
 
     <script src="animations.js"></script>
 
@@ -176,46 +216,7 @@ themeToggle.addEventListener('click', () => {
     });
   });
 </script>
-<script>
-  const toggle = document.getElementById("form-toggle");
-  const form = document.getElementById("contact-form");
 
-  toggle.addEventListener("click", () => {
-    form.classList.toggle("hidden");
-    toggle.innerHTML = form.classList.contains("hidden")
-      ? "<span>⬆️ Entre em Contato</span>"
-      : "<span>⬇️ Fechar Contato</span>";
-  });
-</script>
-
-<!-- Drawer de Contato -->
-<div class="form-drawer" id="formDrawer">
-  <div class="form-toggle" id="toggleDrawer">
-    📩 Fale comigo
-  </div>
-  <form class="drawer-content hidden" id="contactForm">
-    <label>Nome:
-      <input type="text" placeholder="Seu nome">
-    </label>
-    <label>E-mail:
-      <input type="email" placeholder="Seu e-mail">
-    </label>
-    <label>Mensagem:
-      <textarea placeholder="Sua mensagem"></textarea>
-    </label>
-    <button type="submit">Enviar</button>
-  </form>
-</div>
-
-<script>
-  const drawerBtn = document.getElementById('toggleDrawer');
-  const drawerContent = document.getElementById('contactForm');
-
-  drawerBtn.addEventListener('click', () => {
-    drawerContent.classList.toggle('hidden');
-    drawerBtn.innerText = drawerContent.classList.contains('hidden') ? '📩 Fale comigo' : '⬇️ Fechar';
-  });
-</script>
 
 <!-- Chat Widget (agora com formulário de contato dentro) -->
 <div class="chat-widget" id="chatWidget">
@@ -238,11 +239,6 @@ themeToggle.addEventListener('click', () => {
     </form>
   </div>
 </div>
-
-<!-- Botão flutuante do chat -->
-<button class="chat-toggle" id="chatToggleBtn" title="Fale comigo">
-  <span style="font-size:1.7rem;">📩</span>
-</button>
 
 <script>
   // Lógica para abrir/fechar o chat

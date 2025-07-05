@@ -589,6 +589,69 @@ p, span, li {
   color: var(--menu-link-hover);
 }
 
+/* Estilo para redes sociais no menu lateral */
+.menu .social-links {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: var(--menu-bg);
+  border-radius: 8px;
+  box-shadow: 0 0 12px var(--menu-link-hover);
+  color: var(--menu-link);
+  font-family: 'Orbitron', sans-serif;
+}
+.menu .social-links h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+.menu .social-links ul {
+  list-style: none;
+  padding: 0;
+}
+.menu .social-links li {
+  margin: 0.5rem 0;
+}
+.menu .social-links a {
+  text-decoration: none;
+  color: var(--menu-link);
+  transition: color 0.3s;
+}
+.menu .social-links a:hover {
+  color: var(--menu-link-hover);
+}
+
+/* Novos estilos para ícones sociais no menu lateral */
+.social-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+.social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--menu-bg);
+  border: 2px solid var(--menu-link);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 8px var(--menu-link-hover);
+}
+
+.social-icons img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  filter: brightness(1.2);
+}
+
 /* Botão toggle de tema */
 .theme-toggle {
   margin-left: 10px;
@@ -754,187 +817,6 @@ p, span, li {
   opacity: 0.3; /* Reduzindo ainda mais a visibilidade */
 }
 
-/* Estilo para o formulário de contato */
-.contact-section {
-  padding: 2rem;
-  background-color: #282c34;
-  color: #61dafb;
-  text-align: center;
-}
-
-.contact-section h2 {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-#contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-#contact-form label {
-  font-family: 'Inter', sans-serif;
-  font-size: 1rem;
-  text-align: left;
-}
-
-#contact-form input,
-#contact-form textarea {
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #61dafb;
-  border-radius: 5px;
-  background-color: #333;
-  color: #fff;
-  font-family: 'Inter', sans-serif;
-}
-
-#contact-form button {
-  padding: 0.7rem;
-  border: none;
-  border-radius: 5px;
-  background-color: #61dafb;
-  color: #282c34;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-#contact-form button:hover {
-  background-color: #0078d7;
-}
-
-.feedback-message {
-  margin-top: 1rem;
-  font-family: 'Inter', sans-serif;
-  font-size: 1rem;
-  color: #7FFF00;
-}
-
-/* Estilo para o formulário minimizável */
-.form-container {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  max-width: 400px;
-  background-color: #1a1a1a;
-  color: #61dafb;
-  border-top: 2px solid #61dafb;
-  box-shadow: 0 -2px 10px rgba(0,0,0,0.6);
-  font-family: 'Orbitron', sans-serif;
-  z-index: 999;
-}
-
-.form-header {
-  text-align: center;
-  padding: 0.7rem;
-  cursor: pointer;
-  background-color: #0f0f0f;
-  border-bottom: 1px solid #61dafb;
-}
-
-.form-header:hover {
-  background-color: #222;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  padding: 1rem;
-}
-
-form label {
-  display: flex;
-  flex-direction: column;
-  font-size: 0.9rem;
-}
-
-input, textarea {
-  padding: 0.5rem;
-  background-color: #0f0f0f;
-  border: 1px solid #61dafb;
-  color: #fff;
-  border-radius: 5px;
-}
-
-button {
-  background-color: #00bfff;
-  color: #000;
-  border: none;
-  padding: 0.6rem;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: transform 0.2s ease;
-}
-
-button:hover {
-  transform: scale(1.05);
-}
-
-.hidden {
-  display: none;
-}
-
-/* Estilo para o formulário minimizável */
-.contact-drawer {
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 300px;
-    background-color: #282c34;
-    border: 2px solid #00FF00;
-    box-shadow: 0 0 10px #00FF00;
-    border-radius: 8px 8px 0 0;
-    text-align: center;
-    z-index: 1000;
-    transition: height 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden;
-}
-
-.contact-drawer.minimized {
-    height: 50px; /* Altura mínima quando recolhido */
-}
-
-.contact-drawer.expanded {
-    height: 300px; /* Altura expandida */
-}
-
-.contact-drawer .toggle-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 30px;
-    height: 30px;
-    background-color: #282c34;
-    border: 2px solid #00FF00;
-    box-shadow: 0 0 10px #00FF00;
-    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.contact-drawer .toggle-button:hover {
-    transform: scale(1.2);
-    box-shadow: 0 0 15px #00FF00;
-}
-
-.contact-drawer .form-content {
-    display: none; /* Escondido quando minimizado */
-    padding: 1rem;
-}
-
-.contact-drawer.expanded .form-content {
-    display: block; /* Mostra o conteúdo quando expandido */
-}
 
 /* Estilo para o Chat Geek Interativo */
 .chat-widget {
@@ -979,22 +861,37 @@ button:hover {
 
 .chat-toggle {
   position: fixed;
-  bottom: 20px;
+  bottom: 15%x;
   right: 20px;
-  width: 56px;
-  height: 56px;
-  background-color: #61dafb;
-  color: #0f0f0f;
-  font-size: 24px;
-  border: none;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
+  background-color: var(--menu-bg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  box-shadow: 0 0 10px #61dafb;
-  z-index: 998;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+/* Neon aprimorado para o botão flutuante do chat */
+.chat-toggle {
+  box-shadow: 0 0 16px var(--menu-link-hover), 0 0 32px var(--menu-link-hover), 0 0 48px var(--menu-link-hover);
+  transition: box-shadow 0.3s ease-in-out;
+}
+.chat-toggle:hover {
+  box-shadow: 0 0 24px var(--menu-link-hover), 0 0 48px var(--menu-link-hover), 0 0 64px var(--menu-link-hover);
+}
+[data-theme="light"] .chat-toggle {
+  box-shadow: 0 0 16px #ff6600, 0 0 32px #ff6600, 0 0 48px #ff6600;
+}
+[data-theme="dark"] .chat-toggle {
+  box-shadow: 0 0 16px #61dafb, 0 0 32px #61dafb, 0 0 48px #61dafb;
 }
 
 .chat-toggle:hover {
-  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
 }
 
 /* Formulário dentro do chat-widget */
@@ -1109,4 +1006,19 @@ button:hover {
 }
 [data-theme="light"] .footer p {
   color: #0078d7;
+}
+
+.chat-floating {
+  position: fixed;
+  bottom: 140px; /* Movendo para cima, longe do rodapé */
+  right: 20px;
+}
+
+/* Corrigir erro de sintaxe */
+@media (max-width: 1024px) {
+  .hamburger-menu {
+    top: 20px;
+    right: 25px;
+    transform: none;
+  }
 }
