@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portifolio</title>
     <link rel="stylesheet" href="style-2.css">
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 </head>
 <body>
     <div class="background" id="background"></div>
@@ -73,8 +74,9 @@
       <p id="form-feedback" class="feedback-message"></p>
     </section>
 
+    
     <footer class="footer">
-        <p>&copy; 2025 Manoel Coelho. Todos os direitos reservados.</p>
+        <p>&copy; 2025 Feito com ❤️ por Manoel Coelho usando 🤖 GPT-4o</p>
     </footer>
 
     <script src="animations.js"></script>
@@ -129,8 +131,15 @@ themeToggle.addEventListener('click', () => {
 </script>
 
 <script>
-  emailjs.init('2jJfFDoTtluxM6jA4'); // Inicializa com a chave pública fornecida
+  // Inicialize o EmailJS assim que o script for carregado
+  document.addEventListener('DOMContentLoaded', function() {
+    if (window.emailjs && emailjs.init) {
+      emailjs.init('2jJfFDoTtluxM6jA4');
+    }
+  });
+</script>
 
+<script>
   document.getElementById('contact-form').addEventListener('submit', function(event) {
     event.preventDefault();
 
@@ -167,6 +176,135 @@ themeToggle.addEventListener('click', () => {
     });
   });
 </script>
+<script>
+  const toggle = document.getElementById("form-toggle");
+  const form = document.getElementById("contact-form");
+
+  toggle.addEventListener("click", () => {
+    form.classList.toggle("hidden");
+    toggle.innerHTML = form.classList.contains("hidden")
+      ? "<span>⬆️ Entre em Contato</span>"
+      : "<span>⬇️ Fechar Contato</span>";
+  });
+</script>
+
+<!-- Drawer de Contato -->
+<div class="form-drawer" id="formDrawer">
+  <div class="form-toggle" id="toggleDrawer">
+    📩 Fale comigo
+  </div>
+  <form class="drawer-content hidden" id="contactForm">
+    <label>Nome:
+      <input type="text" placeholder="Seu nome">
+    </label>
+    <label>E-mail:
+      <input type="email" placeholder="Seu e-mail">
+    </label>
+    <label>Mensagem:
+      <textarea placeholder="Sua mensagem"></textarea>
+    </label>
+    <button type="submit">Enviar</button>
+  </form>
+</div>
+
+<script>
+  const drawerBtn = document.getElementById('toggleDrawer');
+  const drawerContent = document.getElementById('contactForm');
+
+  drawerBtn.addEventListener('click', () => {
+    drawerContent.classList.toggle('hidden');
+    drawerBtn.innerText = drawerContent.classList.contains('hidden') ? '📩 Fale comigo' : '⬇️ Fechar';
+  });
+</script>
+
+<!-- Chat Widget (agora com formulário de contato dentro) -->
+<div class="chat-widget" id="chatWidget">
+  <div class="chat-header">
+    <img src="../assets/eu.png" alt="Avatar Geek" />
+    <span style="font-family: Orbitron, sans-serif; font-size: 1.1rem;">Ava<span style="font-size:0.7em;opacity:0.7;">&#x1F916;</span></span>
+    <button class="close-chat" id="closeChatBtn" style="background:none;border:none;font-size:1.5rem;color:#61dafb;cursor:pointer;">&#10006;</button>
+  </div>
+  <div class="chat-body">
+    <p>Olá! 👋 Comece ou escale seu projeto geek com tudo que você precisa. É só me chamar!<br><br>👇 Envie sua mensagem:</p>
+    <form id="chatContactForm">
+      <label for="chatName">Nome:</label>
+      <input type="text" id="chatName" name="name" placeholder="Seu nome" required />
+      <label for="chatEmail">E-mail:</label>
+      <input type="email" id="chatEmail" name="email" placeholder="Seu e-mail" required />
+      <label for="chatMessage">Mensagem:</label>
+      <textarea id="chatMessage" name="message" placeholder="Sua mensagem" required></textarea>
+      <button type="submit" id="chatSendBtn">Enviar</button>
+      <div id="chatFormFeedback" style="margin-top:0.5rem;font-size:0.95rem;"></div>
+    </form>
+  </div>
+</div>
+
+<!-- Botão flutuante do chat -->
+<button class="chat-toggle" id="chatToggleBtn" title="Fale comigo">
+  <span style="font-size:1.7rem;">📩</span>
+</button>
+
+<script>
+  // Lógica para abrir/fechar o chat
+const chatToggleBtn = document.getElementById('chatToggleBtn');
+const chatWidget = document.getElementById('chatWidget');
+const closeChatBtn = document.getElementById('closeChatBtn');
+
+chatToggleBtn.addEventListener('click', () => {
+  chatWidget.style.display = 'flex';
+  chatToggleBtn.style.display = 'none';
+});
+
+closeChatBtn.addEventListener('click', () => {
+  chatWidget.style.display = 'none';
+  chatToggleBtn.style.display = 'block';
+});
+
+// Lógica para envio do formulário dentro do chat
+const chatContactForm = document.getElementById('chatContactForm');
+const chatFormFeedback = document.getElementById('chatFormFeedback');
+const chatSendBtn = document.getElementById('chatSendBtn');
+
+chatContactForm.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const name = document.getElementById('chatName').value.trim();
+  const email = document.getElementById('chatEmail').value.trim();
+  const message = document.getElementById('chatMessage').value.trim();
+
+  // Validação
+  if (!name || !email || !message) {
+    chatFormFeedback.textContent = 'Por favor, preencha todos os campos.';
+    chatFormFeedback.style.color = 'red';
+    return;
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    chatFormFeedback.textContent = 'Por favor, insira um e-mail válido.';
+    chatFormFeedback.style.color = 'red';
+    return;
+  }
+
+  chatFormFeedback.textContent = 'Enviando...';
+  chatFormFeedback.style.color = '#61dafb';
+  chatSendBtn.disabled = true;
+
+  emailjs.sendForm('service_zzelyg3', 'template_ra7we6f', chatContactForm)
+    .then(function(response) {
+      chatFormFeedback.textContent = 'Mensagem enviada com sucesso!';
+      chatFormFeedback.style.color = '#7FFF00';
+      chatContactForm.reset();
+      chatSendBtn.disabled = false;
+    })
+    .catch(function(error) {
+      chatFormFeedback.textContent = 'Erro ao enviar a mensagem. Tente novamente mais tarde.';
+      chatFormFeedback.style.color = 'red';
+      chatSendBtn.disabled = false;
+    });
+});
+</script>
+
 
 </body>
 </html>

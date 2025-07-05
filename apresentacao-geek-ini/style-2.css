@@ -936,3 +936,177 @@ button:hover {
     display: block; /* Mostra o conteúdo quando expandido */
 }
 
+/* Estilo para o Chat Geek Interativo */
+.chat-widget {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  width: 280px;
+  background-color: #0f0f0f;
+  border: 2px solid #61dafb;
+  border-radius: 12px;
+  box-shadow: 0 0 12px #61dafb;
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+  padding: 1rem;
+  z-index: 999;
+  display: none; /* Escondido inicialmente */
+  animation: popIn 0.3s ease forwards;
+  min-height: 340px;
+  max-height: 90vh;
+  overflow-y: auto;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+.chat-widget img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-body p {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.chat-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  background-color: #61dafb;
+  color: #0f0f0f;
+  font-size: 24px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 10px #61dafb;
+  z-index: 998;
+}
+
+.chat-toggle:hover {
+  transform: scale(1.05);
+}
+
+/* Formulário dentro do chat-widget */
+.chat-widget form {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  background: none;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+}
+
+.chat-widget form label {
+  color: #61dafb;
+  font-size: 0.95rem;
+  text-align: left;
+}
+
+.chat-widget input,
+.chat-widget textarea {
+  background: #181c22;
+  border: 1px solid #61dafb;
+  color: #fff;
+  border-radius: 5px;
+  padding: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.chat-widget button[type="submit"] {
+  background: #61dafb;
+  color: #0f0f0f;
+  border: none;
+  border-radius: 5px;
+  padding: 0.6rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  box-shadow: 0 0 8px #61dafb;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.chat-widget button[type="submit"]:hover {
+  background: #0078d7;
+  color: #fff;
+}
+
+/* Responsividade para o chat-widget com formulário */
+@media (max-width: 500px) {
+  .chat-widget {
+    width: 98vw;
+    right: 1vw;
+    left: 1vw;
+    min-width: unset;
+    max-width: unset;
+    border-radius: 10px;
+    padding: 0.5rem;
+  }
+}
+
+/* Oculta a seção de contato tradicional */
+#contact.contact-section {
+  display: none !important;
+}
+
+/* Chat-widget modo claro */
+[data-theme="light"] .chat-widget {
+  background-color: #f6f6f6;
+  color: #222;
+  border: 2px solid #0078d7;
+  box-shadow: 0 0 12px #0078d7;
+}
+[data-theme="light"] .chat-widget .chat-header span,
+[data-theme="light"] .chat-widget form label {
+  color: #0078d7;
+}
+[data-theme="light"] .chat-widget input,
+[data-theme="light"] .chat-widget textarea {
+  background: #fff;
+  border: 1px solid #0078d7;
+  color: #222;
+}
+[data-theme="light"] .chat-widget button[type="submit"] {
+  background: #0078d7;
+  color: #fff;
+  box-shadow: 0 0 8px #0078d7;
+}
+[data-theme="light"] .chat-widget button[type="submit"]:hover {
+  background: #61dafb;
+  color: #222;
+}
+[data-theme="light"] .chat-widget #chatFormFeedback {
+  color: #0078d7;
+}
+
+[data-theme="light"] .menu {
+  background-color: #fff;
+  color: #222;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.07);
+}
+[data-theme="light"] .menu a {
+  color: #0078d7;
+}
+[data-theme="light"] .menu a:hover {
+  color: #ff6600;
+}
+[data-theme="light"] .footer {
+  background-color: #e0e0e0;
+}
+[data-theme="light"] .footer p {
+  color: #0078d7;
+}
