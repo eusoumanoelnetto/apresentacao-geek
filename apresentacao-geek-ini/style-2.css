@@ -519,11 +519,10 @@ p, span, li {
    ======================================== */
 .hamburger-menu {
   display: flex;
-  position: absolute; /* em vez de fixed */
-  top: 50%;
+  position: fixed;
+  top: 8px;
   right: 20px;
-  transform: translateY(-50%);
-  z-index: 9999; /* garante que fique acima do menu */
+  z-index: 10000;
   width: 40px;
   height: 40px;
   background-color: #61dafb;
