@@ -118,6 +118,7 @@ body {
     padding: 20px;
     width: 100%;
     text-align: center;
+    z-index: 100;
     position: relative; /* Garantindo que o botão hambúrguer seja posicionado em relação à barra de título */
 }
 
@@ -393,7 +394,7 @@ p, span, li {
     }
 }
 
-    .apresentacao {
+.apresentacao {
         flex-direction: column;
         margin: 5%;
     }
@@ -457,7 +458,7 @@ p, span, li {
         position: fixed;
         top: 8px;
         right: 25px;
-        z-index: 1000;
+        z-index: 1500;
     }
 }
 
@@ -522,7 +523,7 @@ p, span, li {
   position: fixed;
   top: 8px;
   right: 20px;
-  z-index: 10000;
+  z-index: 1200;
   width: 40px;
   height: 40px;
   background-color: #61dafb;
@@ -541,6 +542,15 @@ p, span, li {
   transition: all 0.3s ease-in-out;
 }
 
+/* Ajuste para o botão hambúrguer acompanhar o tema */
+[data-theme="light"] .hamburger-menu div {
+    background-color: #000; /* Cor preta para o modo claro */
+}
+
+[data-theme="dark"] .hamburger-menu div {
+    background-color: #fff; /* Cor branca para o modo escuro */
+}
+
 /* ========================================
    MENU LATERAL (desktop e mobile)
    ======================================== */
@@ -554,11 +564,12 @@ p, span, li {
   color: #fff;
   transition: right 0.3s ease;
   padding: 2rem 1rem;
-  z-index: 9998; /* abaixo do botão */
+  z-index: 900; /* abaixo do botão */
 }
 
 .menu.menu--open {
   right: 0; /* Visível na tela no lado direito */
+  z-index: 900;
 }
 
 .menu ul {
@@ -1107,5 +1118,230 @@ p, span, li {
     justify-content: center;
     height: 100%;
   }
+}
+
+/* Deixando os slides do carrossel mais estreitos */
+.swiper-slide {
+    max-width: 320px;
+    min-width: 220px;
+    width: 90vw;
+    margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .swiper-slide {
+    max-width: 240px;
+    min-width: 160px;
+    width: 80vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .swiper-slide {
+    max-width: 180px;
+    min-width: 120px;
+    width: 95vw;
+  }
+}
+
+/* Ajustes para responsividade e visual do carrossel timeline */
+.timeline {
+  padding: 2rem 0 4rem 0;
+  background: transparent;
+}
+.myTimeline {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Fundo único para todo o carrossel da timeline */
+.myTimeline {
+    background: #232323;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 0 0 32px 0;
+    margin: 0 auto;
+    width: 100vw;
+    max-width: 100vw;
+    box-sizing: border-box;
+}
+
+/* Remove o fundo dos slides para não criar "barras" separadas */
+.swiper-slide {
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0 0 20px 20px;
+}
+
+/* Remove qualquer gap entre slides */
+.swiper-wrapper {
+    gap: 0 !important;
+}
+
+.swiper-slide {
+  background: #1e1e1e;
+  border-radius: 0 !important;
+  padding: 32px 24px 24px 24px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 260px;
+  min-height: 320px;
+  margin: 0 10px;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.swiper-slide img {
+  width: 120px !important;
+  height: auto !important;
+  margin-bottom: 10px;
+  display: block;
+}
+.swiper-slide h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.6rem;
+  color: #fff;
+  text-shadow: 0 2px 8px #00bfff44;
+}
+.swiper-slide p {
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+  color: #e0e0e0;
+  text-align: center;
+}
+.swiper-slide a {
+  color: #00bfff;
+  text-decoration: underline;
+  font-size: 1rem;
+}
+.swiper-button-next, .swiper-button-prev {
+  color: #00bfff;
+  background: #181c22cc;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  top: 55%;
+  transition: background 0.2s;
+}
+
+/* Removendo a sombra das setas de navegação do carrossel */
+.swiper-button-prev, .swiper-button-next {
+    box-shadow: none; /* Remove qualquer sombra */
+}
+
+.swiper-button-next:hover, .swiper-button-prev:hover {
+  background: #00bfff;
+  color: #181c22;
+}
+
+/* Ajustando o layout do carrossel para centralizar e distribuir os ícones */
+.swiper-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.swiper-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Espaçamento entre os slides */
+}
+
+/* Responsividade para o carrossel da timeline */
+@media (max-width: 900px) {
+  .swiper-slide img {
+    width: 90px !important;
+  }
+  .swiper-slide {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .swiper-slide img {
+    width: 60px !important;
+  }
+  .swiper-slide {
+    padding: 8px;
+    font-size: 0.95rem;
+  }
+  .swiper-wrapper {
+    gap: 8px;
+  }
+}
+
+/* Fundo único para o carrossel, sem espaçamento entre slides e sem border-radius no topo */
+.swiper-wrapper {
+    gap: 0 !important;
+}
+
+.swiper-slide {
+    background: #232323;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin: 0;
+    /* Remove box-shadow se quiser um efeito ainda mais "único" */
+    box-shadow: none;
+}
+
+/* Remove espaçamento lateral do carrossel */
+.myTimeline {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100vw;
+    max-width: 100vw;
+}
+
+/* Fundo do título igual ao fundo do carrossel */
+.timeline__conteudo {
+    background: #232323 !important;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 10px 0 10px 0;
+    margin: 0 auto;
+    width: 100vw;
+    max-width: 100vw;
+    box-sizing: border-box;
+}
+
+/* Estilo para o botão 'Ver Certificado' */
+.btn-certificado {
+    display: inline-block;
+    background: #00bfff;
+    color: #181818;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 20px;
+    margin-top: 10px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    cursor: pointer;
+    text-align: center;
+    min-width: 160px;
+}
+.btn-certificado:empty {
+    min-width: 160px;
+    height: 40px;
+    background: #00bfff;
+    color: #181818;
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+.btn-certificado:hover, .btn-certificado:focus {
+    background: #0099cc;
+    color: #fff;
+    text-decoration: underline;
 }
 

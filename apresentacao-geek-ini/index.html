@@ -17,13 +17,38 @@
         .swiper-slide img { width: 50px; height: 50px; margin-bottom: 10px; }
         .swiper-slide h3 { margin: 0; font-size: 1.5rem; }
         .swiper-slide p { margin: 5px 0 0; font-size: 1rem; text-align: center; }
+
+        /* Ajuste no estilo das setas de navegação do carrossel */
+        .swiper-button-prev, .swiper-button-next {
+            color: #00bfff;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 20;
+        }
+
+        .swiper-button-prev {
+            left: 10px;
+        }
+
+        .swiper-button-next {
+            right: 10px;
+        }
+
+        /* Corrige o tamanho da imagem do DIO Campus Expert na timeline */
+        .swiper-slide img[alt="DIO Campus Expert"] {
+            width: 120px !important;
+            height: auto !important;
+            margin-bottom: 10px;
+            display: block;
+        }
     </style>
 </head>
 <body>
     <div class="background" id="background"></div>
     
     <header class="header" style="position: sticky; top: 0px; background-color: #1e1e1e; z-index: 1000; padding: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); max-width: 100%; margin: 0 auto; max-height: 58px;">
-        <h1 class="header__title" style="color: #00bfff; font-size: 2rem; text-align: center; margin-top: -5px;">Bem-vindo ao Mundo Geek</h1>
+        <h1 class="header__title" style="color: #00bfff; font-size: 150%; text-align: center; margin-top: -5px;">Bem-vindo ao Mundo Geek</h1>
         <!-- Botão Hambúrguer -->
         <div class="hamburger-menu" id="hamburger-menu">
             <div></div>
@@ -130,7 +155,7 @@
                     <img src="assets/dio-campus-expert.png" alt="DIO Campus Expert" style="width: 120px; height: auto; display: block;">
                     <h3>DIO Campus Expert</h3>
                     <p>Concluí o programa em junho de 2025.</p>
-                    <a href="https://drive.google.com/file/d/1Y7yRWQn-fAheYasmAhrLLT2hlT99puvE/view" target="_blank" style="color: #00bfff; text-decoration: underline;">Ver Certificado</a>
+                    <a href="https://drive.google.com/file/d/1Y7yRWQn-fAheYasmAhrLLT2hlT99puvE/view" target="_blank" class="btn-certificado">Ver Certificado</a>
                 </div>
                 <div class="swiper-slide" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
                     <img src="https://hermes.dio.me/lab_projects/badges/8452b26d-1090-48d3-87ee-32c5bca13bf0.png" alt="Dashboard Xbox">
@@ -141,19 +166,19 @@
                     <img src="https://hermes.dio.me/tracks/ec979fdc-7d5e-418f-9453-9c5842851f2b.png" alt="Excel com IA">
                     <h3>Santander - Excel com Inteligência Artificial</h3>
                     <p>Consegui o certificado em 2025.</p>
-                    <a href="https://hermes.dio.me/certificates/AWIMISHS.pdf" target="_blank" style="color: #00bfff; text-decoration: underline;">Ver Certificado</a>
+                    <a href="https://hermes.dio.me/certificates/AWIMISHS.pdf" target="_blank" class="btn-certificado">Ver Certificado</a>
                 </div>
                 <div class="swiper-slide" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
                     <img src="https://assets.dio.me/GYlSYkT1UtS_LGbyY9giwRnKe0s-3zqTEF_R9dZZHtI/f:webp/q:80/w:480/L3RyYWNrcy9mNTcyZDdhNi00NGZkLTRhYmQtYjc1Ny04OTFhYmE3OTM0NTEucG5n" alt="Microsoft AI Agents">
                     <h3>Aceleração Microsoft AI Agents</h3>
                     <p>Consegui o certificado em 2025.</p>
-                    <a href="https://hermes.dio.me/certificates/ZS87GAHL.pdf" target="_blank" style="color: #00bfff; text-decoration: underline;">Ver Certificado</a>
+                    <a href="https://hermes.dio.me/certificates/ZS87GAHL.pdf" target="_blank" class="btn-certificado">Ver Certificado</a>
                 </div>
                 <div class="swiper-slide" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
                     <img src="http://assets.dio.me/7x5trWPpOujn6-mKm0mHplMmSML01SwTU_4qWlPquME/f:webp/q:80/w:480/L3RyYWNrcy9iNGVjODc3Yi00MzJkLTRkNjQtYTFmYi01MmQ3NTk5NDY3ZmEucG5n" alt="Microsoft Certification Challenge DP-100">
                     <h3>Microsoft Certification Challenge #3 DP-100</h3>
                     <p>Consegui o certificado em 2025.</p>
-                    <a href="https://hermes.dio.me/certificates/NQPCWBGI.pdf" target="_blank" style="color: #00bfff; text-decoration: underline;">Ver Certificado</a>
+                    <a href="https://hermes.dio.me/certificates/NQPCWBGI.pdf" target="_blank" class="btn-certificado">Ver Certificado</a>
                 </div>
                 <div class="swiper-slide" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
                     <img src="https://conteudos.uniasselvi.com.br/documentacao_legal/img/logo_branco.png" alt="Uniasselvi" style="width: 120px; height: auto;">
@@ -418,18 +443,34 @@ for (const link of links) {
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         new Swiper('.myTimeline', {
-            loop: true,
+            loop: false,
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
             slidesPerView: 1,
-            spaceBetween: 30,
+            spaceBetween: 24,
+            centeredSlides: true,
             breakpoints: {
-                600: { slidesPerView: 2 },
-                900: { slidesPerView: 3 }
+                600: { slidesPerView: 2, spaceBetween: 24, centeredSlides: false },
+                900: { slidesPerView: 3, spaceBetween: 32, centeredSlides: false }
             }
         });
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const background = document.getElementById('background');
+        const dioCampusExpertImg = document.querySelector('.swiper-slide img[src*="/assets/dio-campus-expert.png"]');
+
+        const updateImageTheme = () => {
+            const theme = document.body.getAttribute('data-theme');
+            dioCampusExpertImg.src = theme === 'light' ? 'assets/dio-campus-expert-light.png' : '/assets/dio-campus-expert.png';
+        };
+
+        updateImageTheme();
+        background.addEventListener('change', updateImageTheme);
     });
 </script>
 

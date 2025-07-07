@@ -5,5 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
     btn.addEventListener("click", () => {
         menu.classList.toggle("menu--open");
         btn.classList.toggle("is-active");
+        btn.style.zIndex = "1100";
     });
 });
