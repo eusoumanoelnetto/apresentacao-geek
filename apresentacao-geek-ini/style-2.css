@@ -1103,6 +1103,37 @@ p, span, li {
   }
 }
 
+/* Responsividade para os cards interativos */
+@media (max-width: 600px) {
+  .projetos__galeria {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .card-flip {
+    width: 100%;
+    max-width: 320px;
+    min-width: 0;
+    height: auto;
+    margin-bottom: 1.5rem;
+  }
+  .card-flip__front, .card-flip__back {
+    min-height: 220px;
+    padding: 1rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .card-flip {
+    max-width: 98vw;
+  }
+  .card-flip__front, .card-flip__back {
+    padding: 0.5rem;
+    font-size: 0.95rem;
+  }
+}
+
 @media (min-width: 1024px) {
   .apresentacao {
     min-height: 60vh;
