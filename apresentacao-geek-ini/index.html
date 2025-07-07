@@ -9,12 +9,21 @@
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <style>
+        .timeline { margin: 40px 0; }
+        .myTimeline { width: 100%; max-width: 700px; margin: 0 auto; }
+        .swiper-slide { background: #1e1e1e; border-radius: 10px; padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .swiper-slide img { width: 50px; height: 50px; margin-bottom: 10px; }
+        .swiper-slide h3 { margin: 0; font-size: 1.5rem; }
+        .swiper-slide p { margin: 5px 0 0; font-size: 1rem; text-align: center; }
+    </style>
 </head>
 <body>
     <div class="background" id="background"></div>
     
-    <header class="header">
-        <h1 class="header__title">Bem-vindo ao Mundo Geek</h1>
+    <header class="header" style="position: sticky; top: 0px; background-color: #1e1e1e; z-index: 1000; padding: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); max-width: 100%; margin: 0 auto; max-height: 58px;">
+        <h1 class="header__title" style="color: #00bfff; font-size: 2rem; text-align: center; margin-top: -5px;">Bem-vindo ao Mundo Geek</h1>
         <!-- Botão Hambúrguer -->
         <div class="hamburger-menu" id="hamburger-menu">
             <div></div>
@@ -110,6 +119,53 @@
       <p id="form-feedback" class="feedback-message"></p>
     </section>
 
+    <!-- Seção da timeline -->
+    <section class="timeline" id="timeline" style="position: relative;">
+      <div class="timeline__conteudo" style="position: sticky; top: 0; background-color: #1e1e1e; z-index: 10; padding: 10px;">
+        <h2 class="timeline__titulo" style="color: #00bfff; font-size: 2rem; text-align: center;">Minha Jornada</h2>
+      </div>
+      <div class="swiper myTimeline">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+                    <img src="assets/dio-campus-expert.png" alt="DIO Campus Expert" style="width: 120px; height: auto; display: block;">
+                    <h3>DIO Campus Expert</h3>
+                    <p>Concluí o programa em junho de 2025.</p>
+                    <a href="https://drive.google.com/file/d/1Y7yRWQn-fAheYasmAhrLLT2hlT99puvE/view" target="_blank" style="color: #00bfff; text-decoration: underline;">Ver Certificado</a>
+                </div>
+                <div class="swiper-slide" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+                    <img src="https://hermes.dio.me/lab_projects/badges/8452b26d-1090-48d3-87ee-32c5bca13bf0.png" alt="Dashboard Xbox">
+                    <h3>Início na Programação</h3>
+                    <p>Fui desligado do estágio na Servcom e decidi começar a programar no mesmo dia. Outubro 2024.</p>
+                </div>
+                <div class="swiper-slide" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+                    <img src="https://hermes.dio.me/tracks/ec979fdc-7d5e-418f-9453-9c5842851f2b.png" alt="Excel com IA">
+                    <h3>Santander - Excel com Inteligência Artificial</h3>
+                    <p>Consegui o certificado em 2025.</p>
+                    <a href="https://hermes.dio.me/certificates/AWIMISHS.pdf" target="_blank" style="color: #00bfff; text-decoration: underline;">Ver Certificado</a>
+                </div>
+                <div class="swiper-slide" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+                    <img src="https://assets.dio.me/GYlSYkT1UtS_LGbyY9giwRnKe0s-3zqTEF_R9dZZHtI/f:webp/q:80/w:480/L3RyYWNrcy9mNTcyZDdhNi00NGZkLTRhYmQtYjc1Ny04OTFhYmE3OTM0NTEucG5n" alt="Microsoft AI Agents">
+                    <h3>Aceleração Microsoft AI Agents</h3>
+                    <p>Consegui o certificado em 2025.</p>
+                    <a href="https://hermes.dio.me/certificates/ZS87GAHL.pdf" target="_blank" style="color: #00bfff; text-decoration: underline;">Ver Certificado</a>
+                </div>
+                <div class="swiper-slide" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+                    <img src="http://assets.dio.me/7x5trWPpOujn6-mKm0mHplMmSML01SwTU_4qWlPquME/f:webp/q:80/w:480/L3RyYWNrcy9iNGVjODc3Yi00MzJkLTRkNjQtYTFmYi01MmQ3NTk5NDY3ZmEucG5n" alt="Microsoft Certification Challenge DP-100">
+                    <h3>Microsoft Certification Challenge #3 DP-100</h3>
+                    <p>Consegui o certificado em 2025.</p>
+                    <a href="https://hermes.dio.me/certificates/NQPCWBGI.pdf" target="_blank" style="color: #00bfff; text-decoration: underline;">Ver Certificado</a>
+                </div>
+                <div class="swiper-slide" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+                    <img src="https://conteudos.uniasselvi.com.br/documentacao_legal/img/logo_branco.png" alt="Uniasselvi" style="width: 120px; height: auto;">
+                    <h3>Defesa Cibernética - Uniasselvi</h3>
+                    <p>Comecei na faculdade em janeiro de 2025.</p>
+                </div>
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </section>
+
     <!-- Seção Projetos Interativos -->
     <section class="projetos" id="projetos">
       <h2 class="projetos__titulo">Projetos Interativos</h2>
@@ -163,6 +219,7 @@
 </div>
 
     <script src="animations.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -356,6 +413,24 @@ for (const link of links) {
     }
   });
 }
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        new Swiper('.myTimeline', {
+            loop: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            slidesPerView: 1,
+            spaceBetween: 30,
+            breakpoints: {
+                600: { slidesPerView: 2 },
+                900: { slidesPerView: 3 }
+            }
+        });
+    });
 </script>
 
 </body>
