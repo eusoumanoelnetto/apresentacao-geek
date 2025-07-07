@@ -1023,7 +1023,7 @@ p, span, li {
 
 /* Projetos Interativos - Cards Flip */
 .projetos {
-  padding: 2rem 0 4.5rem 0; /* padding-bottom aumentado para afastar do rodapé */
+  padding: 2rem 0 6rem 0; /* padding-bottom maior para garantir visualização total no desktop */
   background: var(--header-bg);
   color: var(--header-title);
   text-align: center;
@@ -1090,6 +1090,23 @@ p, span, li {
   }
   .card-flip {
     margin-bottom: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .apresentacao {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .apresentacao__conteudo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
   }
 }
 

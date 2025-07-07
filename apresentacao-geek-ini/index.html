@@ -49,7 +49,7 @@
         <ul>
             <li><a href="#">Início</a></li>
             <li><a href="#">Sobre</a></li>
-            <li><a href="#">Projetos</a></li>
+            <li><a href="#projetos">Projetos</a></li>
             <li><a href="#">Contato</a></li>
         </ul>
         <button class="theme-toggle modern-toggle" id="theme-toggle" title="Alternar tema" aria-label="Alternar tema">
@@ -111,7 +111,7 @@
     </section>
 
     <!-- Seção Projetos Interativos -->
-    <section class="projetos">
+    <section class="projetos" id="projetos">
       <h2 class="projetos__titulo">Projetos Interativos</h2>
       <div class="projetos__galeria">
         <div class="card-flip">
@@ -344,6 +344,19 @@ chatContactForm.addEventListener('submit', function(event) {
 });
 </script>
 
+<script>
+// Scroll suave para âncoras
+const links = document.querySelectorAll('a[href^="#"]');
+for (const link of links) {
+  link.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (href.length > 1 && document.querySelector(href)) {
+      e.preventDefault();
+      document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+}
+</script>
 
 </body>
 </html>
