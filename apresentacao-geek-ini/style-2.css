@@ -35,7 +35,12 @@
 }
 
 .menu.menu-open {
-  z-index: 2000 !important; /* Garante que o menu lateral cubra o cabeçalho */
+  z-index: 800 !important; /* Abaixo do header (z-index 1000), acima do conteúdo */
+}
+
+.menu.menu-open {
+  right: 0; /* Visível na tela no lado direito */
+  z-index: 800 !important; /* Abaixo do header (z-index 1000), acima do conteúdo */
 }
 
 /* Garante que o botão hambúrguer fique sempre acima do menu lateral */
@@ -615,7 +620,7 @@ p, span, li {
 
 .menu.menu-open {
   right: 0; /* Visível na tela no lado direito */
-  z-index: 2000 !important; /* Aumenta z-index para cobrir o cabeçalho */
+  z-index: 800 !important; /* Abaixo do header (z-index 1000), acima do conteúdo */
 }
 
 .menu ul {
