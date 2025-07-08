@@ -441,25 +441,6 @@ for (const link of links) {
 </script>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        new Swiper('.myTimeline', {
-            loop: false,
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            slidesPerView: 1,
-            spaceBetween: 24,
-            centeredSlides: true,
-            breakpoints: {
-                600: { slidesPerView: 2, spaceBetween: 24, centeredSlides: false },
-                900: { slidesPerView: 3, spaceBetween: 32, centeredSlides: false }
-            }
-        });
-    });
-</script>
-
-<script>
     document.addEventListener('DOMContentLoaded', () => {
         const background = document.getElementById('background');
         const dioCampusExpertImg = document.querySelector('.swiper-slide img[src*="/assets/dio-campus-expert.png"]');
@@ -472,6 +453,26 @@ for (const link of links) {
         updateImageTheme();
         background.addEventListener('change', updateImageTheme);
     });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    new Swiper('.myTimeline', {
+      loop: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      slidesPerView: 1,
+      spaceBetween: 16,
+      loopAdditionalSlides: 1,
+      breakpoints: {
+        0:    { slidesPerView: 1, spaceBetween: 8 },
+        600:  { slidesPerView: 1, spaceBetween: 16 }, // mobile fixado em 1 slide
+        1024: { slidesPerView: 'auto', spaceBetween: 24 }
+      }
+    });
+  });
 </script>
 
 </body>

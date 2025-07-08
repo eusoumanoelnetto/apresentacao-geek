@@ -82,4 +82,14 @@ const menu = document.getElementById('menu');
 
 hamburgerMenu.addEventListener('click', () => {
     menu.classList.toggle('menu--open');
+    hamburgerMenu.classList.toggle('is-active'); // Adiciona transformação para X
+});
+
+// Fallback para botões de certificado vazios
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.btn-certificado').forEach(btn => {
+    if (btn.textContent.trim() === '') {
+      btn.textContent = 'Certificado';
+    }
+  });
 });
