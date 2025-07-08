@@ -149,10 +149,10 @@
       <div class="timeline__conteudo" style="position: sticky; top: 0; background-color: #1e1e1e; z-index: 10; padding: 10px;">
         <h2 class="timeline__titulo" style="color: #00bfff; font-size: 2rem; text-align: center;">Minha Jornada</h2>
       </div>
-      <div class="swiper myTimeline">
+      <div class="swiper myTimeline" style="width: 100%; max-width: 100vw; overflow: visible;">
             <div class="swiper-wrapper">
                 <div class="swiper-slide" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
-                    <img src="assets/dio-campus-expert.png" alt="DIO Campus Expert" style="width: 120px; height: auto; display: block;">
+                    <img src="../assets/dio-campus-expert.png" alt="DIO Campus Expert" style="width: 120px; height: auto; display: block;">
                     <h3>DIO Campus Expert</h3>
                     <p>Concluí o programa em junho de 2025.</p>
                     <a href="https://drive.google.com/file/d/1Y7yRWQn-fAheYasmAhrLLT2hlT99puvE/view" target="_blank" class="btn-certificado">Ver Certificado</a>
@@ -463,13 +463,17 @@ for (const link of links) {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
       },
-      slidesPerView: 1,
-      spaceBetween: 16,
-      loopAdditionalSlides: 1,
+      slidesPerView: 'auto', // Mostra quantos couberem
+      spaceBetween: 25,
+      centeredSlides: false,
       breakpoints: {
-        0:    { slidesPerView: 1, spaceBetween: 8 },
-        600:  { slidesPerView: 1, spaceBetween: 16 }, // mobile fixado em 1 slide
-        1024: { slidesPerView: 'auto', spaceBetween: 24 }
+        0:    { slidesPerView: 1, spaceBetween: 10 },
+        768:  { slidesPerView: 'auto', spaceBetween: 20 },
+        1024: { 
+          slidesPerView: 'auto', 
+          spaceBetween: 30,
+          centeredSlides: false // Desliga centralização no desktop
+        }
       }
     });
   });

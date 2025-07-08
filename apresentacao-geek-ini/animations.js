@@ -93,3 +93,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+// Esconder botão 'Ver Certificado' quando não há link válido
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.btn-certificado').forEach(btn => {
+    if (!btn.getAttribute('href') || btn.getAttribute('href') === '#') {
+      btn.style.display = 'none';
+    }
+  });
+});

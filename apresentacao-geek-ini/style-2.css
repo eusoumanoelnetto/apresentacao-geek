@@ -618,6 +618,10 @@ p, span, li {
   z-index: 900; /* abaixo do botão */
 }
 
+.menu {
+  width: 270px; /* Aumentado de 250px */
+}
+
 .menu.menu-open {
   right: 0; /* Visível na tela no lado direito */
   z-index: 800 !important; /* Abaixo do header (z-index 1000), acima do conteúdo */
@@ -633,12 +637,18 @@ p, span, li {
   margin-top: 1.5rem;
 }
 
+.menu li {
+  padding: 12px 15px; /* Aumentar espaçamento */
+}
+
 .menu a {
   text-decoration: none;
   color: var(--menu-link);
   font-family: 'Orbitron', sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.2rem; /* Aumentar tamanho da fonte */
   transition: color 0.2s;
+  white-space: nowrap; /* Impedir quebra de linha */
+  overflow: visible; /* Mostrar texto completo */
 }
 
 .menu a:hover {
@@ -757,6 +767,9 @@ p, span, li {
   box-shadow: 0 0 15px #FFD700;
   cursor: pointer;
   transition: box-shadow 0.3s, transform 0.3s, background 0.3s, color 0.3s, border 0.3s;
+  margin: 2rem auto 0 !important;
+  width: 80% !important;
+  padding: 12px !important; /* Aumentar área de toque */
 }
 .modern-toggle:hover {
   box-shadow: 0 0 25px #FFD700;
@@ -1312,10 +1325,10 @@ p, span, li {
   transition: box-shadow 0.3s, transform 0.3s;
 }
 .swiper-slide img {
-  width: 120px !important;
-  height: auto !important;
-  margin-bottom: 10px;
+  max-width: 100%;
+  height: auto;
   display: block;
+  object-fit: contain;
 }
 .swiper-slide h3 {
   margin: 0 0 10px 0;
@@ -1547,4 +1560,11 @@ p, span, li {
 }
 [data-theme="light"] .header__title {
   color: var(--header-title) !important;
+}
+
+/* Ajuste do tamanho do título no desktop */
+@media (min-width: 1024px) {
+  .header__title {
+    font-size: 3rem !important;  /* de 2.5rem para 3rem */
+  }
 }
