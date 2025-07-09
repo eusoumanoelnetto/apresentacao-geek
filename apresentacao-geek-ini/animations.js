@@ -76,15 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
     for(let i = 0; i < 3; i++) createPlanet();
 });
 
-// Função para abrir e fechar o menu hambúrguer
-const hamburgerMenu = document.getElementById('hamburger-menu');
-const menu = document.getElementById('menu');
-
-hamburgerMenu.addEventListener('click', () => {
-    menu.classList.toggle('menu--open');
-    hamburgerMenu.classList.toggle('is-active'); // Adiciona transformação para X
-});
-
 // Fallback para botões de certificado vazios
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.btn-certificado').forEach(btn => {

@@ -21,15 +21,6 @@
   --menu-link-hover: #ff6600;
 }
 
-/* Correção Jarvis: Garante que o botão hambúrguer fique acima do menu lateral */
-.hamburger-menu {
-  position: absolute;      /* posiciona em relação ao header */
-  top: 50%;                /* 50% da altura do header */
-  transform: translateY(-50%); /* centra verticalmente */
-  right: 15px;             /* mantém afastamento da borda */
-  z-index: 3000 !important; /* Garante visibilidade acima do menu aberto */
-}
-
 .menu {
   z-index: 900;
 }
@@ -41,11 +32,6 @@
 .menu.menu-open {
   right: 0; /* Visível na tela no lado direito */
   z-index: 800 !important; /* Abaixo do header (z-index 1000), acima do conteúdo */
-}
-
-/* Garante que o botão hambúrguer fique sempre acima do menu lateral */
-.hamburger-menu {
-  z-index: 3000 !important;
 }
 
 /* Correção para floating icon e card responsivo */
@@ -194,21 +180,43 @@ body {
   animation: typing 3s steps(30, end), blink-caret 0.5s step-end infinite; /* Animação */
 }
 
-/* Ajustes para mobile */
-@media (max-width: 425px) {
+/* Ajustes para mobile (320px–600px) */
+@media (min-width: 320px) and (max-width: 600px) {
     .header__title {
-        font-size: 130%;
-        letter-spacing: -1px;
-        padding: 2px 0;
-        margin: 0;
+        font-size: 1.5rem;
+        padding: 0;
+        margin: 0 auto;
         text-align: center;
+        white-space: nowrap;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
     }
-  .hamburger-menu {
-    top: 8px; /* Ajuste refinado para alinhamento no mobile */
-    right: 15px; /* Ajuste refinado para alinhamento no mobile */
-  }
 }
 
+/* Ajustes para tablets (768px–900px) */
+@media (min-width: 768px) and (max-width: 900px) {
+    .header__title {
+        font-size: 1.3rem;
+        padding: 0;
+        margin: 0 auto;
+        text-align: center;
+        white-space: nowrap;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+}
+
+/* Ajustes para notebook/PC (1000px–1440px) */
+@media (min-width: 1000px) and (max-width: 1440px) {
+    .header__title {
+        font-size: 2.2rem !important;
+        text-align: left;
+    }
+}
 
 
 .titulo-destaque {
@@ -437,12 +445,6 @@ p, span, li {
     .footer {
         padding: 20px;
     }
-
-    /* Ajustando alinhamento do botão hambúrguer para mobile e desktop */
-    .hamburger-menu {
-        top: 8px; /* Ajuste refinado para alinhamento no mobile */
-        right: 15px; /* Ajuste refinado para alinhamento no mobile */
-    }
 }
 
 .apresentacao {
@@ -477,13 +479,6 @@ p, span, li {
         max-width: 80%;
         margin-top: 23%;
     }
-
-    /* Ajustando posicionamento do botão hambúrguer para evitar sobreposição do texto */
-    .hamburger-menu {
-      top: 8px; /* Ajuste refinado para 1024px */
-      right: 25px; /* Ajuste refinado para 1024px */
-      transform: none; /* Removendo transform para evitar conflitos */
-    }
 }
 
 /* Layout com media queries para desktop */
@@ -502,14 +497,6 @@ p, span, li {
         min-width: 40%;
         display: flex;
         justify-content: center;
-    }
-
-    /* Ajuste para alinhamento no desktop */
-    .hamburger-menu {
-        position: fixed;
-        top: 8px;
-        right: 25px;
-        z-index: 1500;
     }
 }
 
@@ -542,21 +529,6 @@ p, span, li {
     }
 }
 
-/* Ajustando alinhamento do botão hambúrguer para desktop sem desalinhar no mobile */
-@media (min-width: 1024px) {
-  .hamburger-menu {
-    top: 30px; /* Mantendo alinhamento no desktop */
-    right: 10px; /* Mantendo alinhamento no desktop */
-  }
-}
-
-@media (min-width: 1024px) and (max-width: 1280px) {
-  .hamburger-menu {
-    top: 8px; /* Ajuste para alinhamento em 1024px */
-    right: 25px; /* Ajuste para alinhamento em 1024px */
-  }
-}
-
 @keyframes typing {
     from { width: 0; }
     to { width: 100%; }
@@ -569,9 +541,6 @@ p, span, li {
 /* ========================================
    HAMBURGER BUTTON (desktop e mobile)
    ======================================== */
-.hamburger-menu {
-  display: none !important;
-}
 
 /* ========================================
    MENU LATERAL (desktop e mobile)
@@ -702,21 +671,6 @@ p, span, li {
 }
 .theme-toggle:focus {
   outline: 2px solid var(--header-title);
-}
-
-/* Animação do botão para “X” */
-.hamburger-menu.is-active div:nth-child(1) {
-  transform: translateY(10px) rotate(45deg);
-}
-.hamburger-menu.is-active div:nth-child(2) {
-  opacity: 0;
-}
-.hamburger-menu.is-active div:nth-child(3) {
-  transform: translateY(-10px) rotate(-45deg);
-}
-
-.hamburger-menu.is-active div {
-    background-color: #fff; /* Alteração visual do botão */
 }
 
 /* Modern toggle button - melhorias para alternar cor, texto e ícone */
@@ -1245,6 +1199,11 @@ p, span, li {
     max-width: 180px;
     min-width: 120px;
     width: 95vw;
+    padding: 0.5rem;
+  }
+  .swiper-wrapper {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 }
 
@@ -1540,48 +1499,60 @@ p, span, li {
   }
 }
 
-/* —————————————————————————— */
-/* CARROSSEL 100% RESPONSIVO */
-/* —————————————————————————— */
-.myTimeline {
-  width: 100%;
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  gap: 1rem;
-  padding: 1rem;
-  box-sizing: border-box;
-}
-
-.myTimeline .card {
-  /* base móvel: cada card ocupa 80% da tela */
-  flex: 0 0 80%;
-  min-width: 80%;
-  max-width: 80%;
-  scroll-snap-align: start;
-}
-
-/* tablet (>=768px): dois cards lado a lado */
-@media (min-width: 768px) {
-  .myTimeline .card {
-    flex: 0 0 45%;
-    min-width: 45%;
-    max-width: 45%;
-  }
-}
-
-/* desktop (>=1024px): três cards em vista */
-@media (min-width: 1024px) {
-  .myTimeline .card {
-    flex: 0 0 30%;
-    min-width: 30%;
-    max-width: 30%;
-  }
-}
-
-/* Correção para garantir que apenas um card seja exibido no mobile */
+/* =========================
+   PERSONALIZAÇÃO MOBILE
+   ========================= */
 @media (max-width: 600px) {
+  /* Menu lateral mobile */
+  .menu {
+    position: fixed !important;
+    top: 0;
+    right: -100vw !important;
+    width: 80vw;
+    height: 100vh;
+    transition: right 0.3s;
+    z-index: 900;
+  }
+  .menu.menu-open {
+    right: 0 !important;
+    z-index: 1200 !important;
+  }
+  /* Outros ajustes mobile */
+  .floating-icon {
+    right: 0.5rem;
+    bottom: 0.5rem;
+    transform: scale(0.9);
+    position: relative;
+    z-index: 10;
+  }
+  .card-container {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+  .projetos__galeria {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .card-flip {
+    width: 100%;
+    max-width: 320px;
+    min-width: 0;
+    height: 320px;
+    margin-bottom: 1.5rem;
+  }
+  .card-flip__front, .card-flip__back {
+    min-height: 320px;
+    padding: 1rem;
+    font-size: 1rem;
+  }
+  .swiper-slide {
+    width: 95%;
+    max-width: 240px;
+  }
   .myTimeline,
   .swiper-wrapper {
     display: flex !important;
@@ -1602,19 +1573,172 @@ p, span, li {
   }
 }
 
-/* Esconde completamente o menu lateral quando fechado no mobile */
-@media (max-width: 600px) {
+/* =========================
+   PERSONALIZAÇÃO TABLET (201px até 900px)
+   ========================= */
+@media (min-width: 201px) and (max-width: 900px) {
   .menu {
-    position: fixed !important;
-    top: 0;
-    right: -100vw !important; /* Esconde fora da tela */
-    width: 80vw;
-    height: 100vh;
-    transition: right 0.3s;
-    z-index: 900;
+    right: -100vw !important;
+    transition: right 0.3s ease;
   }
   .menu.menu-open {
-    right: 0 !important; /* Mostra o menu ao abrir */
-    z-index: 1200 !important;
+    right: 0 !important;
+  }
+  .apresentacao {
+    flex-direction: column;
+    margin: 10%;
+    padding-bottom: 50%;
+  }
+  .apresentacao__conteudo {
+    width: 100%;
+    height: auto;
+    gap: 20px;
+  }
+  .apresentacao__conteudo__titulo {
+    font-size: 28px;
+  }
+  .apresentacao__conteudo__texto {
+    font-size: 18px;
+  }
+  .apresentacao__links {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .apresentacao__links__link {
+    width: 100%;
+    margin-right: 0;
+  }
+  .apresentacao__imagem {
+    max-width: 80%;
+    margin-top: 23%;
+  }
+  .footer {
+    padding: 20px;
+  }
+  .header__title {
+    font-size: 1.5rem !important;
+    text-align: center !important;
+    margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
+    padding: 0 2vw;
+    line-height: 1.1;
+    word-break: break-word;
+    max-width: 98vw;
+    box-sizing: border-box;
   }
 }
+
+/* =========================
+   PERSONALIZAÇÃO NOTEBOOK/PC (a partir de 901px)
+   ========================= */
+@media (min-width: 901px) {
+  .menu {
+    right: -270px;
+    width: 270px;
+    transition: right 0.3s ease;
+  }
+  .menu.menu-open {
+    right: 0;
+  }
+  .apresentacao {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
+    margin: 5% auto;
+    gap: 2rem;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .apresentacao__conteudo {
+    width: 50%;
+    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
+  .apresentacao__imagem {
+    max-width: 30%;
+    margin-top: 0;
+  }
+  .apresentacao__links {
+    gap: 2rem;
+  }
+  .header__title {
+    font-size: 2.2rem !important;
+    text-align: left;
+  }
+}
+
+/* =========================
+   FIM DAS PERSONALIZAÇÕES
+   ========================= */
+
+/* Carrossel responsivo para tablet (600px–900px) */
+@media (min-width: 600px) and (max-width: 900px) {
+  .swiper-slide {
+    max-width: 95vw;
+    min-width: 0;
+    width: 95vw;
+    box-sizing: border-box;
+    padding: 0.7rem;
+  }
+  .swiper-wrapper {
+    padding-left: 0;
+    padding-right: 0;
+    box-sizing: border-box;
+  }
+  .myTimeline {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+  body {
+    overflow-x: hidden;
+  }
+}
+
+/* Centraliza o título no mobile (320px–600px) */
+@media (min-width: 320px) and (max-width: 600px) {
+  .header__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+  }
+}
+
+/* Centraliza o título no tablet (600px–900px) */
+@media (min-width: 600px) and (max-width: 900px) {
+  .header__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+  }
+}
+
+/* Centraliza e reduz o título no notebook/PC (1000px–1440px) */
+@media (min-width: 1000px) and (max-width: 1440px) {
+  .header__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 2rem; /* Reduzido para caber no banner */
+    white-space: nowrap;
+  }
+}
+
+/* Removendo media queries conflitantes e duplicadas */
+
+/* Fim da limpeza e organização das media queries específicas */

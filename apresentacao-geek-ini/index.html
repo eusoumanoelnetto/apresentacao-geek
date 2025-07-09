@@ -242,27 +242,6 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const btn = document.getElementById("hamburger-menu");
-    const menu = document.getElementById("menu");
-
-    btn.addEventListener("click", function (e) {
-        e.stopPropagation(); // impedir propagação
-        menu.classList.toggle("menu-open");
-        btn.classList.toggle("is-active");
-    });
-
-    // se clicar fora do menu, fecha
-    document.addEventListener("click", function (e) {
-        if (!menu.contains(e.target) && !btn.contains(e.target)) {
-            menu.classList.remove("menu-open");
-            btn.classList.remove("is-active");
-        }
-    });
-  });
-</script>
-
-<script>
 // Toggle de tema dark/light com persistência
 const themeToggle = document.getElementById('theme-toggle');
 const root = document.documentElement;
