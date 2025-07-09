@@ -1585,9 +1585,9 @@ p, span, li {
 }
 
 /* =========================
-   PERSONALIZAÇÃO TABLET (201px até 900px)
+   PERSONALIZAÇÃO TABLET
    ========================= */
-@media (min-width: 201px) and (max-width: 900px) {
+@media (min-width: 601px) and (max-width: 900px) {
   .menu {
     right: -100vw !important;
     transition: right 0.3s ease;
@@ -1640,7 +1640,7 @@ p, span, li {
 }
 
 /* =========================
-   PERSONALIZAÇÃO NOTEBOOK/PC (a partir de 901px)
+   PERSONALIZAÇÃO NOTEBOOK/PC
    ========================= */
 @media (min-width: 901px) {
   .menu {
@@ -1772,6 +1772,43 @@ p, span, li {
     min-width: 220px;
     width: 20vw;
     margin: 0 10px;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 600px) {
+  .swiper-wrapper {
+    max-width: 100vw;
+    width: 100%;
+    margin: 0 auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    justify-content: center;
+  }
+  .swiper-slide {
+    max-width: 100%;
+    min-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+}
+
+/* Responsividade para mobile */
+@media (max-width: 600px) {
+  .swiper-wrapper {
+    max-width: 100vw;
+    width: 100%;
+    margin: 0 auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    justify-content: center;
+  }
+  .swiper-slide {
+    max-width: 100%;
+    min-width: 100%;
+    width: 100%;
+    margin: 0 auto;
     box-sizing: border-box;
   }
 }
