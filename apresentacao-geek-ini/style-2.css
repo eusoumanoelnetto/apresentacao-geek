@@ -570,36 +570,7 @@ p, span, li {
    HAMBURGER BUTTON (desktop e mobile)
    ======================================== */
 .hamburger-menu {
-  display: flex;
-  position: fixed;
-  top: 8px;
-  right: 20px;
-  z-index: 1200;
-  width: 40px;
-  height: 40px;
-  background-color: #61dafb;
-  border-radius: 5px;
-  cursor: pointer;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.hamburger-menu div {
-  width: 30px;
-  height: 4px;
-  background-color: #282c34;
-  margin: 5px 0;
-  transition: all 0.3s ease-in-out;
-}
-
-/* Ajuste para o botão hambúrguer acompanhar o tema */
-[data-theme="light"] .hamburger-menu div {
-    background-color: #000; /* Cor preta para o modo claro */
-}
-
-[data-theme="dark"] .hamburger-menu div {
-    background-color: #fff; /* Cor branca para o modo escuro */
+  display: none !important;
 }
 
 /* ========================================
@@ -1566,5 +1537,84 @@ p, span, li {
 @media (min-width: 1024px) {
   .header__title {
     font-size: 3rem !important;  /* de 2.5rem para 3rem */
+  }
+}
+
+/* —————————————————————————— */
+/* CARROSSEL 100% RESPONSIVO */
+/* —————————————————————————— */
+.myTimeline {
+  width: 100%;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  gap: 1rem;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.myTimeline .card {
+  /* base móvel: cada card ocupa 80% da tela */
+  flex: 0 0 80%;
+  min-width: 80%;
+  max-width: 80%;
+  scroll-snap-align: start;
+}
+
+/* tablet (>=768px): dois cards lado a lado */
+@media (min-width: 768px) {
+  .myTimeline .card {
+    flex: 0 0 45%;
+    min-width: 45%;
+    max-width: 45%;
+  }
+}
+
+/* desktop (>=1024px): três cards em vista */
+@media (min-width: 1024px) {
+  .myTimeline .card {
+    flex: 0 0 30%;
+    min-width: 30%;
+    max-width: 30%;
+  }
+}
+
+/* Correção para garantir que apenas um card seja exibido no mobile */
+@media (max-width: 600px) {
+  .myTimeline,
+  .swiper-wrapper {
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 0 !important;
+    padding: 0 0.5rem !important;
+  }
+  .myTimeline .card,
+  .swiper-slide {
+    flex: 0 0 80% !important;
+    min-width: 80% !important;
+    max-width: 80% !important;
+    scroll-snap-align: center !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* Esconde completamente o menu lateral quando fechado no mobile */
+@media (max-width: 600px) {
+  .menu {
+    position: fixed !important;
+    top: 0;
+    right: -100vw !important; /* Esconde fora da tela */
+    width: 80vw;
+    height: 100vh;
+    transition: right 0.3s;
+    z-index: 900;
+  }
+  .menu.menu-open {
+    right: 0 !important; /* Mostra o menu ao abrir */
+    z-index: 1200 !important;
   }
 }
