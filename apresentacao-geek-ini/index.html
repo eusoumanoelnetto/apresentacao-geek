@@ -154,15 +154,152 @@
           45% { opacity: 0.7; }
           55% { opacity: 1; }
         }
+
+        /* Estilos do menu hambúrguer e menu lateral */
+        #hamburger-menu {
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 8px;
+          margin-left: 16px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          position: static;
+        }
+
+        #hamburger-menu span {
+          display: block;
+          width: 28px;
+          height: 4px;
+          background: #00bfff;
+          border-radius: 2px;
+          margin-bottom: 5px;
+          box-shadow: 0 0 8px #00bfff;
+          transition: 0.3s;
+        }
+
+        #menu-mobile {
+          display: none;
+          position: fixed;
+          top: 58px;
+          right: 0;
+          width: 240px;
+          height: calc(100vh - 58px);
+          background: #2a2a2a;
+          box-shadow: -2px 0 16px #00bfff99;
+          z-index: 3000;
+          padding: 32px 16px 16px 16px;
+        }
+
+        #close-menu {
+          background: none;
+          border: none;
+          color: #00bfff;
+          font-size: 2rem;
+          position: absolute;
+          top: 12px;
+          right: 16px;
+          cursor: pointer;
+        }
+
+        #close-menu:hover {
+          color: #fff700;
+        }
+
+        #menu-mobile ul {
+          list-style: none;
+          padding: 0;
+          margin: 0 0 24px 0;
+        }
+
+        #menu-mobile ul li a {
+          color: #00bfff;
+          text-decoration: none;
+          font-size: 1.15rem;
+          display: block;
+          padding: 10px 0;
+          font-family: 'Orbitron', 'Montserrat', monospace;
+        }
+
+        #menu-mobile ul li a:hover {
+          color: #fff700;
+        }
+
+        #theme-toggle-menu {
+          width: 90%;
+          margin: 0 auto 24px auto;
+          display: block;
+          padding: 12px 0;
+          border: none;
+          border-radius: 32px;
+          background: #111;
+          color: #bfff00;
+          font-size: 1.15rem;
+          font-family: 'Orbitron', 'Montserrat', monospace;
+          font-weight: bold;
+          box-shadow: none;
+          text-align: center;
+          transition: background 0.3s;
+        }
+
+        .social-icons {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 16px;
+          justify-content: center;
+        }
+
+        .social-icons a {
+          border: 2px solid #00bfff;
+          border-radius: 50%;
+          width: 44px;
+          height: 44px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #00bfff;
+          font-size: 1.3rem;
+          margin: 0;
+          text-decoration: none;
+        }
     </style>
 </head>
 <body>
     <div class="background" id="background"></div>
     
-    <header class="header" style="position: sticky; top: 0px; background-color: #1e1e1e; z-index: 1000; padding: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); max-width: 100%; margin: 0 auto; max-height: 58px;">
-        <h1 class="header__title" style="color: #00bfff; font-size: 150%; text-align: center; margin-top: -5px;">Bem-vindo ao Mundo Geek</h1>
-        <!-- Botão Hambúrguer removido -->
+    <header class="header" style="position: sticky; top: 0px; background-color: #1e1e1e; z-index: 1000; padding: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); max-width: 100%; margin: 0 auto; max-height: 58px; display: flex; align-items: center; justify-content: flex-end;">
+        <h1 class="header__title" style="color: #00bfff; font-size: 150%; text-align: center; margin-top: -5px; flex: 1;">Bem-vindo ao Mundo Geek</h1>
+        <button id="hamburger-menu" aria-label="Abrir menu" style="background: none; border: none; cursor: pointer; padding: 8px; margin-left: 16px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: static;">
+          <span class="hamburger-bar" style="display: block; width: 28px; height: 4px; background: #00bfff; border-radius: 2px; margin-bottom: 5px; box-shadow: 0 0 8px #00bfff; transition: 0.3s;"></span>
+          <span class="hamburger-bar" style="display: block; width: 28px; height: 4px; background: #00bfff; border-radius: 2px; margin-bottom: 5px; box-shadow: 0 0 8px #00bfff; transition: 0.3s;"></span>
+          <span class="hamburger-bar" style="display: block; width: 28px; height: 4px; background: #00bfff; border-radius: 2px; box-shadow: 0 0 8px #00bfff; transition: 0.3s;"></span>
+        </button>
     </header>
+    <nav id="menu-mobile" style="display: none; position: fixed; top: 58px; right: 0; width: 240px; height: calc(100vh - 58px); background: #2a2a2a; box-shadow: -2px 0 16px #00bfff99; z-index: 3000; padding: 32px 16px 16px 16px;">
+      <ul style="list-style: none; padding: 0; margin: 0 0 24px 0;">
+        <li><a href="#inicio" style="color: #00bfff; text-decoration: none; font-size: 1.15rem; display: block; padding: 10px 0; font-family: 'Orbitron', 'Montserrat', monospace;">Início</a></li>
+        <li><a href="#sobre" style="color: #00bfff; text-decoration: none; font-size: 1.15rem; display: block; padding: 10px 0; font-family: 'Orbitron', 'Montserrat', monospace;">Sobre</a></li>
+        <li><a href="#projetos" style="color: #00bfff; text-decoration: none; font-size: 1.15rem; display: block; padding: 10px 0; font-family: 'Orbitron', 'Montserrat', monospace;">Projetos</a></li>
+        <li><a href="#contact" style="color: #00bfff; text-decoration: none; font-size: 1.15rem; display: block; padding: 10px 0; font-family: 'Orbitron', 'Montserrat', monospace;">Contato</a></li>
+      </ul>
+      <button id="theme-toggle-menu" style="width: 90%; margin: 0 auto 24px auto; display: block; padding: 12px 0; border: none; border-radius: 32px; background: #111; color: #bfff00; font-size: 1.15rem; font-family: 'Orbitron', 'Montserrat', monospace; font-weight: bold; box-shadow: none; text-align: center; transition: background 0.3s;">
+        <span style="margin-right: 8px; font-size: 1.3em;">&#9728;</span> Noite
+      </button>
+      <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;">
+        <a href="https://www.freecodecamp.org/" target="_blank" style="border: 2px solid #00bfff; border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #00bfff; font-size: 1.3rem; margin: 0; text-decoration: none;"><i class="fab fa-free-code-camp"></i></a>
+        <a href="https://gazeta.dev/" target="_blank" style="border: 2px solid #00bfff; border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #00bfff; font-size: 1.3rem; margin: 0; text-decoration: none;"><i class="fas fa-newspaper"></i></a>
+        <a href="https://dev.to/" target="_blank" style="border: 2px solid #00bfff; border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #00bfff; font-size: 1.3rem; margin: 0; text-decoration: none;"><i class="fab fa-dev"></i></a>
+        <a href="https://stackoverflow.com/" target="_blank" style="border: 2px solid #00bfff; border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #00bfff; font-size: 1.3rem; margin: 0; text-decoration: none;"><i class="fab fa-stack-overflow"></i></a>
+        <a href="https://github.com/" target="_blank" style="border: 2px solid #00bfff; border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #00bfff; font-size: 1.3rem; margin: 0; text-decoration: none;"><i class="fab fa-github"></i></a>
+        <a href="https://codepen.io/" target="_blank" style="border: 2px solid #00bfff; border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #00bfff; font-size: 1.3rem; margin: 0; text-decoration: none;"><i class="fab fa-codepen"></i></a>
+        <a href="https://gitlab.com/" target="_blank" style="border: 2px solid #00bfff; border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #00bfff; font-size: 1.3rem; margin: 0; text-decoration: none;"><i class="fab fa-gitlab"></i></a>
+        <a href="https://linkedin.com/" target="_blank" style="border: 2px solid #00bfff; border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #00bfff; font-size: 1.3rem; margin: 0; text-decoration: none;"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/" target="_blank" style="border: 2px solid #00bfff; border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #00bfff; font-size: 1.3rem; margin: 0; text-decoration: none;"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com/" target="_blank" style="border: 2px solid #00bfff; border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #00bfff; font-size: 1.3rem; margin: 0; text-decoration: none;"><i class="fab fa-instagram"></i></a>
+      </div>
+    </nav>
     <main class="apresentacao">
         <section class="apresentacao__conteudo">
             <h1 class="apresentacao__conteudo__titulo">Você encontrou o dev que
@@ -419,10 +556,16 @@ function setTheme(theme) {
   }
 }
 
-// Detecta preferência salva ou do sistema
+// Detecta preferência salva ou do sistema OU horário local
+function getAutoTheme() {
+  const hour = new Date().getHours();
+  // Dia: 6h às 18h (modo claro), Noite: 18h às 6h (modo escuro)
+  return (hour >= 6 && hour < 18) ? 'light' : 'dark';
+}
 const savedTheme = localStorage.getItem('theme');
 const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-setTheme(savedTheme ? savedTheme : (prefersLight ? 'light' : 'dark'));
+const autoTheme = getAutoTheme();
+setTheme(savedTheme ? savedTheme : autoTheme);
 
 themeToggle.addEventListener('click', () => {
   const current = root.getAttribute('data-theme');
@@ -613,6 +756,55 @@ for (const link of links) {
     });
   });
 </script>
+
+<script>
+      const hamburger = document.getElementById('hamburger-menu');
+      const menuMobile = document.getElementById('menu-mobile');
+      const bars = hamburger.querySelectorAll('.hamburger-bar');
+      let menuOpen = false;
+      hamburger.addEventListener('click', () => {
+        menuOpen = !menuOpen;
+        menuMobile.style.display = menuOpen ? 'block' : 'none';
+        // Animação do ícone
+        if(menuOpen) {
+          bars[0].style.transform = 'translateY(9px) rotate(45deg)';
+          bars[1].style.opacity = '0';
+          bars[2].style.transform = 'translateY(-9px) rotate(-45deg)';
+        } else {
+          bars[0].style.transform = '';
+          bars[1].style.opacity = '1';
+          bars[2].style.transform = '';
+        }
+      });
+      // Não fecha ao clicar fora, só pelo X/hamburger
+    </script>
+
+<script>
+      const themeToggleMenu = document.getElementById('theme-toggle-menu');
+      function updateThemeButton() {
+        const theme = document.documentElement.getAttribute('data-theme');
+        if (theme === 'dark') {
+          themeToggleMenu.innerHTML = '<span style="margin-right: 8px; font-size: 1.3em;">&#9728;</span> Noite';
+          themeToggleMenu.style.background = '#111';
+          themeToggleMenu.style.color = '#bfff00';
+          themeToggleMenu.style.boxShadow = '0 0 12px #bfff00, 0 0 32px #39ff14';
+        } else {
+          themeToggleMenu.innerHTML = '<span style="margin-right: 8px; font-size: 1.3em;">&#9788;</span> Dia';
+          themeToggleMenu.style.background = '#fff';
+          themeToggleMenu.style.color = '#00bfff';
+          themeToggleMenu.style.boxShadow = '0 0 12px #00bfff, 0 0 32px #00bfff';
+        }
+      }
+      themeToggleMenu.addEventListener('click', function() {
+        const current = document.documentElement.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        setTheme(next);
+        updateThemeButton();
+      });
+      document.addEventListener('DOMContentLoaded', updateThemeButton);
+      // Atualiza ao trocar pelo botão principal
+      document.documentElement.addEventListener('data-theme', updateThemeButton);
+    </script>
 
 </body>
 </html>

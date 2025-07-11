@@ -63,6 +63,16 @@ function createPlanet() {
 }
 
 // Inicialização das animações
+function showDayBackground() {
+    document.querySelectorAll('.planet').forEach(p => p.remove());
+    document.querySelectorAll('.firework').forEach(f => f.remove()); // Remove as bolinhas
+    document.getElementById('background').style.background = 'linear-gradient(to bottom, #a3d8f4 0%, #d6f0fa 100%)';
+}
+function showNightBackground() {
+    document.getElementById('background').style.background = '';
+    document.querySelectorAll('.firework').forEach(f => f.remove()); // Remove as bolinhas
+    for(let i = 0; i < 3; i++) createPlanet();
+}
 document.addEventListener('DOMContentLoaded', () => {
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
     
@@ -74,6 +84,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Cria elementos iniciais
     for(let i = 0; i < (isMobile ? 20 : 50); i++) createStar();
     for(let i = 0; i < 3; i++) createPlanet();
+
+    // Aplica visual inicial conforme tema
+    if(document.documentElement.getAttribute('data-theme') === 'light') showDayBackground();
+    else showNightBackground();
+});
+
+document.documentElement.addEventListener('data-theme', function() {
+    if(document.documentElement.getAttribute('data-theme') === 'light') showDayBackground();
+    else showNightBackground();
 });
 
 // Fallback para botões de certificado vazios
