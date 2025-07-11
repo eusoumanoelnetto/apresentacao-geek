@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portifolio</title>
+    <title>Manoel Netto - Portfólio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="style-2.css">
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <!-- Font Awesome CSS -->
@@ -244,6 +245,19 @@
           transition: background 0.3s;
         }
 
+        #theme-toggle-menu span {
+          margin-right: 8px;
+          vertical-align: middle;
+        }
+
+        #theme-toggle-menu svg {
+          width: 20px;
+          height: 20px;
+          fill: none;
+          stroke: #C6FF00;
+          stroke-width: 2;
+        }
+
         .social-icons {
           display: flex;
           flex-wrap: wrap;
@@ -285,7 +299,7 @@
         <li><a href="#contact" style="color: #00bfff; text-decoration: none; font-size: 1.15rem; display: block; padding: 10px 0; font-family: 'Orbitron', 'Montserrat', monospace;">Contato</a></li>
       </ul>
       <button id="theme-toggle-menu" style="width: 90%; margin: 0 auto 24px auto; display: block; padding: 12px 0; border: none; border-radius: 32px; background: #111; color: #bfff00; font-size: 1.15rem; font-family: 'Orbitron', 'Montserrat', monospace; font-weight: bold; box-shadow: none; text-align: center; transition: background 0.3s;">
-        <span style="margin-right: 8px; font-size: 1.3em;">&#9728;</span> Noite
+        <span style="margin-right: 8px;"><i class="fas fa-moon"></i></span> Noite
       </button>
       <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;">
         <a href="https://www.freecodecamp.org/" target="_blank" style="border: 2px solid #00bfff; border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #00bfff; font-size: 1.3rem; margin: 0; text-decoration: none;"><i class="fab fa-free-code-camp"></i></a>
@@ -331,9 +345,8 @@
             <li><a href="#">Contato</a></li>
         </ul>
         <button class="theme-toggle modern-toggle" id="theme-toggle" title="Alternar tema" aria-label="Alternar tema">
-          <span class="toggle-icon"></span>
-          <span class="toggle-label"></span>
-        </button>
+      <span class="modern-toggle-icon"><i class="fas fa-moon"></i></span>
+    </button>
 
         <!-- Redes sociais e ferramentas recomendadas -->
         <div class="social-icons">
@@ -789,7 +802,7 @@ for (const link of links) {
           themeToggleMenu.style.color = '#bfff00';
           themeToggleMenu.style.boxShadow = '0 0 12px #bfff00, 0 0 32px #39ff14';
         } else {
-          themeToggleMenu.innerHTML = '<span style="margin-right: 8px; font-size: 1.3em;">&#9788;</span> Dia';
+          themeToggleMenu.innerHTML = `<span style="margin-right: 8px; vertical-align: middle;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 0 1 12.21 3a7 7 0 1 0 8.79 9.79z" stroke="#C6FF00" stroke-width="2" fill="#181818"/></svg></span> Dia`;
           themeToggleMenu.style.background = '#fff';
           themeToggleMenu.style.color = '#00bfff';
           themeToggleMenu.style.boxShadow = '0 0 12px #00bfff, 0 0 32px #00bfff';

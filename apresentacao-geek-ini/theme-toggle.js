@@ -7,9 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const currentTheme = body.getAttribute("data-theme");
         if (themeMenuButton) {
             if (currentTheme === "dark") {
-                themeMenuButton.innerHTML = '<span style="margin-right: 8px; font-size: 1.3em;">&#9790;</span> Dia';
+                themeMenuButton.innerHTML = '<i class="fas fa-sun"></i> Dia';
             } else {
-                themeMenuButton.innerHTML = '<span style="margin-right: 8px; font-size: 1.3em;">&#9728;</span> Noite';
+                themeMenuButton.innerHTML = '<i class="fas fa-moon"></i> Noite';
             }
         }
     }
