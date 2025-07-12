@@ -15,6 +15,9 @@
 }
 @import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap');
 
 :root {
   --bg-color: #031E2A;
@@ -90,8 +93,8 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
+    font-size: 16px !important;
+    line-height: 1.7 !important;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -313,6 +316,11 @@ body {
 .apresentacao__conteudo__titulo {
     font-size: clamp(1.5rem, 3vw, 2.5rem);
     font-family: 'Krona One', serif;
+}
+
+/* Aplicar Audiowide também ao prefixo do título principal */
+.apresentacao__conteudo__titulo {
+  font-family: 'Audiowide', cursive !important;
 }
 
 .apresentacao__conteudo__texto {
@@ -657,6 +665,57 @@ p, span, li {
   }
 }
 
+/* Animações */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 2s ease-in-out;
+}
+
+.slide-in {
+  animation: slideIn 1.5s ease-out;
+}
+
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid var(--text-color);
+  animation: typewriter 4s steps(40, end), blink 0.5s step-end infinite;
+}
+
 @keyframes typing {
     from { width: 0; }
     to { width: 100%; }
@@ -972,7 +1031,7 @@ p, span, li {
 
 @keyframes move-ovni {
   0%   { top: -8rem; left: 20%; }   /* Início no lado esquerdo */
- 10%   { top: -8rem; left: 20%; }   /* Pausa no topo antes de descer */
+  20%   { top: -8rem; left: 20%; }   /* Pausa prolongada no topo antes de descer */
  30%   { top: 50vh; left: 20%; }   /* Desce até meio (esquerda) */
  40%   { top: 50vh; left: 20%; }   /* Pausa no meio */
  50%   { top: -8rem; left: 80%; }   /* Sobe até topo (direita) */
@@ -1352,16 +1411,8 @@ p, span, li {
     box-sizing: border-box;
     justify-content: center;
   }
-  .swiper-slide {
-    max-width: 300px;
-    min-width: 220px;
-    width: 20vw;
-    margin: 0 10px;
-    box-sizing: border-box;
-  }
 }
 
-/* Ajustes de responsividade para o carrossel e cards */
 .swiper-slide {
     width: 90%; /* Ocupa a maior parte da tela */
     max-width: 320px; /* Limita a largura máxima */
@@ -2060,20 +2111,112 @@ p, span, li {
 
 /* Estilo neon para o botão de alternar tema no modo noite */
 [data-theme="dark"] #theme-toggle-menu {
-  background: var(--menu-bg) !important;
-  color: #00ff00 !important;
-  text-shadow: 0 0 8px #00ff00, 0 0 16px #00ff00;
-  box-shadow: 0 0 16px #00ff00, 0 0 32px #00ff00;
-  border: 2px solid #00ff00 !important;
-  border-radius: 32px;
-  padding: 12px 0;
-  width: 90%;
-  display: block;
-  margin: 0 auto 24px auto;
-  font-weight: bold;
+  background: #000 !important;
+  border: 2px solid #7FFF00 !important;
+  color: #7FFF00 !important;
+  box-shadow: 0 0 4px #7FFF00, 0 0 8px #7FFF00, 0 0 16px #7FFF00 !important;
+  text-shadow: 0 0 4px #7FFF00, 0 0 8px #7FFF00 !important;
+  border-radius: 50px !important;
+  padding: 8px 32px !important;
+  width: 90% !important;
+  max-width: 300px !important;
+  display: block !important;
+  margin: 24px auto !important;
+  font-size: 1rem !important;
+  font-family: 'Orbitron', monospace !important;
+  transition: none !important;
 }
 [data-theme="dark"] #theme-toggle-menu span,
 [data-theme="dark"] #theme-toggle-menu i {
-  color: #00ff00 !important;
-  text-shadow: 0 0 8px #00ff00, 0 0 16px #00ff00;
+  color: #7FFF00 !important;
+}
+[data-theme="dark"] #theme-toggle-menu:hover {
+  box-shadow: 0 0 6px #7FFF00, 0 0 12px #7FFF00, 0 0 24px #7FFF00 !important;
+  background: #000 !important;
+}
+
+/* Restaurar fontes originais para os cards da linha do tempo */
+.timeline__card h3 {
+  font-family: 'Krona One', serif !important;
+}
+.timeline__card p {
+  font-family: 'Montserrat', sans-serif !important;
+}
+[data-theme="dark"] .timeline__card h3 {
+  font-family: 'Krona One', serif !important;
+}
+[data-theme="dark"] .timeline__card p {
+  font-family: 'Montserrat', sans-serif !important;
+}
+[data-theme="light"] .timeline__card h3 {
+  font-family: 'Krona One', serif !important;
+}
+[data-theme="light"] .timeline__card p {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+/* Orbitron para títulos e menus futuristas */
+.header__title,
+.menu ul li a,
+.section-title,
+.projetos__titulo,
+#menu-mobile ul li a,
+#theme-toggle-menu,
+.titulo,
+.titulo-destaque {
+  font-family: 'Orbitron', sans-serif !important;
+}
+
+/* Audiowide para frases de destaque neon */
+.titulo-destaque,
+.titulo-destaque-2,
+.efeito-neon {
+  font-family: 'Audiowide', cursive !important;
+}
+
+/* Share Tech Mono para textos corridos manter visual de terminal */
+p, footer, .apresentacao__conteudo__texto, .descricao, .chat-body p {
+  font-family: 'Share Tech Mono', monospace !important;
+}
+
+/* Corpo de texto fluido: Rubik, fallback Inter */
+body, .apresentacao__conteudo__texto, .timeline__card p, .card-flip__front p, .card-flip__back p, .descricao {
+  font-family: 'Rubik', 'Inter', sans-serif !important;
+}
+/* Manter Share Tech Mono apenas para trechos pequenos, console, ou .console-text */
+.console-text, .chat-body p {
+  font-family: 'Share Tech Mono', monospace !important;
+}
+
+/* Melhorar contraste de textos azuis sobre fundo escuro */
+[data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3, [data-theme="dark"] .projetos__titulo, [data-theme="dark"] .card-flip__front h3, [data-theme="dark"] .card-flip__back h3, [data-theme="dark"] .timeline__card h3 {
+  color: #cceeff !important;
+  text-shadow: 0 1px 8px #222, 0 0 2px #00bfff;
+}
+[data-theme="dark"] p, [data-theme="dark"] .apresentacao__conteudo__texto, [data-theme="dark"] .timeline__card p, [data-theme="dark"] .card-flip__front p, [data-theme="dark"] .card-flip__back p {
+  color: #eaf6ff !important;
+  text-shadow: 0 1px 6px #222;
+}
+
+/* Botão de navegação/interação com efeito neon hover */
+.btn-neon {
+  display: inline-block;
+  padding: 12px 32px;
+ 
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #222;
+  background: #cceeff;
+  border: 2px solid #7FFF00;
+  border-radius: 32px;
+  box-shadow: 0 0 8px #7FFF00, 0 0 24px #7FFF00 inset;
+  text-decoration: none;
+  transition: box-shadow 0.3s, color 0.3s, background 0.3s;
+}
+.btn-neon:hover {
+  color: #7FFF00;
+  background: #222;
+  box-shadow: 0 0 24px #7FFF00, 0 0 48px #7FFF00;
+  border-color: #cceeff;
 }
