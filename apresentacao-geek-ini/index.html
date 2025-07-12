@@ -281,7 +281,12 @@
     </style>
 </head>
 <body>
-    <div class="background" id="background"></div>
+    <div class="background" id="background">
+      <!-- Cometa caindo no modo dia -->
+      <div class="comet"></div>
+      <!-- OVNI descendo até o meio da página e voltando -->
+      <div class="ovni"></div>
+    </div>
     
     <header class="header" style="position: sticky; top: 0px; background-color: #1e1e1e; z-index: 1000; padding: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); max-width: 100%; margin: 0 auto; max-height: 58px; display: flex; align-items: center; justify-content: flex-end;">
         <h1 class="header__title" style="color: #00bfff; font-size: 150%; text-align: center; margin-top: -5px; flex: 1;">Bem-vindo ao Mundo Geek</h1>
@@ -291,7 +296,7 @@
           <span class="hamburger-bar" style="display: block; width: 28px; height: 4px; background: #00bfff; border-radius: 2px; box-shadow: 0 0 8px #00bfff; transition: 0.3s;"></span>
         </button>
     </header>
-    <nav id="menu-mobile" style="display: none; position: fixed; top: 58px; right: 0; width: 240px; height: calc(100vh - 58px); background: #2a2a2a; box-shadow: -2px 0 16px #00bfff99; z-index: 3000; padding: 32px 16px 16px 16px;">
+    <nav id="menu-mobile" style="display: none; position: fixed; top: 58px; right: 0; width: 240px; height: calc(100vh - 58px); box-shadow: none; z-index: 900; padding: 32px 16px 16px 16px;">
       <ul style="list-style: none; padding: 0; margin: 0 0 24px 0;">
         <li><a href="#inicio" style="color: #00bfff; text-decoration: none; font-size: 1.15rem; display: block; padding: 10px 0; font-family: 'Orbitron', 'Montserrat', monospace;">Início</a></li>
         <li><a href="#sobre" style="color: #00bfff; text-decoration: none; font-size: 1.15rem; display: block; padding: 10px 0; font-family: 'Orbitron', 'Montserrat', monospace;">Sobre</a></li>
@@ -777,7 +782,15 @@ for (const link of links) {
       let menuOpen = false;
       hamburger.addEventListener('click', () => {
         menuOpen = !menuOpen;
-        menuMobile.style.display = menuOpen ? 'block' : 'none';
+        if (menuOpen) {
+          menuMobile.style.display = 'block';
+          menuMobile.style.boxShadow = ''; // Reaplica sombra ao abrir
+          document.body.style.overflow = 'hidden'; // Desabilita scroll de fundo
+        } else {
+          menuMobile.style.display = 'none';
+          menuMobile.style.boxShadow = 'none'; // Remove completamente a borda ao fechar
+          document.body.style.overflow = ''; // Restaura scroll de fundo
+        }
         // Animação do ícone
         if(menuOpen) {
           bars[0].style.transform = 'translateY(9px) rotate(45deg)';
