@@ -5,6 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manoel Netto - Portfólio</title>
+    <!-- Open Graph para Facebook, WhatsApp, LinkedIn -->
+    <meta property="og:title" content="Portfólio Geek - Manoel Coelho" />
+    <meta property="og:description" content="Transformo ideias em experiências web com React e Power BI" />
+    <meta property="og:image" content="https://eusoumanoelnetto.github.io/apresentacao-geek/assets/capa-preview.png" />
+    <meta property="og:url" content="https://eusoumanoelnetto.github.io/apresentacao-geek/apresentacao_geek_ini/index.html" />
+    <meta property="og:type" content="website" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Portfólio Geek - Manoel Coelho" />
+    <meta name="twitter:description" content="Transformo ideias em experiências web com React e Power BI" />
+    <meta name="twitter:image" content="https://eusoumanoelnetto.github.io/apresentacao-geek/assets/capa-preview.png" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="style-2.css">
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
@@ -288,6 +299,37 @@
           margin: 0;
           text-decoration: none;
         }
+
+        /* Open Graph para Facebook, WhatsApp, LinkedIn */
+        meta[property="og\\:title"] {
+          content: "Portfólio Geek - Manoel Coelho, Dev Web";
+        }
+        meta[property="og\\:description"] {
+          content: "Transformando ideias em experiências web incríveis com React, HTML, CSS e Power BI!";
+        }
+        meta[property="og\\:image"] {
+          content: "https://eusoumanoelnetto.github.io/apresentacao-geek/assets/capa-preview.png";
+        }
+        meta[property="og\\:url"] {
+          content: "https://eusoumanoelnetto.github.io/apresentacao-geek/apresentacao_geek_ini/index.html";
+        }
+        meta[property="og\\:type"] {
+          content: "website";
+        }
+
+        /* Twitter Card */
+        meta[name="twitter\\:card"] {
+          content: "summary_large_image";
+        }
+        meta[name="twitter\\:title"] {
+          content: "Portfólio Geek - Manoel Coelho";
+        }
+        meta[name="twitter\\:description"] {
+          content: "Conheça meus projetos e minha jornada como dev geek!";
+        }
+        meta[name="twitter\\:image"] {
+          content: "https://eusoumanoelnetto.github.io/apresentacao-geek/assets/capa-preview.png";
+        }
     </style>
 </head>
 <body>
@@ -360,8 +402,9 @@
             <li><a href="#">Contato</a></li>
         </ul>
         <button class="theme-toggle modern-toggle" id="theme-toggle" title="Alternar tema" aria-label="Alternar tema">
-      <span class="modern-toggle-icon"><i class="fas fa-moon"></i></span>
-    </button>
+          <i class="fas fa-sun toggle-icon"></i>
+          <span class="toggle-label"></span>
+        </button>
 
         <!-- Redes sociais e ferramentas recomendadas -->
         <div class="social-icons">
@@ -578,9 +621,13 @@ function setTheme(theme) {
   // Atualiza o ícone do botão
   const icon = themeToggle.querySelector('.toggle-icon');
   if (icon) {
-    icon.style.mask = theme === 'light'
-      ? "url('data:image/svg+xml;utf8,<svg fill=\"none\" stroke=\"black\" stroke-width=\"2\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"12\" cy=\"12\" r=\"5\"/><path d=\"M12 1v2m0 18v2m11-11h-2M3 12H1m16.95 7.07l-1.41-1.41M6.34 6.34L4.93 4.93m12.02 0l-1.41 1.41M6.34 17.66l-1.41 1.41\"/></svg>') center/contain no-repeat"
-      : "url('data:image/svg+xml;utf8,<svg fill=\"none\" stroke=\"white\" stroke-width=\"2\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"12\" cy=\"12\" r=\"5\"/><path d=\"M12 1v2m0 18v2m11-11h-2M3 12H1m16.95 7.07l-1.41-1.41M6.34 6.34L4.93 4.93m12.02 0l-1.41 1.41M6.34 17.66l-1.41 1.41\"/></svg>') center/contain no-repeat";
+    if (theme === 'light') {
+      icon.classList.add('fa-sun');
+      icon.classList.remove('fa-moon');
+    } else {
+      icon.classList.add('fa-moon');
+      icon.classList.remove('fa-sun');
+    }
   }
 }
 
