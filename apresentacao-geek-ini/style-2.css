@@ -295,6 +295,16 @@ body {
     color: red;
 }
 
+/* Destaques no modo claro */
+[data-theme="light"] .titulo-destaque {
+  color: var(--header-title);
+  text-shadow: 0 0 8px rgba(0, 120, 215, 0.6);
+}
+[data-theme="light"] .titulo-destaque-2 {
+  color: var(--menu-link-hover);
+  text-shadow: 0 0 8px rgba(255, 102, 0, 0.6);
+}
+
 .apresentacao {
     margin: 0% 5%;
     display: flex;
@@ -1353,7 +1363,8 @@ p, span, li {
   font-weight: bold;
 }
 .card-flip__front h3 {
-  font-family: 'Krona One', serif;
+  font-family: 'Orbitron', sans-serif !important;
+  color: #00bfff !important;
 }
 .card-flip__front p,
 .card-flip__back p,
@@ -2137,19 +2148,21 @@ p, span, li {
 
 /* Restaurar fontes originais para os cards da linha do tempo */
 .timeline__card h3 {
-  font-family: 'Krona One', serif !important;
+  font-family: 'Orbitron', sans-serif !important;
+  color: #00bfff;
+  font-size: 1.5rem;
 }
 .timeline__card p {
   font-family: 'Montserrat', sans-serif !important;
 }
 [data-theme="dark"] .timeline__card h3 {
-  font-family: 'Krona One', serif !important;
+  font-family: 'Orbitron', sans-serif !important;
 }
 [data-theme="dark"] .timeline__card p {
   font-family: 'Montserrat', sans-serif !important;
 }
 [data-theme="light"] .timeline__card h3 {
-  font-family: 'Krona One', serif !important;
+  font-family: 'Orbitron', sans-serif !important;
 }
 [data-theme="light"] .timeline__card p {
   font-family: 'Montserrat', sans-serif !important;
@@ -2181,7 +2194,7 @@ p, footer, .apresentacao__conteudo__texto, .descricao, .chat-body p {
 
 /* Corpo de texto fluido: Rubik, fallback Inter */
 body, .apresentacao__conteudo__texto, .timeline__card p, .card-flip__front p, .card-flip__back p, .descricao {
-  font-family: 'Rubik', 'Inter', sans-serif !important;
+     font-family: 'Rubik', 'Inter', sans-serif !important;
 }
 /* Manter Share Tech Mono apenas para trechos pequenos, console, ou .console-text */
 .console-text, .chat-body p {
@@ -2219,4 +2232,12 @@ body, .apresentacao__conteudo__texto, .timeline__card p, .card-flip__front p, .c
   background: #222;
   box-shadow: 0 0 24px #7FFF00, 0 0 48px #7FFF00;
   border-color: #cceeff;
+}
+
+/* Cards da seção Projetos no modo claro */
+[data-theme="light"] .card-flip__front,
+[data-theme="light"] .card-flip__back {
+  background: #fff !important;
+  color: #000 !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
 }
