@@ -985,6 +985,7 @@ p, span, li {
   height: 80px;
   background: url('../assets/balao-de-ar-quente.png') no-repeat center/contain;
   animation: rise-balloon 90s linear infinite;
+  opacity: 1;
 }
 
 @keyframes move-clouds {
@@ -996,14 +997,17 @@ p, span, li {
   }
 }
 @keyframes rise-balloon {
-  0%   { bottom: -4rem; left: 20%; }
-  25%  { bottom: 110vh; left: 20%; }
-  25.1%{ bottom: -4rem; left: 80%; }
-  50%  { bottom: 110vh; left: 80%; }
-  50.1%{ bottom: -4rem; left: 20%; }
-  75%  { bottom: 110vh; left: 20%; }
-  75.1%{ bottom: -4rem; left: 80%; }
-  100% { bottom: 110vh; left: 80%; }
+  0%      { bottom: -4rem; left: 20%; opacity: 1; }
+  24.99%  { bottom: 110vh; left: 20%; opacity: 1; }
+  25%     { bottom: -4rem; left: 80%; opacity: 0; }
+  25.01%  { opacity: 1; }
+  49.99%  { bottom: 110vh; left: 80%; opacity: 1; }
+  50%     { bottom: -4rem; left: 20%; opacity: 0; }
+  50.01%  { opacity: 1; }
+  74.99%  { bottom: 110vh; left: 20%; opacity: 1; }
+  75%     { bottom: -4rem; left: 80%; opacity: 0; }
+  75.01%  { opacity: 1; }
+  100%    { bottom: 110vh; left: 80%; opacity: 1; }
 }
 /* Cometa caindo atrás das nuvens no modo noite */
 [data-theme="dark"] .background .comet {
@@ -2183,7 +2187,7 @@ p, span, li {
 /* Audiowide para frases de destaque neon */
 .titulo-destaque,
 .titulo-destaque-2,
-.efeito-neon {
+ .efeito-neon {
   font-family: 'Audiowide', cursive !important;
 }
 
