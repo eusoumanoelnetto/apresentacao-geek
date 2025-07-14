@@ -2133,6 +2133,7 @@ p, span, li {
   text-shadow: 0 0 4px #7FFF00, 0 0 8px #7FFF00 !important;
   border-radius: 50px !important;
   padding: 8px 32px !important;
+  height: 7% !important;
   width: 90% !important;
   max-width: 300px !important;
   display: block !important;
