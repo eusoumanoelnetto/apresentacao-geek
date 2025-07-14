@@ -911,5 +911,34 @@ for (const link of links) {
       document.documentElement.addEventListener('data-theme', updateThemeButton);
     </script>
 
-</body>
+<script>
+// Modo clima geek: geolocalização + OpenWeatherMap
+document.addEventListener('DOMContentLoaded', () => {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(({coords}) => {
+      const {latitude: lat, longitude: lon} = coords;
+      const API_KEY = 'SUA_API_KEY_OPENWEATHER';
+      fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&lang=pt_br`)
+        .then(r => r.json())
+        .then(data => {
+          const clima = data.weather[0].main;
+          const hora = new Date().getHours();
+          defineTemaPorClima(clima, hora);
+        }).catch(console.error);
+    }, console.error);
+  }
+});
+
+function defineTemaPorClima(clima, hora) {
+  const html = document.documentElement;
+  html.classList.remove('tema-claro','tema-escuro','tema-chuvoso-dia','tema-chuvoso-noite');
+  if (clima === 'Rain') {
+    html.classList.add(hora>=6&&hora<18 ? 'tema-chuvoso-dia' : 'tema-chuvoso-noite');
+  } else {
+    html.classList.add(hora>=6&&hora<18 ? 'tema-claro' : 'tema-escuro');
+  }
+}
+</script>
+
+  </body>
 </html>
