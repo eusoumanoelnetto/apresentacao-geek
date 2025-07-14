@@ -43,7 +43,7 @@ Portfólio profissional com tema geek e animações espaciais
 ✅ Animções CSS  
 ✅ Integração com GitHub Pages  
 
-[Ver site ao vivo](https://eusoumanoelnetto.github.io/apresentacao-geek/apresentacao-geek-ini/index.html)
+[Ver site ao vivo](https://eusoumanoelnetto.github.io/apresentacao-geek/apresentacao-geek-ini/index.html apresentacao-geek-ini/index.html apresentacao-geek-ini/index.html)
 ---
 
 **© 2025 Manoel Coelho** - Todos os direitos reservados  
