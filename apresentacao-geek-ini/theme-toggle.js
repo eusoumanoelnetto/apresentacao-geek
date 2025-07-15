@@ -14,9 +14,21 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Carregar tema salvo no localStorage
-    const savedTheme = localStorage.getItem("theme") || "light";
-    body.setAttribute("data-theme", savedTheme);
+    // Inicializa tema: preferêncial manual em localStorage > preferência do sistema dark > horário (6h–18h = dia) e não salva tema automático
+    const savedTheme = localStorage.getItem("theme");
+    let initialTheme;
+    if (savedTheme) {
+        initialTheme = savedTheme;
+    } else {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (prefersDark) {
+            initialTheme = 'dark';
+        } else {
+            const hour = new Date().getHours();
+            initialTheme = (hour >= 6 && hour < 18) ? 'light' : 'dark';
+        }
+    }
+    body.setAttribute("data-theme", initialTheme);
     updateThemeIcon();
 
     toggleButton.addEventListener("click", () => {
