@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const toggleButton = document.querySelector(".modern-toggle");
-    const body = document.body;
-    const themeMenuButton = document.getElementById("theme-toggle-menu");
+    // Botão de tema
+    const toggleButton = document.getElementById("theme-toggle-menu");
+    const html = document.documentElement;
 
     function updateThemeIcon() {
         const currentTheme = body.getAttribute("data-theme");
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
             initialTheme = (hour >= 6 && hour < 18) ? 'light' : 'dark';
         }
     }
-    body.setAttribute("data-theme", initialTheme);
+    html.setAttribute("data-theme", initialTheme);
     updateThemeIcon();
     // Atualiza tema automaticamente quando a preferência do sistema mudar
     const mq = window.matchMedia('(prefers-color-scheme: dark)');
@@ -59,11 +59,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     toggleButton.addEventListener("click", () => {
-        const currentTheme = body.getAttribute("data-theme");
+        const currentTheme = html.getAttribute("data-theme");
         const newTheme = currentTheme === "light" ? "dark" : "light";
-
-        // Atualizar atributo de tema
-        body.setAttribute("data-theme", newTheme);
+        html.setAttribute("data-theme", newTheme);
         localStorage.setItem("theme", newTheme);
         // Salvar timestamp para expirar preferência em 2 dias
         localStorage.setItem("themeTimestamp", Date.now().toString());

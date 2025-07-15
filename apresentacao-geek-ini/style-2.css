@@ -71,6 +71,47 @@
     padding: 1rem;
     box-sizing: border-box;
   }
+  /* Menu mobile responsivo: ocupa toda a largura e aparece completamente */
+  .menu {
+    width: 100% !important;
+    right: 0 !important;
+    padding: 1.5rem;
+    box-sizing: border-box;
+  }
+}
+
+/* Mobile: ajustar tamanho e largura do menu */
+@media (max-width: 600px) {
+  .menu,
+  .menu.menu-open {
+    width: 80% !important;
+    right: 0 !important;
+  }
+  .menu li {
+    padding: 0.5rem 1rem !important;
+  }
+  .menu a {
+    font-size: 0.9rem !important;
+  }
+}
+
+/* Versão mobile extra reduzida */
+@media (max-width: 600px) {
+  .menu,
+  .menu.menu-open {
+    width: 70% !important; /* largura ainda menor */
+    right: 0 !important;
+  }
+  .menu li {
+    padding: 0.4rem 1rem !important; /* menos espaçamento */
+  }
+  .menu a {
+    font-size: 0.8rem !important; /* texto menor */
+  }
+  #theme-toggle-menu {
+    font-size: 0.85rem !important;
+    padding: 6px 0 !important;
+  }
 }
 
 /* O restante do seu CSS permanece inalterado abaixo */
@@ -221,6 +262,12 @@ body {
         width: 100%;
     }
 }
+@media (max-width: 600px) {
+  .header__title {
+    font-size: 1.2rem !important;
+  }
+}
+
 /* Estilos responsivos ao tema para o menu lateral móvel */
 #menu-mobile {
   background: var(--menu-bg) !important;
@@ -2145,7 +2192,7 @@ p, span, li {
 [data-theme="dark"] #theme-toggle-menu span,
 [data-theme="dark"] #theme-toggle-menu i {
   color: #7FFF00 !important;
-}
+ }
 [data-theme="dark"] #theme-toggle-menu:hover {
   box-shadow: 0 0 6px #7FFF00, 0 0 12px #7FFF00, 0 0 24px #7FFF00 !important;
   background: #000 !important;
