@@ -409,8 +409,13 @@
         <li><a href="#contact" style="color: #00bfff; text-decoration: none; font-size: 1.15rem; display: block; padding: 10px 0; font-family: 'Orbitron', 'Montserrat', monospace;">Contato</a></li>
         <li><a href="https://eusoumanoelnetto.github.io/resume" target="_blank" style="color: #00bfff; text-decoration: none; font-size: 1.15rem; display: block; padding: 10px 0; font-family: 'Orbitron', 'Montserrat', monospace;">Currículo</a></li>
       </ul>
+<<<<<<< HEAD
+      <button id="theme-toggle-menu" style="width: 90%; margin: 0 auto 24px auto; display: block; padding: 12px 0; border: none; border-radius: 32px; background: #111; color: #bfff00; font-size: 1.15rem; font-family: 'Orbitron', 'Montserrat', monospace; font-weight: bold; box-shadow: none; text-align: center; transition: background 0.3s;">
+        <span style="margin-right: 8px;"><i class="fas fa-sun"></i></span> Dia
+=======
       <button id="theme-toggle-menu" style="width: 90%; margin: 0 auto 16px auto; display: block; padding: 12px 0; border: none; border-radius: 32px; background: #111; color: #bfff00; font-size: 1.15rem; font-family: 'Orbitron', 'Montserrat', monospace; font-weight: bold; box-shadow: none; text-align: center; transition: background 0.3s;">
         <span style="margin-right: 8px;"><i class="fas fa-moon"></i></span> Noite
+>>>>>>> f4101d6661bcfdb7dee7bf29133eb056072ad3bc
       </button>
       <!-- Botão para mutar/desmutar o som (UX tip & dev) -->
       <button id="sound-toggle" title="Mutar/Desmutar som" style="display: block; width: 90%; margin: 0 auto 16px auto; padding: 12px 0; border: none; border-radius: 32px; background: #111; color: #bfff00; font-size: 1.15rem; font-family: 'Orbitron', 'Montserrat', monospace; box-shadow: none;">
@@ -948,12 +953,12 @@ for (const link of links) {
       function updateThemeButton() {
         const theme = document.documentElement.getAttribute('data-theme');
         if (theme === 'dark') {
-          themeToggleMenu.innerHTML = '<i class="fas fa-moon" style="margin-right: 8px; vertical-align: middle; color: #bfff00;"></i> Noite';
+          themeToggleMenu.innerHTML = '<i class="fas fa-sun" style="margin-right: 8px; vertical-align: middle; color: #bfff00;"></i> Dia';
           themeToggleMenu.style.background = '#111';
           themeToggleMenu.style.color = '#bfff00';
           themeToggleMenu.style.boxShadow = '0 0 12px #bfff00, 0 0 32px #39ff14';
         } else {
-          themeToggleMenu.innerHTML = '<i class="fas fa-sun" style="margin-right: 8px; vertical-align: middle; color: #00bfff;"></i> Dia';
+          themeToggleMenu.innerHTML = '<i class="fas fa-moon" style="margin-right: 8px; vertical-align: middle; color: #00bfff;"></i> Noite';
           themeToggleMenu.style.background = '#fff';
           themeToggleMenu.style.color = '#00bfff';
           themeToggleMenu.style.boxShadow = '0 0 12px #00bfff, 0 0 32px #00bfff';

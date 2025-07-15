@@ -2246,3 +2246,17 @@ body, .apresentacao__conteudo__texto, .timeline__card p, .card-flip__front p, .c
   color: #000 !important;
   box-shadow: 0 4px 24px rgba(0,0,0,0.15);
 }
+
+/* Ajustes para desktop/PC no menu lateral */
+@media (min-width: 1000px) {
+  #menu {
+    /* largura responsiva: mínimo 80px, 15vw da viewport, máximo 300px */
+    width: clamp(80px, 15vw, 300px) !important;
+    /* altura automática conforme conteúdo */
+    height: auto;
+  }
+  #menu ul li a {
+    font-size: 1rem !important;
+    padding: 8px 0 !important;
+  }
+}
