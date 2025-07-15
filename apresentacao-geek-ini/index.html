@@ -626,6 +626,14 @@
   </button>
 </div>
 
+    <!-- Aviso de localização para tema Dia/Noite -->
+  <div id="location-warning-modal" style="display:none;">
+    <div class="modal-content">
+      <p>Este site ajusta automaticamente o modo Dia/Noite com base no horário e localização do seu dispositivo.</p>
+      <button id="location-warning-btn">Entendi</button>
+    </div>
+  </div>
+
     <script src="animations.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="menu-toggle.js"></script>
@@ -942,5 +950,18 @@ function defineTemaPorClima(clima, hora) {
 }
 </script>
 
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('location-warning-modal');
+    const btn = document.getElementById('location-warning-btn');
+    if (!localStorage.getItem('locationWarningSeen')) {
+      modal.style.display = 'flex';
+    }
+    btn.addEventListener('click', () => {
+      localStorage.setItem('locationWarningSeen', 'true');
+      modal.style.display = 'none';
+    });
+  });
+</script>
   </body>
 </html>
