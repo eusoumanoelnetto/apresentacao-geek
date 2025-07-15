@@ -227,6 +227,8 @@
           right: 0;
           width: 240px;
           height: calc(100vh - 58px);
+          max-height: calc(100vh - 58px);
+          overflow-y: auto;
           background: #2a2a2a;
           box-shadow: -2px 0 16px #00bfff99;
           z-index: 3000;
@@ -348,12 +350,45 @@
         meta[name="twitter\\:image"] {
           content: "https://eusoumanoelnetto.github.io/apresentacao-geek/apresentacao-geek-ini/index.html apresentacao-geek-ini/index.html assets/capa-preview.png";
         }
+        /* Temas de clima */
+        .tema-modo-dia body { background-color: #ffffff; }
+        .tema-modo-noite body { background-color: #1e1e1e; }
+        /* Chuvoso Dia: fundo cinza claro e gotas animadas */
+        .tema-chuvoso-dia body { background-color: #d3d3d3; }
+        .tema-chuvoso-dia .background::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: url('assets/raindrop.png') repeat;
+          opacity: 0.2;
+          animation: rain 0.5s linear infinite;
+          pointer-events: none;
+        }
+        @keyframes rain { to { background-position: 0 100%; } }
+        /* Chuvoso Noite: fundo escuro com relâmpagos */
+        .tema-chuvoso-noite body { background-color: #000000; }
+        .tema-chuvoso-noite .background::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(255,255,255,0.8);
+          opacity: 0;
+          animation: flash 3s infinite;
+          pointer-events: none;
+        }
+        @keyframes flash { 0%,90% { opacity: 0; } 93% { opacity: 0.8; } 95% { opacity: 0; } }
     </style>
-</head>
+  </head>
 <body>
     <div class="background" id="background">
       <!-- Cometa caindo no modo dia -->
-      <div class="comet"></div>
+      <div class="cometa"></div>
       <!-- OVNI descendo até o meio da página e voltando -->
       <div class="ovni"></div>
     </div>
@@ -374,9 +409,15 @@
         <li><a href="#contact" style="color: #00bfff; text-decoration: none; font-size: 1.15rem; display: block; padding: 10px 0; font-family: 'Orbitron', 'Montserrat', monospace;">Contato</a></li>
         <li><a href="https://eusoumanoelnetto.github.io/resume" target="_blank" style="color: #00bfff; text-decoration: none; font-size: 1.15rem; display: block; padding: 10px 0; font-family: 'Orbitron', 'Montserrat', monospace;">Currículo</a></li>
       </ul>
+<<<<<<< HEAD
       <button id="theme-toggle-menu" style="width: 90%; margin: 0 auto 24px auto; display: block; padding: 12px 0; border: none; border-radius: 32px; background: #111; color: #bfff00; font-size: 1.15rem; font-family: 'Orbitron', 'Montserrat', monospace; font-weight: bold; box-shadow: none; text-align: center; transition: background 0.3s;">
-        <span style="margin-right: 8px;"><i class="fas fa-sun"></i></span> Dia
+        <span style="margin-right: 8px;"><i class="fas fa-moon"></i></span> Noite
       </button>
+      <!-- Botão para mutar/desmutar o som (UX tip & dev) -->
+      <button id="sound-toggle" title="Mutar/Desmutar som" style="display: block; width: 90%; margin: 0 auto 16px auto; padding: 12px 0; border: none; border-radius: 32px; background: #111; color: #bfff00; font-size: 1.15rem; font-family: 'Orbitron', 'Montserrat', monospace; box-shadow: none;">
+        🔇 Reduzir Som
+      </button>
+      <!-- Botão de som dentro do menu lateral -->
       <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;">
         <a href="https://www.freecodecamp.org/" target="_blank" style="border: 2px solid #00bfff; border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #00bfff; font-size: 1.3rem; margin: 0; text-decoration: none;"><i class="fab fa-free-code-camp"></i></a>
         <a href="https://gazeta.dev/" target="_blank" style="border: 2px solid #00bfff; border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #00bfff; font-size: 1.3rem; margin: 0; text-decoration: none;"><i class="fas fa-newspaper"></i></a>
@@ -420,12 +461,27 @@
         <li><a href="#projetos" style="color: #00bfff;">Projetos</a></li>
         <li><a href="#" style="color: #00bfff;">Contato</a></li>
       </ul>
-      <button class="theme-toggle modern-toggle" id="theme-toggle" title="Alternar tema" aria-label="Alternar tema">
-          <i class="fas fa-sun toggle-icon"></i>
-          <span class="toggle-label"></span>
-        </button>
+    <button class="theme-toggle modern-toggle" id="theme-toggle" title="Alternar tema" aria-label="Alternar tema">
+        <i class="fas fa-sun toggle-icon"></i>
+        <span class="toggle-label"></span>
+    </button>
+    <!-- Botão para mutar/desmutar som no menu lateral -->
+    <button id="sound-toggle" title="Mutar/Desmutar som" style="background:none; border:none; font-size:1.5rem; cursor:pointer; margin-top:16px; color:#00bfff;">
+      🔉
+    </button>
+      <!-- Botão de som dentro do menu lateral -->
+      <button id="sound-toggle" title="Mutar/Desmutar som" style="background:none; border:none; font-size:1.5rem; color:#00bfff; cursor:pointer; margin-top:16px;">
+        🔉
+      </button>
 
-        <!-- Redes sociais e ferramentas recomendadas -->
+    <!-- Debug temporário: botões para testar temas (dev) -->
+    <div class="debug-buttons" style="margin-top: 10px; display: flex; flex-direction: column; gap: 8px;">
+      <button onclick="aplicarTema('claro')">🌞 Claro</button>
+      <button onclick="aplicarTema('escuro')">🌙 Escuro</button>
+      <button onclick="aplicarTema('chuvoso-dia')">🌧️ Chuva - Dia</button>
+      <button onclick="aplicarTema('chuvoso-noite')">⛈️ Chuva - Noite</button>
+    </div>
+    <!-- Redes sociais e ferramentas recomendadas -->
         <div class="social-icons">
           <a href="https://www.freecodecamp.org/" target="_blank">
             <i class="fab fa-free-code-camp" aria-hidden="true"></i>
@@ -617,6 +673,10 @@
 
     <footer class="footer">
         <p>&copy; 2025 Feito com ❤️ por Manoel Coelho usando 🤖 GPT-4o</p>
+        <!-- Botão para mutar/desmutar som -->
+        <button id="sound-toggle" title="Mutar/Desmutar som" style="background:none; border:none; font-size:1.5rem; cursor:pointer; margin-top:8px; color:inherit;">
+          🔉
+        </button>
     </footer>
 
     <!-- Botão flutuante do chat acima do rodapé -->
@@ -722,8 +782,8 @@ setTheme(savedTheme ? savedTheme : autoTheme);
 <div class="chat-widget" id="chatWidget">
   <div class="chat-header">
     <img src="../assets/eu.png" alt="Avatar Geek" />
-    <span style="font-family: Orbitron, sans-serif; font-size: 1.1rem;">Ava<span style="font-size:0.7em;opacity:0.7;">&#x1F916;</span></span>
-    <button class="close-chat" id="closeChatBtn" style="background:none;border:none;font-size:1.5rem;color:#61dafb;cursor:pointer;">&#10006;</button>
+    <span style="font-family: Orbitron, sans-serif; font-size: 1.1rem;">Ava</span>
+    <button class="close-chat" id="closeChatBtn" style="background:none; border:none; font-size:1.5rem; color:#61dafb; cursor:pointer;">&#10006;</button>
   </div>
   <div class="chat-body">
     <p>Olá! 👋 Comece ou escale seu projeto geek com tudo que você precisa. É só me chamar!<br><br>👇 Envie sua mensagem:</p>
@@ -913,32 +973,130 @@ for (const link of links) {
 
 <script>
 // Modo clima geek: geolocalização + OpenWeatherMap
-document.addEventListener('DOMContentLoaded', () => {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(({coords}) => {
-      const {latitude: lat, longitude: lon} = coords;
-      const API_KEY = 'SUA_API_KEY_OPENWEATHER';
-      fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&lang=pt_br`)
-        .then(r => r.json())
-        .then(data => {
-          const clima = data.weather[0].main;
-          const hora = new Date().getHours();
-          defineTemaPorClima(clima, hora);
-        }).catch(console.error);
-    }, console.error);
+navigator.geolocation.getCurrentPosition(
+  function(position) {
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
+    const API_KEY = 'SUA_API_KEY_OPENWEATHER';
+    fetch(
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&lang=pt_br&units=metric`
+    )
+      .then(response => response.json())
+      .then(data => {
+        const clima = data.weather[0].main;
+        const hora = new Date().getHours();
+        defineTema(clima, hora);
+      })
+      .catch(console.error);
+  },
+  function(erro) {
+    console.error('Erro ao obter localização:', erro);
+  },
+  {
+    enableHighAccuracy: true,
+    timeout: 10000,
+    maximumAge: 0
   }
-});
+);
+</script>
 
-function defineTemaPorClima(clima, hora) {
+<script>
+// Função para aplicar o tema com base na classe
+function aplicarTema(nomeTema) {
+  // mapear termos curtos para os temas corretos
+  let tema = nomeTema;
+  if (nomeTema === 'claro') tema = 'modo-dia';
+  else if (nomeTema === 'escuro') tema = 'modo-noite';
   const html = document.documentElement;
-  html.classList.remove('tema-claro','tema-escuro','tema-chuvoso-dia','tema-chuvoso-noite');
-  if (clima === 'Rain') {
-    html.classList.add(hora>=6&&hora<18 ? 'tema-chuvoso-dia' : 'tema-chuvoso-noite');
+  html.classList.remove('tema-modo-dia', 'tema-modo-noite', 'tema-chuvoso-dia', 'tema-chuvoso-noite');
+  html.classList.add(`tema-${tema}`);
+
+  // Controlar áudios de clima
+  const rainAudio = document.getElementById('rain-audio');
+  const thunderAudio = document.getElementById('thunder-audio');
+  if (rainAudio) { rainAudio.pause(); rainAudio.currentTime = 0; }
+  if (thunderAudio) { thunderAudio.pause(); thunderAudio.currentTime = 0; }
+  if (nomeTema === 'chuvoso-dia' && rainAudio) {
+    rainAudio.volume = 0.3;
+    rainAudio.play().catch(console.error);
+  }
+  if (nomeTema === 'chuvoso-noite' && thunderAudio) {
+    thunderAudio.volume = 0.5;
+    thunderAudio.play().catch(console.error);
+  }
+}
+
+// defineTema atualizado usando aplicarTema
+function defineTema(clima, hora) {
+  if (clima === "Rain") {
+    if (hora >= 6 && hora < 18) {
+      aplicarTema("chuvoso-dia");
+    } else {
+      aplicarTema("chuvoso-noite");
+    }
   } else {
-    html.classList.add(hora>=6&&hora<18 ? 'tema-claro' : 'tema-escuro');
+    if (hora >= 6 && hora < 18) {
+      aplicarTema("modo dia");
+    } else {
+      aplicarTema("modo noite");
+    }
   }
 }
 </script>
 
-  </body>
+<script>
+// Função para buscar o clima atual via API OpenWeatherMap
+function buscarClima(lat, lon) {
+  const API_KEY = 'SUA_API_KEY';
+  fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&lang=pt_br`)
+    .then(response => response.json())
+    .then(data => {
+      const clima = data.weather[0].main;
+      const hora = new Date().getHours();
+      defineTema(clima, hora);
+    })
+    .catch(console.error);
+}
+
+// Pegar localização do usuário e buscar clima
+navigator.geolocation.getCurrentPosition(
+  function(position) {
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
+    buscarClima(lat, lon);
+  },
+  function(erro) {
+    console.error('Erro ao obter localização:', erro);
+  },
+  {
+    enableHighAccuracy: true,
+    timeout: 10000,
+    maximumAge: 0
+  }
+);
+</script>
+
+<!-- Áudios de clima -->
+<audio id="rain-audio" src="assets/rain-sound.mp3" loop preload="auto"></audio>
+<audio id="thunder-audio" src="assets/thunder-sound.mp3" preload="auto"></audio>
+
+<!-- Script de controle de áudio -->
+<script>
+  const rainAudio = document.getElementById('rain-audio');
+  const thunderAudio = document.getElementById('thunder-audio');
+  // Loop e volume moderado
+  rainAudio.loop = true;
+  thunderAudio.loop = true;
+  rainAudio.volume = 0.4;
+  thunderAudio.volume = 0.4;
+  let audioMuted = false;
+  const soundToggle = document.getElementById('sound-toggle');
+  soundToggle.addEventListener('click', () => {
+    audioMuted = !audioMuted;
+    rainAudio.muted = audioMuted;
+    thunderAudio.muted = audioMuted;
+    soundToggle.textContent = audioMuted ? '🔇' : '🔉';
+  });
+</script>
+</body>
 </html>
