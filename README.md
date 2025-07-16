@@ -11,25 +11,13 @@ Bem-vindo ao meu espaço geek! 😎 Aqui você encontrará minhas habilidades, p
 - **Web Speech API**: Modo Áudio para leitura de conteúdo (voz “Jarvis”)
 - **Tema Responsivo**: Menu lateral adaptável para mobile e desktop
 
-## 🚀 Como usar
-1. **Clone o repositório**
-   ```bash
-   git clone https://github.com/eusoumanoelnetto/apresentacao-geek.git
-   ```
-2. **Abra o site**\
-   Basta abrir `index.html` em qualquer navegador moderno.
-3. **Explore**\
-   - Ative o modo Dia/Noite manualmente ou deixe o site ajustar por sistema/horário.
-   - Clique no 🎧 para entrar no Modo Áudio.
-   - Navegue pelo menu lateral e descubra meus projetos.
 
-## 🔭 Próximos Passos
+-## 🔭 Próximos Passos
+
+ 
 - **Nova Aba: Crie Seu Currículo**📝\
-  Em breve, você poderá gerar e baixar seu próprio currículo diretamente do site.
 - **Integração com Telegram**🤖\
-  Receba notificações e atualizações do portfólio via API do Telegram.
-
----
+ 
 Feito com ❤️ por Manoel Coelho — 2025
 _Auxiliado por GitHub Copilot 🤖_
 
