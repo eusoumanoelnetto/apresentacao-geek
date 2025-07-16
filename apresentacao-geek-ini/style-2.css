@@ -2336,3 +2336,28 @@ body, .apresentacao__conteudo__texto, .timeline__card p, .card-flip__front p, .c
   color: #fff;
   cursor: pointer;
 }
+
+/* Container para GIF de localização e balão */
+#location-gif-container {
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10000;
+  pointer-events: none;
+}
+#gif-bubble {
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 0.2rem 0.4rem !important;   /* padding reduzido */
+  border-radius: 4px !important;     /* border quadrada */
+  font-size: 0.6rem !important;       /* texto menor */
+  text-align: center;
+  margin-bottom: 0.3rem !important;   /* espaçamento reduzido */
+}
+#location-gif {
+  width: 60px;
+  height: auto;
+}
