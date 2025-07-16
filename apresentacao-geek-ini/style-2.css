@@ -2157,6 +2157,13 @@ p, span, li {
   box-shadow: 0 0 32px #00e6ff, 0 0 64px #bfff00;
   font-weight: bold;
   border: 2px solid #00e6ff;
+  border-radius: 32px !important;
+  padding: 8px 32px !important;
+  width: 90% !important;
+  max-width: 300px !important;
+  display: block !important;
+  margin: 24px auto !important;
+  font-size: 1rem !important;
 }
 
 [data-theme="light"] #theme-toggle-menu span {
