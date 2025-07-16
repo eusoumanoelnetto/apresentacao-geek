@@ -14,22 +14,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Inicializa tema: preferência manual em localStorage (expira em 2 dias) > preferência do sistema dark > horário (6h–18h = dia)
-    const savedTheme = localStorage.getItem("theme");
-    const savedTimestamp = localStorage.getItem("themeTimestamp");
-    const expireMs = 2 * 24 * 60 * 60 * 1000; // 2 dias em ms
+    // Inicializa tema: preferência manual em sessionStorage > preferência do sistema > horário
+    const savedTheme = sessionStorage.getItem("theme");
     let initialTheme;
-    let validSaved = false;
-    if (savedTheme && savedTimestamp) {
-        const age = Date.now() - parseInt(savedTimestamp, 10);
-        if (age < expireMs) {
-            validSaved = true;
-        } else {
-            localStorage.removeItem("theme");
-            localStorage.removeItem("themeTimestamp");
-        }
-    }
-    if (validSaved) {
+    if (savedTheme) {
         initialTheme = savedTheme;
     } else {
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -63,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const newTheme = currentTheme === "light" ? "dark" : "light";
         html.setAttribute("data-theme", newTheme);
         localStorage.setItem("theme", newTheme);
-        // Salvar timestamp para expirar preferência em 2 dias
+        // Salvar timestamp para expirar preferência em 2 horas
         localStorage.setItem("themeTimestamp", Date.now().toString());
         updateThemeIcon();
     });
