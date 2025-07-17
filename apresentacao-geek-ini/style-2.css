@@ -1343,9 +1343,14 @@ p, span, li {
 
 .chat-floating {
   position: fixed;
-  bottom: 120px; /* Aumenta a distância do fundo */
+  bottom: 80px;
   right: 20px;
   z-index: 1000; /* Garante que fique acima de outros elementos */
+  transition: bottom 0.3s ease-in-out;
+}
+/* Quando o rodapé estiver visível, mantém posição atual acima dele */
+.chat-floating.footer-visible {
+  bottom: 120px; /* Posição acima do rodapé */
 }
 
 /* Estilos específicos para o modo noite */
@@ -2380,16 +2385,56 @@ body, .apresentacao__conteudo__texto, .timeline__card p, .card-flip__front p, .c
 /* Container para GIF com balão de fala */
 #bottom-gif-container {
   position: fixed;
-  bottom: 70px; /* acima do rodapé */
-  left: 1px;
+  bottom: -150px; /* inicia oculto atrás do rodapé */
+  left: 0px;
   width: auto;
   height: auto;
-  z-index: 1000;
+  z-index: 10; /* Menor que o footer */
+  animation: slideUp 2s ease-out 5.5s forwards;
 }
 #bottom-gif-container #pika-gif {
   display: block;
   width: 80px;
   height: auto;
+  /* Removido efeito de fade-in e animação interna */
+  transform: none;
+  opacity: 1;
+}
+
+/* Keyframes para animação de subida */
+@keyframes floatIn {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slideUp {
+  from { bottom: -150px; }
+  to { bottom: 20px; }
+}
+/* Animação 'pop' energético do balão de fala com delay */
+@keyframes bubblePop {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* Ajuste de posição quando o rodapé está visível */
+#bottom-gif-container.footer-visible {
+    bottom: 70px !important; /* Posição acima do rodapé */
+    transition: bottom 0.5s ease-in-out;
+}
+
+/* Ajuste de posição do botão de chat quando o rodapé está visível */
+#chatToggleBtn.footer-visible {
+    bottom: 70px !important; /* Posição acima do rodapé */
+    transition: bottom 0.5s ease-in-out;
+}
+
+/* Garantir que o footer fique acima */
+.footer {
+  position: relative;
+  z-index: 20;
 }
 
 /* Balão de fala acima do pika.gif */
@@ -2408,6 +2453,9 @@ body, .apresentacao__conteudo__texto, .timeline__card p, .card-flip__front p, .c
   text-align: center;
   white-space: nowrap;
   z-index: 1001;
+  opacity: 1;
+  transform: scale(0);
+  animation: bubblePop 0.3s ease-out 8s forwards;
   /* Bordas múltiplas: branco interno, neon verde, preto externo */
   box-shadow:
     0 0 0 2px #ffffff,

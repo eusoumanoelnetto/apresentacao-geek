@@ -152,3 +152,26 @@ document.addEventListener('DOMContentLoaded', () => {
   // Observar seções com id
   document.querySelectorAll('section[id]').forEach(sec => observer.observe(sec));
 });
+
+// Adiciona observador para o rodapé e ajusta a posição do GIF
+document.addEventListener('DOMContentLoaded', () => {
+    const footer = document.querySelector('.footer');
+    const gifContainer = document.getElementById('bottom-gif-container');
+    const chatFloating = document.getElementById('chatFloating');
+
+    if (footer && gifContainer) {
+        const footerObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    gifContainer.classList.add('footer-visible');
+                    if (chatFloating) chatFloating.classList.add('footer-visible');
+                } else {
+                    gifContainer.classList.remove('footer-visible');
+                    if (chatFloating) chatFloating.classList.remove('footer-visible');
+                }
+            });
+        }, { threshold: 0.1 }); // Aciona quando 10% do rodapé está visível
+
+        footerObserver.observe(footer);
+    }
+});
