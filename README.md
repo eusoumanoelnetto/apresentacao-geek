@@ -19,7 +19,7 @@ Bem-vindo ao meu espaço geek! 😎 Aqui você encontrará minhas habilidades, p
 - **Integração com Telegram**🤖\
  
 Feito com ❤️ por Manoel Coelho — 2025
-_Auxiliado por GitHub Copilot 🤖_
+_Auxiliado por GPT 🤖_
 
 [![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)

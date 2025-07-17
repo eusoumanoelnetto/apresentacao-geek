@@ -1343,7 +1343,7 @@ p, span, li {
 
 .chat-floating {
   position: fixed;
-  bottom: 80px; /* Aumenta a distância do fundo */
+  bottom: 120px; /* Aumenta a distância do fundo */
   right: 20px;
   z-index: 1000; /* Garante que fique acima de outros elementos */
 }
@@ -2375,4 +2375,78 @@ body, .apresentacao__conteudo__texto, .timeline__card p, .card-flip__front p, .c
 #bottom-gif img {
   width: 80px;
   height: auto;
+}
+
+/* Container para GIF com balão de fala */
+#bottom-gif-container {
+  position: fixed;
+  bottom: 70px; /* acima do rodapé */
+  left: 1px;
+  width: auto;
+  height: auto;
+  z-index: 1000;
+}
+#bottom-gif-container #pika-gif {
+  display: block;
+  width: 80px;
+  height: auto;
+}
+
+/* Balão de fala acima do pika.gif */
+#bottom-gif-container #speech-bubble {
+  position: absolute;
+  bottom: 95px;
+  left: 20px;
+  padding: 8px 16px;
+  background: #ffffff;
+  border: none;
+  border-radius: 30px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.1;
+  color: #333333;
+  text-align: center;
+  white-space: nowrap;
+  z-index: 1001;
+  /* Bordas múltiplas: branco interno, neon verde, preto externo */
+  box-shadow:
+    0 0 0 2px #ffffff,
+    0 0 0 4px #39ff14,
+    0 0 0 6px #000000,
+    0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+}
+/* Triângulo de ponteiro para balão oval */
+#bottom-gif-container #speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 32%;  /* ajustado para 32% */
+  transform: translateX(-50%);
+  border-width: 10px 10px 0 10px;
+  border-style: solid;
+  border-color: #ffffff transparent transparent transparent;
+}
+
+ #bottom-gif-container #speech-bubble::before {
+  content: '';
+  position: absolute;
+  bottom: -16px;
+  left: 32%;
+  transform: translateX(-50%);
+  border-width: 12px 12px 0 12px;
+  border-style: solid;
+  border-color: #000000 transparent transparent transparent;
+  z-index: -1;
+}
+
+/* Borda do balão no modo escuro */
+[data-theme="dark"] #bottom-gif-container #speech-bubble {
+  border-color: #7FFF00; /* Borda verde neon */
+}
+[data-theme="dark"] #bottom-gif-container #speech-bubble::after {
+  border-color: #7FFF00 transparent transparent transparent; /* Triângulo verde neon */
+}
+[data-theme="dark"] #bottom-gif-container #speech-bubble::before {
+  border-color: #000000 transparent transparent transparent; /* Triângulo preto */
 }

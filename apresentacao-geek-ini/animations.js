@@ -112,3 +112,43 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+// Atualiza frase do balão de fala conforme seção visível ou footer
+document.addEventListener('DOMContentLoaded', () => {
+  const bubble = document.getElementById('speech-bubble');
+  if (!bubble) return;
+  // Mapeamento de seção para frase
+  const sectionPhrases = {
+    'apresentacao__conteudo': 'Olá<br>Bem vindo!',
+    'projetos': 'Olha os<br>projetos<br>dele!',
+    'timeline': 'Essa é a<br>jornada do<br>mestre!',
+    'contact': 'Chegou ao fim?<br>Peça sua<br>página grátis!'
+  };
+  let lastVisibleSectionId = null;
+
+  const observer = new IntersectionObserver((entries) => {
+    // Encontra a entrada que está mais visível (maior intersectionRatio)
+    const visibleEntries = entries.filter(entry => entry.isIntersecting);
+    if (visibleEntries.length === 0) return;
+
+    const mostVisibleEntry = visibleEntries.reduce((prev, current) => {
+      return prev.intersectionRatio > current.intersectionRatio ? prev : current;
+    });
+
+    const currentSectionId = mostVisibleEntry.target.id;
+    
+    // Atualiza o balão apenas se a seção mais visível mudou
+    if (currentSectionId !== lastVisibleSectionId) {
+      const phrase = sectionPhrases[currentSectionId];
+      if (phrase) {
+        bubble.innerHTML = phrase;
+        lastVisibleSectionId = currentSectionId;
+      }
+    }
+  }, {
+    threshold: [0.2, 0.4, 0.6, 0.8, 1.0] // Vários limiares para checagens mais frequentes
+  });
+
+  // Observar seções com id
+  document.querySelectorAll('section[id]').forEach(sec => observer.observe(sec));
+});
