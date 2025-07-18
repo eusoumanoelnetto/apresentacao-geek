@@ -2506,18 +2506,18 @@ body, .apresentacao__conteudo__texto, .timeline__card p, .card-flip__front p, .c
   content: '';
   position: absolute;
   bottom: -12px;
-  left: 32%;  /* ajustado para 32% */
+  left: 33%;
   transform: translateX(-50%);
   border-width: 10px 10px 0 10px;
   border-style: solid;
   border-color: #ffffff transparent transparent transparent;
 }
 
- #bottom-gif-container #speech-bubble::before {
+#bottom-gif-container #speech-bubble::before {
   content: '';
   position: absolute;
   bottom: -16px;
-  left: 32%;
+  left: 33%;
   transform: translateX(-50%);
   border-width: 12px 12px 0 12px;
   border-style: solid;
@@ -2592,4 +2592,103 @@ body, .apresentacao__conteudo__texto, .timeline__card p, .card-flip__front p, .c
 #certFrame {
   flex: 1;
   border: none;
+}
+
+/* Seção Digital Solutions */
+.digital-solutions {
+  padding: 60px 20px;
+  background: #031e2a;
+  text-align: center;
+}
+.digital-solutions__title {
+  color: var(--menu-link);
+  font-size: 2rem;
+  margin-bottom: 40px;
+  font-family: 'Orbitron', sans-serif;
+}
+.digital-solutions__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.digital-solutions__card {
+  background: #1e1e1e;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 20px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+.digital-solutions__icon {
+  font-size: 2rem;
+  color: #00bfff;
+  margin-bottom: 10px;
+}
+.digital-solutions__name {
+  display: block;
+  color: #fff;
+  font-size: 1rem;
+}
+.digital-solutions__card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(127, 255, 0, 0.6);
+}
+/* Modal Digital Solutions */
+.digital-solutions-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+.digital-solutions-modal.show {
+  display: flex;
+}
+.digital-solutions-modal .modal-content {
+  background: var(--bg-color);
+  padding: 30px;
+  border-radius: 8px;
+  text-align: left;
+  max-width: 500px;
+  width: 90%;
+}
+.digital-solutions-modal .modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #fff;
+  cursor: pointer;
+}
+.digital-solutions-modal .modal-body h3 {
+  color: #00bfff;
+  margin-bottom: 10px;
+}
+.digital-solutions-modal .modal-body p {
+  color: #ccc;
+  margin-bottom: 20px;
+}
+.digital-solutions-modal .modal-action {
+  background: #00bfff;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Tablet: manter 3 colunas por linha */
+@media(min-width: 601px) and (max-width: 1024px) {
+  .digital-solutions__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }

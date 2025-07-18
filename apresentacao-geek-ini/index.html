@@ -370,6 +370,7 @@
       <ul style="list-style: none; padding: 0; margin: 0 0 24px 0;">
         <li><a href="#" style="color: #00bfff; text-decoration: none; font-size: 1.15rem; display: block; padding: 10px 0; font-family: 'Orbitron', 'Montserrat', monospace;">Início</a></li>
         <li><a href="#timeline" style="color: #00bfff; text-decoration: none; font-size: 1.15rem; display: block; padding: 10px 0; font-family: 'Orbitron', 'Montserrat', monospace;">Sobre</a></li>
+        <li><a href="#digital-solutions" style="color: #00bfff; text-decoration: none; font-size: 1.15rem; display: block; padding: 10px 0; font-family: 'Orbitron', 'Montserrat', monospace;">Serviços</a></li>
         <li><a href="#projetos" style="color: #00bfff; text-decoration: none; font-size: 1.15rem; display: block; padding: 10px 0; font-family: 'Orbitron', 'Montserrat', monospace;">Projetos</a></li>
         <li><a href="#contact" style="color: #00bfff; text-decoration: none; font-size: 1.15rem; display: block; padding: 10px 0; font-family: 'Orbitron', 'Montserrat', monospace;">Contato</a></li>
         <li><a href="https://eusoumanoelnetto.github.io/resume" target="_blank" style="color: #00bfff; text-decoration: none; font-size: 1.15rem; display: block; padding: 10px 0; font-family: 'Orbitron', 'Montserrat', monospace;">Currículo</a></li>
@@ -417,6 +418,7 @@
       <ul>
         <li><a href="#" style="color: #00bfff;">Início</a></li>
         <li><a href="#timeline" style="color: #00bfff;">Sobre</a></li>
+        <li><a href="#digital-solutions" style="color: #00bfff;">Serviços</a></li>
         <li><a href="#projetos" style="color: #00bfff;">Projetos</a></li>
         <li><a href="#" style="color: #00bfff;">Contato</a></li>
       </ul>
@@ -575,6 +577,76 @@
         </div>
       </div>
     </section>
+
+    <!-- Seção Digital Solutions -->
+    <section class="digital-solutions" id="digital-solutions">
+      <h2 class="digital-solutions__title">Digital Solutions</h2>
+      <div class="digital-solutions__grid">
+        <div class="digital-solutions__card" data-service="logic-ai">
+          <i class="fas fa-brain digital-solutions__icon"></i>
+          <span class="digital-solutions__name">Lógica de IA</span>
+        </div>
+        <div class="digital-solutions__card" data-service="cyber-investigation">
+          <i class="fas fa-shield-alt digital-solutions__icon"></i>
+          <span class="digital-solutions__name">Investigação Cibernética</span>
+        </div>
+        <div class="digital-solutions__card" data-service="site-optimization">
+          <i class="fas fa-desktop digital-solutions__icon"></i>
+          <span class="digital-solutions__name">Otimização de Sites</span>
+        </div>
+        <div class="digital-solutions__card" data-service="portfolio">
+          <i class="fas fa-rocket digital-solutions__icon"></i>
+          <span class="digital-solutions__name">Criação de Portfólio</span>
+        </div>
+        <div class="digital-solutions__card" data-service="content-removal">
+          <i class="fas fa-trash-alt digital-solutions__icon"></i>
+          <span class="digital-solutions__name">Remoção de Conteúdo</span>
+        </div>
+        <div class="digital-solutions__card" data-service="app">
+          <i class="fas fa-mobile-alt digital-solutions__icon"></i>
+          <span class="digital-solutions__name">App (Em breve)</span>
+        </div>
+      </div>
+    </section>
+    <!-- Fim Seção Digital Solutions -->
+    <!-- Modal Digital Solutions -->
+    <div class="modal digital-solutions-modal" id="digital-solutions-modal">
+      <div class="modal-content">
+        <button class="modal-close" aria-label="Fechar">×</button>
+        <div class="modal-body">
+          <h3 id="modal-service-title"></h3>
+          <p id="modal-service-description"></p>
+          <button class="modal-action">Orçamento</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const cards = document.querySelectorAll('.digital-solutions__card');
+        const modal = document.getElementById('digital-solutions-modal');
+        const titleEl = document.getElementById('modal-service-title');
+        const descEl = document.getElementById('modal-service-description');
+        const closeBtn = modal.querySelector('.modal-close');
+        const info = {
+          'web-design': { title: 'Web Design', description: 'Criamos sites responsivos e modernos para destacar sua marca online.' },
+          'seo': { title: 'SEO', description: 'Otimização de sites para melhorar seu posicionamento nos motores de busca.' },
+          'marketing-digital': { title: 'Marketing Digital', description: 'Campanhas digitais estratégicas para engajamento e conversão.' },
+          'branding': { title: 'Branding', description: 'Desenvolvimento de identidade visual e fortalecimento de marca.' },
+          'analytics': { title: 'Analytics', description: 'Análise de dados para decisões precisas e melhoria contínua.' },
+          'app-dev': { title: 'App Dev', description: 'Desenvolvimento de aplicativos mobile e web sob medida.' }
+        };
+        cards.forEach(card => {
+          card.addEventListener('click', () => {
+            const key = card.getAttribute('data-service');
+            titleEl.textContent = info[key].title;
+            descEl.textContent = info[key].description;
+            modal.classList.add('show');
+          });
+        });
+        closeBtn.addEventListener('click', () => modal.classList.remove('show'));
+        modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('show'); });
+      });
+    </script>
 
     <!-- Seção Projetos Interativos -->
     <section class="projetos" id="projetos">
