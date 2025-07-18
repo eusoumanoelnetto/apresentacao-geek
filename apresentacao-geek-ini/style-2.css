@@ -118,6 +118,43 @@
 }
 
 /* O restante do seu CSS permanece inalterado abaixo */
+/* Setas de navegação na timeline */
+.timeline__scroll-wrapper {
+  position: relative;
+}
+.timeline__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #1a1a1a;
+    border: 2px solid #fff700;
+    color: #fff700;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    cursor: pointer;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 8px #fff700, 0 0 16px #fff700;
+    transition: all 0.3s ease;
+}
+
+.timeline__arrow:hover {
+    background: #2a2a2a;
+    box-shadow: 0 0 12px #fff700, 0 0 24px #fff700;
+}
+
+.timeline__arrow--left {
+  left: 35px;
+}
+.timeline__arrow--right {
+  right: 15px;
+}
+.timeline__arrow i {
+  font-size: 1.5rem;
+}
 
 /* Ícones do botão de tema: tamanho e alinhamento uniformes */
 #theme-toggle-menu i {
@@ -2525,6 +2562,12 @@ body, .apresentacao__conteudo__texto, .timeline__card p, .card-flip__front p, .c
   overflow: hidden;
   display: flex;
   flex-direction: column;
+}
+/* Hide timeline arrows on smaller screens */
+@media (max-width: 768px) {
+  .timeline__arrow {
+    display: none;
+  }
 }
 .modal-header {
   display: flex;

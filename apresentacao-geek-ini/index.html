@@ -502,6 +502,8 @@
         </div>
       </div>
       <div class="timeline__scroll-wrapper">
+        <button class="timeline__arrow timeline__arrow--left"><i class="fas fa-chevron-left"></i></button>
+        <button class="timeline__arrow timeline__arrow--right"><i class="fas fa-chevron-right"></i></button>
         <div class="timeline-neon-line">
           <svg class="timeline-neon-svg" viewBox="0 0 2000 32" preserveAspectRatio="none">
             <defs>
@@ -982,6 +984,21 @@ function defineTemaPorClima(clima, hora) {
     });
   });
 </script>
-<script src="certificado.js"></script>
+  <script src="certificado.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const scrollContainer = document.querySelector('.timeline__scroll');
+      const leftBtn = document.querySelector('.timeline__arrow--left');
+      const rightBtn = document.querySelector('.timeline__arrow--right');
+      if (scrollContainer && leftBtn && rightBtn) {
+        leftBtn.addEventListener('click', () => {
+          scrollContainer.scrollBy({ left: -300, behavior: 'smooth' });
+        });
+        rightBtn.addEventListener('click', () => {
+          scrollContainer.scrollBy({ left: 300, behavior: 'smooth' });
+        });
+      }
+    });
+  </script>
   </body>
 </html>
