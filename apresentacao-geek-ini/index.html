@@ -642,6 +642,17 @@
     </div>
   </div>
 
+    <!-- Modal de visualização de certificado -->
+<div id="certModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button id="certClose">Fechar</button>
+      <a id="certDownload" href="#" target="_blank" download>Baixar</a>
+    </div>
+    <iframe id="certFrame" src="" allowfullscreen></iframe>
+  </div>
+</div>
+
     <script src="animations.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="menu-toggle.js"></script>
@@ -936,7 +947,7 @@ document.addEventListener('DOMContentLoaded', () => {
     navigator.geolocation.getCurrentPosition(({coords}) => {
       const {latitude: lat, longitude: lon} = coords;
       const API_KEY = 'SUA_API_KEY_OPENWEATHER';
-      fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&lang=pt_br`)
+        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&lang=pt_br`)
         .then(r => r.json())
         .then(data => {
           const clima = data.weather[0].main;
@@ -971,5 +982,6 @@ function defineTemaPorClima(clima, hora) {
     });
   });
 </script>
+<script src="certificado.js"></script>
   </body>
 </html>

@@ -456,7 +456,7 @@ body {
 }
 
 .footer {
-    background-color: #282c34;
+    background-color: #1e1e1e;
     padding: 10px;
     width: 100%;
     text-align: center;
@@ -1335,7 +1335,7 @@ p, span, li {
   color: #ff6600;
 }
 [data-theme="light"] .footer {
-  background-color: #e0e0e0;
+  background-color: #ffffff;
 }
 [data-theme="light"] .footer p {
   color: #0078d7;
@@ -2497,4 +2497,56 @@ body, .apresentacao__conteudo__texto, .timeline__card p, .card-flip__front p, .c
 }
 [data-theme="dark"] #bottom-gif-container #speech-bubble::before {
   border-color: #000000 transparent transparent transparent; /* Triângulo preto */
+}
+
+/* Estilos do modal de certificado */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+.modal.show {
+  display: flex;
+}
+.modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+  height: 90%;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background: #333;
+}
+.modal-header button,
+.modal-header a {
+  background: #00bfff;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.modal-header button:hover,
+.modal-header a:hover {
+  opacity: 0.9;
+}
+#certFrame {
+  flex: 1;
+  border: none;
 }

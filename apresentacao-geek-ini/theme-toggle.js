@@ -4,12 +4,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const html = document.documentElement;
 
     function updateThemeIcon() {
-        const currentTheme = body.getAttribute("data-theme");
+        const currentTheme = html.getAttribute("data-theme");
         if (themeMenuButton) {
             if (currentTheme === "dark") {
-                themeMenuButton.innerHTML = '<i class="fas fa-sun"></i> Dia';
+                toggleButton.innerHTML = '<i class="fas fa-sun"></i> Dia';
             } else {
-                themeMenuButton.innerHTML = '<i class="fas fa-moon"></i> Noite';
+                toggleButton.innerHTML = '<i class="fas fa-moon"></i> Noite';
             }
         }
     }
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Atualiza tema automaticamente quando a preferência do sistema mudar
     const mq = window.matchMedia('(prefers-color-scheme: dark)');
     mq.addEventListener('change', e => {
-        if (!localStorage.getItem('theme')) {
+        if (!sessionStorage.getItem('theme')) {
             let newTheme;
             if (e.matches) {
                 newTheme = 'dark';
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const hour = new Date().getHours();
                 newTheme = (hour >= 6 && hour < 18) ? 'light' : 'dark';
             }
-            body.setAttribute('data-theme', newTheme);
+            html.setAttribute('data-theme', newTheme);
             updateThemeIcon();
         }
     });
@@ -50,9 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const currentTheme = html.getAttribute("data-theme");
         const newTheme = currentTheme === "light" ? "dark" : "light";
         html.setAttribute("data-theme", newTheme);
-        localStorage.setItem("theme", newTheme);
-        // Salvar timestamp para expirar preferência em 2 horas
-        localStorage.setItem("themeTimestamp", Date.now().toString());
+        sessionStorage.setItem("theme", newTheme);
         updateThemeIcon();
     });
 });
