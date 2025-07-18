@@ -2618,8 +2618,23 @@ body, .apresentacao__conteudo__texto, .timeline__card p, .card-flip__front p, .c
   border: 2px solid transparent;
   border-radius: 12px;
   padding: 20px;
-  cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  position: relative;
+  overflow: hidden;
+  cursor: crosshair;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.digital-solutions__card::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(127, 255, 0, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease;
+  pointer-events: none;
 }
 .digital-solutions__icon {
   font-size: 2rem;
@@ -2632,8 +2647,12 @@ body, .apresentacao__conteudo__texto, .timeline__card p, .card-flip__front p, .c
   font-size: 1rem;
 }
 .digital-solutions__card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px) scale(1.05);
   box-shadow: 0 5px 15px rgba(127, 255, 0, 0.6);
+}
+.digital-solutions__card:hover::before {
+  width: 200%;
+  height: 200%;
 }
 /* Modal Digital Solutions */
 .digital-solutions-modal {

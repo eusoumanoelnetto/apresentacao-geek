@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+powershell -NoProfile -ExecutionPolicy Bypass .husky/script-create-tag.ps1
