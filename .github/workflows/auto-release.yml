@@ -14,26 +14,27 @@ jobs:
           fetch-depth: 0  # Crucial para acessar histórico
 
       - name: Extract version
-  id: extract
-  run: |
-    MESSAGE=$(git log -1 --pretty=%B)
-    echo "::group::Commit Message Debug"
-    echo "$MESSAGE"
-    echo "::endgroup::"
-    
-    if [[ "$MESSAGE" =~ [vV][0-9]+ ]]; then
-      VERSION=$(echo "$MESSAGE" | grep -oi 'v[0-9]\+' | head -1)
-      echo "version=$VERSION" >> $GITHUB_OUTPUT
-      echo "✅ Versão detectada: $VERSION"
-    else
-      echo "::error::NENHUMA VERSÃO DETECTADA! Padrão necessário: vX (ex: v5)"
-      echo "Padrões testados:"
-      grep -oE '[vV][0-9]+' <<< "$MESSAGE" || echo "Nenhum padrão encontrado"
-    fi
+        id: extract
+        run: |
+          MESSAGE=$(git log -1 --pretty=%B)
+          echo "::group::Commit Message Debug"
+          echo "$MESSAGE"
+          echo "::endgroup::"
+          
+          if [[ "$MESSAGE" =~ [vV][0-9]+ ]]; then
+            VERSION=$(echo "$MESSAGE" | grep -oi 'v[0-9]\+' | head -1)
+            echo "version=$VERSION" >> $GITHUB_OUTPUT
+            echo "✅ Versão detectada: $VERSION"
+          else
+            echo "::error::NENHUMA VERSÃO DETECTADA! Padrão necessário: vX (ex: v5)"
+            echo "Padrões testados:"
+            grep -oE '[vV][0-9]+' <<< "$MESSAGE" || echo "Nenhum padrão encontrado"
+          fi
 
       - name: Create Release
         if: ${{ steps.extract.outputs.version != '' }}
         uses: actions/create-release@v1
+        continue-on-error: false  # Força falha visível
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
