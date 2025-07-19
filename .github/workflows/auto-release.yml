@@ -31,15 +31,64 @@ jobs:
             grep -oE '[vV][0-9]+' <<< "$MESSAGE" || echo "Nenhum padrão encontrado"
           fi
 
+      - name: Set Release Date
+        if: ${{ steps.extract.outputs.version != '' }}
+        run: |
+          echo "DATE=$(date '+%d/%m/%Y')" >> $GITHUB_ENV
+
+      - name: Generate dynamic content
+        if: ${{ steps.extract.outputs.version != '' }}
+        run: |
+          # Obtém todos os commits desde a última tag
+          FEATURES=$(git log --pretty=format:"- %s" ${{ steps.extract.outputs.version }}..HEAD | grep 'feat:' || true)
+          echo "FEATURES<<EOF" >> $GITHUB_ENV
+          echo "$FEATURES" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+      - name: Prepare release body
+        if: ${{ steps.extract.outputs.version != '' }}
+        run: |
+          # Cria um arquivo temporário com o corpo do release
+          cat << EOF > release-body.md
+          <div align="center">
+            <img src="https://raw.githubusercontent.com/SEU_USUARIO/SEU_REPOSITORIO/main/docs/assets/release-banner.png" alt="Release Banner" width="100%">
+            
+            <h2>Novidades na versão ${{ steps.extract.outputs.version }}</h2>
+          </div>
+
+          ## 🚀 Novos Recursos
+          ${{ env.FEATURES }}
+
+          ## 📦 Downloads
+          - [Source code (zip)](https://github.com/SEU_USUARIO/SEU_REPOSITORIO/archive/refs/tags/${{ steps.extract.outputs.version }}.zip)
+          - [Source code (tar.gz)](https://github.com/SEU_USUARIO/SEU_REPOSITORIO/archive/refs/tags/${{ steps.extract.outputs.version }}.tar.gz)
+
+          ## 🔗 Links Úteis
+          - [Documentação](#)
+          - [Changelog Completo](#)
+
+          ---
+          *Release automático gerado em ${{ env.DATE }}*
+          EOF
+          
+          # Armazena o conteúdo para o próximo passo
+          echo "RELEASE_BODY=$(cat release-body.md)" >> $GITHUB_ENV
+
       - name: Create Release
         if: ${{ steps.extract.outputs.version != '' }}
         uses: actions/create-release@v1
-        continue-on-error: false  # Força falha visível
+        continue-on-error: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ steps.extract.outputs.version }}
           release_name: "Release ${{ steps.extract.outputs.version }}"
-          body: "Automated release | Commit: ${{ github.sha }}"
+          body: ${{ env.RELEASE_BODY }}
           draft: false
           prerelease: false
+
+      - name: Notify Slack
+        if: success()
+        uses: slackapi/slack-github-action@v1.23.0
+        with:
+          slack-message: "Novo release ${{ steps.extract.outputs.version }} criado!"
