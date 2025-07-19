@@ -40,7 +40,7 @@ jobs:
         if: ${{ steps.extract.outputs.version != '' }}
         run: |
           # Obtém todos os commits desde a última tag
-          FEATURES=$(git log --pretty=format:"- %s" ${{ steps.extract.outputs.version }}..HEAD | grep 'feat:' || true)
+          FEATURES=$(git log --pretty=format:"- %s" ${{ steps.extract.outputs.version }}..HEAD | grep 'feat:' || echo "- Sem novos recursos")
           echo "FEATURES<<EOF" >> $GITHUB_ENV
           echo "$FEATURES" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
@@ -48,31 +48,18 @@ jobs:
       - name: Prepare release body
         if: ${{ steps.extract.outputs.version != '' }}
         run: |
-          # Cria um arquivo temporário com o corpo do release
-          cat << EOF > release-body.md
-          <div align="center">
-            <img src="https://raw.githubusercontent.com/SEU_USUARIO/SEU_REPOSITORIO/main/docs/assets/release-banner.png" alt="Release Banner" width="100%">
-            
-            <h2>Novidades na versão ${{ steps.extract.outputs.version }}</h2>
-          </div>
-
-          ## 🚀 Novos Recursos
-          ${{ env.FEATURES }}
-
-          ## 📦 Downloads
-          - [Source code (zip)](https://github.com/SEU_USUARIO/SEU_REPOSITORIO/archive/refs/tags/${{ steps.extract.outputs.version }}.zip)
-          - [Source code (tar.gz)](https://github.com/SEU_USUARIO/SEU_REPOSITORIO/archive/refs/tags/${{ steps.extract.outputs.version }}.tar.gz)
-
-          ## 🔗 Links Úteis
-          - [Documentação](#)
-          - [Changelog Completo](#)
-
-          ---
-          *Release automático gerado em ${{ env.DATE }}*
-          EOF
+          # Lê o template
+          TEMPLATE_CONTENT=$(cat .github/release-template.md)
+          
+          # Substitui as variáveis
+          RELEASE_BODY=${TEMPLATE_CONTENT//\$VERSION/${{ steps.extract.outputs.version }}}
+          RELEASE_BODY=${RELEASE_BODY//\$DATE/${{ env.DATE}}}
+          RELEASE_BODY=${RELEASE_BODY//\$FEATURES/${{ env.FEATURES}}}
           
           # Armazena o conteúdo para o próximo passo
-          echo "RELEASE_BODY=$(cat release-body.md)" >> $GITHUB_ENV
+          echo "RELEASE_BODY<<EOF" >> $GITHUB_ENV
+          echo "$RELEASE_BODY" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
 
       - name: Create Release
         if: ${{ steps.extract.outputs.version != '' }}
@@ -92,3 +79,5 @@ jobs:
         uses: slackapi/slack-github-action@v1.23.0
         with:
           slack-message: "Novo release ${{ steps.extract.outputs.version }} criado!"
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}  # Adicione esta linha

@@ -1,4 +1,4 @@
- # Release $VERSION
+# Release $VERSION
 
 [![Build Status](https://img.shields.io/github/actions/workflow/status/eusoumanoelnetto/apresentacao-geek/ci.yml?branch=main)](https://github.com/eusoumanoelnetto/apresentacao-geek/actions)
 
