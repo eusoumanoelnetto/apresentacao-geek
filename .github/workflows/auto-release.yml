@@ -11,26 +11,31 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0  # Crucial para acessar histórico
 
-      - name: Check for release tag
-        id: check_tag
+      - name: Extract version
+        id: extract
         run: |
-          if [ -f .commit_has_release_tag ]; then
-            MESSAGE=$(git log -1 --pretty=%B)
-            VERSION=$(echo "$MESSAGE" | grep -oE 'v[0-9]+')
-            echo "RELEASE_VERSION=$VERSION" >> $GITHUB_ENV
-            echo "✔ Versão detectada: $VERSION"
+          MESSAGE=$(git log -1 --pretty=%B)
+          echo "Commit Message: '$MESSAGE'"
+          
+          # Regex melhorado (case insensitive, ignora espaços)
+          if [[ "$MESSAGE" =~ [vV][0-9]+ ]]; then
+            VERSION=$(echo "$MESSAGE" | grep -oi 'v[0-9]\+' | head -1)
+            echo "version=$VERSION" >> $GITHUB_OUTPUT
+            echo "✅ Versão detectada: $VERSION"
+          else
+            echo "❌ Nenhuma versão encontrada"
           fi
 
       - name: Create Release
-        if: env.RELEASE_VERSION != ''
+        if: ${{ steps.extract.outputs.version != '' }}
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ env.RELEASE_VERSION }}
-          release_name: "Release ${{ env.RELEASE_VERSION }}"
+          tag_name: ${{ steps.extract.outputs.version }}
+          release_name: "Release ${{ steps.extract.outputs.version }}"
           body: "Automated release | Commit: ${{ github.sha }}"
           draft: false
           prerelease: false
