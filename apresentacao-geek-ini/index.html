@@ -698,6 +698,16 @@
         <div id="speech-bubble">Quer<br>uma<br>página?</div>
     </div>
 
+    <!-- Pop-up de Aviso de Localização -->
+    <div id="location-popup" class="popup-overlay">
+      <div class="popup-content">
+        <button class="popup-close" id="close-popup-btn">&times;</button>
+        <h2>E aí, explorador(a) do universo digital! 🚀</h2>
+        <p>Para deixar sua experiência ainda mais cósmica, usamos sua localização para alternar entre o tema claro (dia ☀️) e o escuro (noite 🌙) automaticamente. Sem rastreamento, só um toque de mágica para o seu conforto visual!</p>
+        <button class="popup-action-btn" id="understand-popup-btn">ENTENDI, PODE BRILHAR!</button>
+      </div>
+    </div>
+
     <!-- Rodapé -->
     <footer class="footer">
         <p>© 2025 Manoel Coelho — Feito com ❤️ e ☕︎ usando GPT 🤖</p>
@@ -710,13 +720,6 @@
   </button>
 </div>
 
-    <!-- Aviso de localização para tema Dia/Noite -->
-  <div id="location-warning-modal" style="display:none;">
-    <div class="modal-content">
-      <p>Este site ajusta automaticamente o modo Dia/Noite com base no horário e localização do seu dispositivo.</p>
-      <button id="location-warning-btn">Entendi</button>
-    </div>
-  </div>
 
     <!-- Modal de visualização de certificado -->
 <div id="certModal" class="modal">
@@ -1045,19 +1048,6 @@ function defineTemaPorClima(clima, hora) {
 }
 </script>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const modal = document.getElementById('location-warning-modal');
-    const btn = document.getElementById('location-warning-btn');
-    if (!localStorage.getItem('locationWarningSeen')) {
-      modal.style.display = 'flex';
-    }
-    btn.addEventListener('click', () => {
-      localStorage.setItem('locationWarningSeen', 'true');
-      modal.style.display = 'none';
-    });
-  });
-</script>
   <script src="certificado.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -1074,5 +1064,25 @@ function defineTemaPorClima(clima, hora) {
       }
     });
   </script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const popup = document.getElementById('location-popup');
+    const closeBtn = document.getElementById('close-popup-btn');
+    const understandBtn = document.getElementById('understand-popup-btn');
+
+    // Mostra o pop-up se ainda não foi visto
+    if (!localStorage.getItem('locationPopupSeen')) {
+      popup.style.display = 'flex';
+    }
+
+    function closePopup() {
+      popup.style.display = 'none';
+      localStorage.setItem('locationPopupSeen', 'true');
+    }
+
+    closeBtn.addEventListener('click', closePopup);
+    understandBtn.addEventListener('click', closePopup);
+  });
+</script>
   </body>
 </html>
