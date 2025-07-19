@@ -2562,6 +2562,13 @@ body, .apresentacao__conteudo__texto, .timeline__card p, .card-flip__front p, .c
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  transform: scale(0.8);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.modal-content.show {
+  transform: scale(1);
+  opacity: 1;
 }
 /* Hide timeline arrows on smaller screens */
 @media (max-width: 768px) {
@@ -2662,52 +2669,83 @@ body, .apresentacao__conteudo__texto, .timeline__card p, .card-flip__front p, .c
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.8);
   justify-content: center;
   align-items: center;
   z-index: 10000;
+  backdrop-filter: blur(5px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 .digital-solutions-modal.show {
   display: flex;
+  opacity: 1;
 }
 .digital-solutions-modal .modal-content {
-  background: var(--bg-color);
-  padding: 30px;
+  background: #031e2a;
+  padding: 20px;
   border-radius: 8px;
   text-align: left;
-  max-width: 500px;
+  max-width: 340px;
   width: 90%;
+  height: 50%;
+  overflow-y: auto;
+  position: relative;
+  border: 1px solid #00bfff;
+  box-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
+  transform: scale(0.8);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.digital-solutions-modal.show .modal-content {
+  transform: scale(1);
+  opacity: 1;
 }
 .digital-solutions-modal .modal-close {
   background: none;
   border: none;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 10px;
+  right: 15px;
   color: #fff;
   cursor: pointer;
+  font-family: 'Share Tech Mono', monospace;
+  text-shadow: 0 0 5px #fff;
 }
 .digital-solutions-modal .modal-body h3 {
-  color: #00bfff;
-  margin-bottom: 10px;
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.7rem;
+  margin-bottom: 15px;
+  text-shadow: 0 0 5px #00bfff;
 }
 .digital-solutions-modal .modal-body p {
   color: #ccc;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 .digital-solutions-modal .modal-action {
   background: #00bfff;
   color: #000;
   border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
+  padding: 12px 22px;
+  border-radius: 6px;
   cursor: pointer;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+.digital-solutions-modal .modal-action:hover {
+    background: #fff;
+    color: #00bfff;
+    box-shadow: 0 0 15px #fff;
 }
 
-/* Tablet: manter 3 colunas por linha */
-@media(min-width: 601px) and (max-width: 1024px) {
-  .digital-solutions__grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+.modal-footer {
+  text-align: right;
+  margin-top: 20px;
 }
