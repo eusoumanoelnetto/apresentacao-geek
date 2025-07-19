@@ -2,7 +2,7 @@
 
 [![Build Status](https://img.shields.io/github/actions/workflow/status/eusoumanoelnetto/apresentacao-geek/ci.yml?branch=main)](https://github.com/eusoumanoelnetto/apresentacao-geek/actions)
 
-![Release Banner](https://raw.githubusercontent.com/eusoumanoelnetto/apresentacao-geek/main/docs/assets/release-banner.png)
+![Release Banner](https://raw.githubusercontent.com/eusoumanoelnetto/apresentacao-geek/main//assets/release-banner.png)
 
 ## Novidades na versão $VERSION
 
