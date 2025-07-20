@@ -1,8 +1,8 @@
-﻿name: Auto Release Creator
+﻿name: Auto Release
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   create-release:
@@ -11,27 +11,73 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Necessário para acessar histórico de commits
+          fetch-depth: 0  # Crucial para acessar histórico
 
-      - name: Detect release tag
-        id: tag_detector
+      - name: Extract version
+        id: extract
         run: |
-          LAST_COMMIT_MSG=$(git log -1 --pretty=%B)
-          if [[ $LAST_COMMIT_MSG =~ (v[0-9]+) ]]; then
-            echo "RELEASE_TAG=${BASH_REMATCH[0]}" >> $GITHUB_OUTPUT
-            echo "✔ Tag detectada: ${BASH_REMATCH[0]}"
+          MESSAGE=$(git log -1 --pretty=%B)
+          echo "::group::Commit Message Debug"
+          echo "$MESSAGE"
+          echo "::endgroup::"
+          
+          if [[ "$MESSAGE" =~ [vV][0-9]+ ]]; then
+            VERSION=$(echo "$MESSAGE" | grep -oi 'v[0-9]\+' | head -1)
+            echo "version=$VERSION" >> $GITHUB_OUTPUT
+            echo "✅ Versão detectada: $VERSION"
           else
-            echo "✘ Nenhuma tag encontrada"
+            echo "::error::NENHUMA VERSÃO DETECTADA! Padrão necessário: vX (ex: v5)"
+            echo "Padrões testados:"
+            grep -oE '[vV][0-9]+' <<< "$MESSAGE" || echo "Nenhum padrão encontrado"
           fi
 
+      - name: Set Release Date
+        if: ${{ steps.extract.outputs.version != '' }}
+        run: |
+          echo "DATE=$(date '+%d/%m/%Y')" >> $GITHUB_ENV
+      
+      - name: Get current commit hash
+        if: ${{ steps.extract.outputs.version != '' }}
+        run: |
+          echo "COMMIT_HASH=$(git rev-parse HEAD)" >> $GITHUB_ENV
+
+      - name: Generate dynamic content
+        if: ${{ steps.extract.outputs.version != '' }}
+        run: |
+          # Obtém todos os commits desde a última tag
+          FEATURES=$(git log --pretty=format:"- %s" ${{ steps.extract.outputs.version }}..HEAD | grep 'feat:' || echo "- Sem novos recursos")
+          echo "FEATURES<<EOF" >> $GITHUB_ENV
+          echo "$FEATURES" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+      - name: Prepare release body
+        if: ${{ steps.extract.outputs.version != '' }}
+        run: |
+          # Substitui no template
+          sed -e "s/\$VERSION/${{ steps.extract.outputs.version }}/g" \
+              -e "s/\$DATE/${DATE}/g" \
+              -e "s/\$COMMIT_HASH/${COMMIT_HASH}/g" \
+              .github/release-template.md > release-body.md
+          
+          echo "RELEASE_BODY=$(cat release-body.md)" >> $GITHUB_ENV
+
       - name: Create Release
-        if: steps.tag_detector.outputs.RELEASE_TAG != ''
+        if: ${{ steps.extract.outputs.version != '' }}
         uses: actions/create-release@v1
+        continue-on-error: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.tag_detector.outputs.RELEASE_TAG }}
-          release_name: "Release ${{ steps.tag_detector.outputs.RELEASE_TAG }}"
-          body: "Automated release from commit: ${{ github.sha }}"
+          tag_name: ${{ steps.extract.outputs.version }}
+          release_name: "Release ${{ steps.extract.outputs.version }}"
+          body: ${{ env.RELEASE_BODY }}
           draft: false
           prerelease: false
+
+      - name: Notify Slack
+        if: success()
+        uses: slackapi/slack-github-action@v1.23.0
+        with:
+          slack-message: "Novo release ${{ steps.extract.outputs.version }} criado!"
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}  # Adicione esta linha
