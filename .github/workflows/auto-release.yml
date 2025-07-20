@@ -44,10 +44,18 @@ jobs:
       - name: Generate dynamic content
         if: ${{ steps.extract.outputs.version != '' }}
         run: |
-          # Obtém a última tag ANTES da atual
-          LAST_TAG=$(git describe --tags --abbrev=0 ${{ steps.extract.outputs.version }}^)
+          # Verifica se é a primeira tag
+          if git tag --list | grep -q . ; then
+            # Existem tags anteriores
+            LAST_TAG=$(git describe --tags --abbrev=0 ${{ steps.extract.outputs.version }}^ 2>/dev/null || git rev-list --max-parents=0 HEAD)
+          else
+            # Primeira tag do repositório
+            LAST_TAG=$(git rev-list --max-parents=0 HEAD)
+          fi
           
-          # Obtém features desde a última tag
+          echo "Comparando commits de: $LAST_TAG..HEAD"
+          
+          # Obtém features desde o último ponto de referência
           FEATURES=$(git log --pretty=format:"- %s" $LAST_TAG..HEAD | grep 'feat:' || echo "- Sem novos recursos")
           
           echo "FEATURES<<EOF" >> $GITHUB_ENV
