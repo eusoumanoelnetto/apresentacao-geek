@@ -11,7 +11,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Crucial para acessar histórico
+          fetch-depth: 0
 
       - name: Extract version
         id: extract
@@ -44,8 +44,12 @@ jobs:
       - name: Generate dynamic content
         if: ${{ steps.extract.outputs.version != '' }}
         run: |
-          # Obtém todos os commits desde a última tag
-          FEATURES=$(git log --pretty=format:"- %s" ${{ steps.extract.outputs.version }}..HEAD | grep 'feat:' || echo "- Sem novos recursos")
+          # Obtém a última tag ANTES da atual
+          LAST_TAG=$(git describe --tags --abbrev=0 ${{ steps.extract.outputs.version }}^)
+          
+          # Obtém features desde a última tag
+          FEATURES=$(git log --pretty=format:"- %s" $LAST_TAG..HEAD | grep 'feat:' || echo "- Sem novos recursos")
+          
           echo "FEATURES<<EOF" >> $GITHUB_ENV
           echo "$FEATURES" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
@@ -53,13 +57,18 @@ jobs:
       - name: Prepare release body
         if: ${{ steps.extract.outputs.version != '' }}
         run: |
-          # Substitui no template
-          sed -e "s/\$VERSION/${{ steps.extract.outputs.version }}/g" \
-              -e "s/\$DATE/${DATE}/g" \
-              -e "s/\$COMMIT_HASH/${COMMIT_HASH}/g" \
-              .github/release-template.md > release-body.md
+          # Lê o template
+          TEMPLATE_CONTENT=$(cat .github/release-template.md)
           
-          echo "RELEASE_BODY=$(cat release-body.md)" >> $GITHUB_ENV
+          # Substitui variáveis
+          TEMPLATE_CONTENT="${TEMPLATE_CONTENT//\$VERSION/${{ steps.extract.outputs.version }}}"
+          TEMPLATE_CONTENT="${TEMPLATE_CONTENT//\$DATE/${{ env.DATE }}}"
+          TEMPLATE_CONTENT="${TEMPLATE_CONTENT//\$COMMIT_HASH/${{ env.COMMIT_HASH }}}"
+          TEMPLATE_CONTENT="${TEMPLATE_CONTENT//\$FEATURES/${{ env.FEATURES }}}"
+          
+          # Salva o conteúdo
+          echo "$TEMPLATE_CONTENT" > release-body.md
+          echo "RELEASE_BODY=$TEMPLATE_CONTENT" >> $GITHUB_ENV
 
       - name: Create Release
         if: ${{ steps.extract.outputs.version != '' }}
@@ -80,4 +89,4 @@ jobs:
         with:
           slack-message: "Novo release ${{ steps.extract.outputs.version }} criado!"
         env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}  # Adicione esta linha
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
