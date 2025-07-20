@@ -95,6 +95,7 @@ jobs:
           body: ${{ env.RELEASE_BODY }}
           draft: false
           prerelease: false
+          overwrite: true  # ADICIONE ESTA LINHA
 
       - name: Notify Slack
         if: success()
