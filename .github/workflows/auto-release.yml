@@ -43,19 +43,28 @@ jobs:
           FEATURES=$(git log --pretty=format:"- %s" ${{ steps.extract.outputs.version }}..HEAD | grep 'feat:' || echo "- Sem novos recursos")
           echo "FEATURES<<EOF" >> $GITHUB_ENV
           echo "$FEATURES" >> $GITHUB_ENV
+
           echo "EOF" >> $GITHUB_ENV
+
+      - name: Delete existing tag
+        if: ${{ steps.extract.outputs.version != '' }}
+        run: |
+          git tag -d ${{ steps.extract.outputs.version }} || true
+          git push origin :refs/tags/${{ steps.extract.outputs.version }} || true
 
       - name: Prepare release body
         if: ${{ steps.extract.outputs.version != '' }}
+        env:
+          VERSION: ${{ steps.extract.outputs.version }}
+          DATE: ${{ env.DATE }}
+          FEATURES: ${{ env.FEATURES }}
         run: |
           # Lê o template
           TEMPLATE_CONTENT=$(cat .github/release-template.md)
-          
-          # Substitui as variáveis
-          RELEASE_BODY=${TEMPLATE_CONTENT//\$VERSION/${{ steps.extract.outputs.version }}}
-          RELEASE_BODY=${RELEASE_BODY//\$DATE/${{ env.DATE}}}
-          RELEASE_BODY=${RELEASE_BODY//\$FEATURES/${{ env.FEATURES}}}
-          
+          # Substitui as variáveis usando variáveis de ambiente
+          RELEASE_BODY=${TEMPLATE_CONTENT//\$VERSION/$VERSION}
+          RELEASE_BODY=${RELEASE_BODY//\$DATE/$DATE}
+          RELEASE_BODY=${RELEASE_BODY//\$FEATURES/$FEATURES}
           # Armazena o conteúdo para o próximo passo
           echo "RELEASE_BODY<<EOF" >> $GITHUB_ENV
           echo "$RELEASE_BODY" >> $GITHUB_ENV
@@ -68,6 +77,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          overwrite: true  # Sobrescreve release existente
           tag_name: ${{ steps.extract.outputs.version }}
           release_name: "Release ${{ steps.extract.outputs.version }}"
           body: ${{ env.RELEASE_BODY }}
