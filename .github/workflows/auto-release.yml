@@ -65,8 +65,8 @@ jobs:
       - name: Prepare release body
         if: ${{ steps.extract.outputs.version != '' }}
         run: |
-          # Lê o template
-          TEMPLATE_CONTENT=$(cat .github/release-template.md)
+          # Lê o template preservando quebras de linha
+          TEMPLATE_CONTENT=$(cat .github/release-template.md | sed ':a;N;$!ba;s/\n/␞/g')
           
           # Substitui variáveis
           TEMPLATE_CONTENT="${TEMPLATE_CONTENT//\$VERSION/${{ steps.extract.outputs.version }}}"
@@ -74,9 +74,14 @@ jobs:
           TEMPLATE_CONTENT="${TEMPLATE_CONTENT//\$COMMIT_HASH/${{ env.COMMIT_HASH }}}"
           TEMPLATE_CONTENT="${TEMPLATE_CONTENT//\$FEATURES/${{ env.FEATURES }}}"
           
-          # Salva o conteúdo
+          # Restaura quebras de linha
+          TEMPLATE_CONTENT="${TEMPLATE_CONTENT//␞/$'\n'}"
+          
+          # Salva em arquivo e variável de ambiente
           echo "$TEMPLATE_CONTENT" > release-body.md
-          echo "RELEASE_BODY=$TEMPLATE_CONTENT" >> $GITHUB_ENV
+          echo "RELEASE_BODY<<EOF" >> $GITHUB_ENV
+          echo "$TEMPLATE_CONTENT" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
 
       - name: Create Release
         if: ${{ steps.extract.outputs.version != '' }}
