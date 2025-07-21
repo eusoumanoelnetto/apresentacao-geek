@@ -90,10 +90,16 @@ document.addEventListener('DOMContentLoaded', () => {
     else showNightBackground();
 });
 
-document.documentElement.addEventListener('data-theme', function() {
-    if(document.documentElement.getAttribute('data-theme') === 'light') showDayBackground();
-    else showNightBackground();
+// Substitui listener inválido de data-theme por MutationObserver para reagir a mudanças de atributo
+const themeObserver = new MutationObserver(mutations => {
+    mutations.forEach(mutation => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+            if (document.documentElement.getAttribute('data-theme') === 'light') showDayBackground();
+            else showNightBackground();
+        }
+    });
 });
+themeObserver.observe(document.documentElement, { attributes: true });
 
 // Fallback para botões de certificado vazios
 document.addEventListener('DOMContentLoaded', () => {
