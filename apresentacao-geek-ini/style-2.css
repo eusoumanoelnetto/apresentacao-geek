@@ -2676,7 +2676,7 @@ body, .apresentacao__conteudo__texto, .timeline__card p, .card-flip__front p, .c
   padding: 20px;
   border-radius: 8px;
   text-align: left;
-  max-width: 340px;
+  /* max-width: 340px; */
   width: 90%;
   height: 50%;
   overflow-y: auto;
@@ -2735,9 +2735,29 @@ body, .apresentacao__conteudo__texto, .timeline__card p, .card-flip__front p, .c
     box-shadow: 0 0 15px #fff;
 }
 
-.modal-footer {
-  text-align: right;
-  margin-top: 20px;
+/* Desktop-only overrides for Digital Solutions modal */
+@media (min-width: 601px) {
+  .digital-solutions-modal .modal-content {
+    background: #031e2a;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: left;
+    /* max-width: 340px; */
+    width: 90%;
+    height: 50%;
+    overflow-y: auto;
+    position: relative;
+    border: 1px solid #00bfff;
+    box-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
+    transform: scale(0.8);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .modal-footer {
+    text-align: right;
+    margin-top: 7%;
+  }
 }
 
 /* Pop-up de Aviso de Localização */
@@ -2804,4 +2824,12 @@ body, .apresentacao__conteudo__texto, .timeline__card p, .card-flip__front p, .c
 
 .popup-action-btn:hover {
   background-color: #a7ffea;
+}
+
+/* Override para modal em mobile (somente versão notebook/pc inverso */
+@media (max-width: 600px) {
+  .digital-solutions-modal .modal-content {
+    padding: 15px;
+    max-width: 340px;
+  }
 }
