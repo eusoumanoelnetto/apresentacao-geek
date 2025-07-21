@@ -54,12 +54,20 @@ jobs:
           fi
           
           echo "Comparando commits de: $LAST_TAG..HEAD"
+          echo "PREVIOUS_VERSION=$LAST_TAG" >> $GITHUB_ENV
           
           # Obtém features desde o último ponto de referência
           FEATURES=$(git log --pretty=format:"- %s" $LAST_TAG..HEAD | grep 'feat:' || echo "- Sem novos recursos")
           
+          # Obtém fixes desde o último ponto de referência
+          FIXES=$(git log --pretty=format:"- %s" $LAST_TAG..HEAD | grep 'fix:' || echo "- Nenhuma correção nesta versão")
+          
           echo "FEATURES<<EOF" >> $GITHUB_ENV
           echo "$FEATURES" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+          echo "FIXES<<EOF" >> $GITHUB_ENV
+          echo "$FIXES" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
 
       - name: Prepare release body
@@ -73,6 +81,8 @@ jobs:
           TEMPLATE_CONTENT="${TEMPLATE_CONTENT//\$DATE/${{ env.DATE }}}"
           TEMPLATE_CONTENT="${TEMPLATE_CONTENT//\$COMMIT_HASH/${{ env.COMMIT_HASH }}}"
           TEMPLATE_CONTENT="${TEMPLATE_CONTENT//\$FEATURES/${{ env.FEATURES }}}"
+          TEMPLATE_CONTENT="${TEMPLATE_CONTENT//\$FIXES/${{ env.FIXES }}}"
+          TEMPLATE_CONTENT="${TEMPLATE_CONTENT//\$PREVIOUS_VERSION/${{ env.PREVIOUS_VERSION }}}"
           
           # Restaura quebras de linha
           TEMPLATE_CONTENT="${TEMPLATE_CONTENT//␞/$'\n'}"

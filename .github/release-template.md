@@ -6,20 +6,21 @@
 
 ## Novidades na versão $VERSION
 
-## 🚀 Novos Recursos
-
+### 🚀 Novos Recursos
 $FEATURES
 
-📦 **Downloads:**
-
-- [Source code (zip)](https://github.com/eusoumanoelnetto/apresentacao-geek/archive/refs/tags/$VERSION.zip)
-- [Source code (tar.gz)](https://github.com/eusoumanoelnetto/apresentacao-geek/archive/refs/tags/$VERSION.tar.gz)
-
-🔗 **Links Úteis:**
-
-- [Documentação](README.md)
-- [Changelog Completo](CHANGELOG.md)
+### � Correções de Bugs
+$FIXES
 
 ---
 
-Release automático gerado em $DATE
+### �📦 Downloads:
+- [Source code (zip)](https://github.com/eusoumanoelnetto/apresentacao-geek/archive/refs/tags/$VERSION.zip)
+- [Source code (tar.gz)](https://github.com/eusoumanoelnetto/apresentacao-geek/archive/refs/tags/$VERSION.tar.gz)
+
+### 🔗 Links Úteis:
+- **Documentação:** [Clique aqui](https://github.com/eusoumanoelnetto/apresentacao-geek#readme)
+- **Changelog Completo:** [Compare com a versão anterior](https://github.com/eusoumanoelnetto/apresentacao-geek/compare/$PREVIOUS_VERSION...$VERSION)
+
+---
+*Release automático gerado em $DATE*
