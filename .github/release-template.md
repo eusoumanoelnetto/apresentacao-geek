@@ -9,12 +9,12 @@
 ### 🚀 Novos Recursos
 $FEATURES
 
-### � Correções de Bugs
+### 🐞 Correções de Bugs
 $FIXES
 
 ---
 
-### �📦 Downloads:
+### 📦 Downloads:
 - [Source code (zip)](https://github.com/eusoumanoelnetto/apresentacao-geek/archive/refs/tags/$VERSION.zip)
 - [Source code (tar.gz)](https://github.com/eusoumanoelnetto/apresentacao-geek/archive/refs/tags/$VERSION.tar.gz)
 
@@ -23,4 +23,4 @@ $FIXES
 - **Changelog Completo:** [Compare com a versão anterior](https://github.com/eusoumanoelnetto/apresentacao-geek/compare/$PREVIOUS_VERSION...$VERSION)
 
 ---
-*Release automático gerado em $DATE*
+Release gerado em $DATE by Jarvis 🤖
