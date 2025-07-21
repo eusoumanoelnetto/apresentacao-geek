@@ -4,22 +4,29 @@
 
 Bem-vindo ao meu espaço geek! 😎 Aqui você encontrará minhas habilidades, projetos e experiências, com um toque futurista e interativo.
 
+**Novidades:** tema Dia/Noite automático, versão mobile otimizada, GIF interativo do Pikachu, release automático e postagem no LinkedIn a cada nova versão.
+
 ## ⚡ Tecnologias & Recursos
+ 
 - **HTML5 & CSS3**: Estrutura semântica e estilos modernos
+- **Tema Dia/Noite**: alternância automática de tema
+- **Responsivo/Mobile**: layout adaptado e otimizado
+- **Interatividade**: GIF animado do Pikachu para engajamento
+- **CI/CD & Social**: automação de releases e postagens no LinkedIn
 - **JavaScript**: Funcionalidades dinâmicas e modo Dia/Noite automático
 - **React & Power BI**: Projetos demonstrativos em destaque
 - **Web Speech API**: Modo Áudio para leitura de conteúdo (voz “Jarvis”)
 - **Tema Responsivo**: Menu lateral adaptável para mobile e desktop
 
 
--## 🔭 Próximos Passos
+## 🔭 Próximos Passos
 
  
 - **Nova Aba: Crie Seu Currículo**📝\
 - **Integração com Telegram**🤖\
  
 Feito com ❤️ por Manoel Coelho — 2025
-_Auxiliado por GPT 🤖_
+*Auxiliado por GPT 🤖*
 
 [![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
