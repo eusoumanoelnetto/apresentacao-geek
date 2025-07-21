@@ -22,7 +22,7 @@ jobs:
           echo "::endgroup::"
           
           if [[ "$MESSAGE" =~ [vV][0-9]+(\.[0-9]+)* ]]; then
-            VERSION=$(echo "$MESSAGE" | grep -oi 'v[0-9]\+' | head -1)
+            VERSION=$(echo "$MESSAGE" | grep -oi 'v[0-9]\+\(\.[0-9]\+\)*' | head -1)
             echo "version=$VERSION" >> $GITHUB_OUTPUT
             echo "✅ Versão detectada: $VERSION"
           else
@@ -83,6 +83,12 @@ jobs:
           echo "$TEMPLATE_CONTENT" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
 
+      - name: Delete existing tag
+        if: ${{ steps.extract.outputs.version != '' }}
+        run: |
+          git tag -d ${{ steps.extract.outputs.version }} || true
+          git push origin :refs/tags/${{ steps.extract.outputs.version }} || true
+
       - name: Create Release
         if: ${{ steps.extract.outputs.version != '' }}
         uses: actions/create-release@v1
@@ -92,15 +98,7 @@ jobs:
         with:
           tag_name: ${{ steps.extract.outputs.version }}
           release_name: "Release ${{ steps.extract.outputs.version }}"
-          body: ${{ env.RELEASE_BODY }}
+          body_path: release-body.md
           draft: false
           prerelease: false
-          overwrite: true  # ADICIONE ESTA LINHA
 
-      - name: Notify Slack
-        if: success()
-        uses: slackapi/slack-github-action@v1.23.0
-        with:
-          slack-message: "Novo release ${{ steps.extract.outputs.version }} criado!"
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
