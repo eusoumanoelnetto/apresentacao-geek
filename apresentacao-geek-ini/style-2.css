@@ -39,6 +39,27 @@
   --menu-link-hover: #ff6600;
 }
 
+/* Ajustes para Seção Digital Solutions no Modo Dia */
+[data-theme="light"] .digital-solutions {
+  background: #e0e0e0;
+}
+[data-theme="light"] .digital-solutions__card {
+  background: #ffffff;
+}
+[data-theme="light"] .digital-solutions__title,
+[data-theme="light"] .digital-solutions__name {
+  color: #00bfff;
+}
+/* Ajustes para Seção Projetos Interativos no Modo Dia */
+[data-theme="light"] .projetos {
+  background: #ffffff;
+}
+
+/* Ajuste para Footer no modo claro */
+[data-theme="light"] .footer {
+  background-color: #e0e0e0;
+}
+
 .menu {
   z-index: 900;
   background-color: var(--menu-bg);
@@ -1373,9 +1394,6 @@ p, span, li {
 }
 [data-theme="light"] .footer {
   background-color: #ffffff;
-}
-[data-theme="light"] .footer p {
-  color: #0078d7;
 }
 
 .chat-floating {
