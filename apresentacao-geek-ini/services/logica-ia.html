@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manoel Coelho - Especialista em Agentes de IA</title>
+
+    <!-- Meta Tags para SEO e Redes Sociais -->
+    <meta name="description" content="Criação de Agentes de IA personalizados para automatizar e otimizar o seu negócio. Transforme seu atendimento, marketing e vendas com inteligência artificial.">
+    <meta property="og:title" content="Manoel Coelho - Desenvolvimento de Agentes de IA" />
+    <meta property="og:description" content="Agentes de IA sob medida para o seu nicho. Automatize tarefas, personalize interações e impulsione seus resultados." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://eusoumanoelnetto.github.io/apresentacao-geek/assets/capa-preview.png" />
+    <meta property="og:url" content="https://eusoumanoelnetto.github.io/apresentacao-geek/apresentacao-geek-ini/index.html" />
+    <link rel="canonical" href="https://eusoumanoelnetto.github.io/apresentacao-geek/apresentacao-geek-ini/index.html">
+    <link rel="icon" href="../assets/favicon.ico" type="image/x-icon" />
+
+    <!-- Fontes e Ícones -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Folha de Estilo Principal -->
+    <link rel="stylesheet" href="logica-ia.css">
+</head>
+<body>
+    <!-- Fundo Estrelado Animado -->
+    <div class="background-stars"></div>
+
+    <!-- Cabeçalho Fixo -->
+    <header class="header">
+        <div class="logo">Agentes.IA</div>
+        <button id="hamburger-menu" aria-label="Abrir menu">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+    </header>
+
+    <!-- Menu Lateral (Mobile) -->
+    <nav id="menu-mobile">
+      <button id="close-menu" aria-label="Fechar menu">×</button>
+      <ul>
+        <li><a href="#hero">Início</a></li>
+        <li><a href="#evolution">O que são?</a></li>
+        <li><a href="#services">Serviços</a></li>
+        <li><a href="#contact">Contato</a></li>
+      </ul>
+      <div class="social-icons">
+        <a href="https://github.com/eusoumanoelnetto" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/eusoumanoelnetto" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://instagram.com/manoelccoelho" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+    </nav>
+    
+    <main>
+        <!-- Secção Hero -->
+        <section class="hero" id="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Automatize e Personalize seu Negócio com <span class="highlight">Agentes de IA</span></h1>
+                <p class="hero-subtitle">Eu crio agentes de inteligência artificial sob medida para o seu nicho, capazes de executar tarefas complexas, entender seus clientes e impulsionar seus resultados 24/7.</p>
+                <a href="#contact" class="cta-button">Quero o Meu Agente de IA</a>
+            </div>
+        </section>
+
+        <!-- Secção Comparativa -->
+        <section class="comparison-section">
+            <div class="comparison-card">
+                <i class="fas fa-headset"></i>
+                <h3>Chatbots Comuns</h3>
+                <p>Seguem regras fixas e fornecem respostas <strong>pré-definidas</strong>, limitados a fluxos simples.</p>
+            </div>
+            <div class="comparison-card highlight-card">
+                 <i class="fas fa-microchip"></i>
+                <h3>Agentes de IA</h3>
+                <p>Compreendem contexto e intenções, executam ações complexas e fornecem <strong>respostas personalizadas e inteligentes</strong>.</p>
+            </div>
+        </section>
+
+        <!-- Secção Evolução -->
+        <section class="evolution-section" id="evolution">
+            <h2 class="section-title">A Evolução da Automação Inteligente</h2>
+            <div class="evolution-content">
+                <img src="/assets/evolucao-automacao-01.png" alt="Evolução da Automação: de BPA para RPA e Agentes de IA">
+            </div>
+        </section>
+
+        <!-- Secção Diagrama Completo -->
+        <section class="how-it-works-section" id="how-it-works">
+            <h2 class="section-title">O Que São Agentes de IA?</h2>
+            <div class="diagram-container">
+                <!-- Parte Superior: Como Trabalham -->
+                <div class="diagram-section full-width">
+                    <h3 class="diagram-section-title">Como os Agentes de IA Trabalham</h3>
+                    <div class="workflow-grid">
+                        <svg class="workflow-arrows" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                            <defs>
+                                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                                    <polygon points="0 0, 10 3.5, 0 7"></polygon>
+                                </marker>
+                            </defs>
+                        </svg>
+
+                        <!-- Coluna 1 -->
+                        <div class="workflow-column">
+                            <div class="workflow-item" id="wi-controle">
+                                <i class="fas fa-user-cog"></i>
+                                <strong>Controle Humano</strong>
+                            </div>
+                            <div class="workflow-item" id="wi-acao">
+                                <i class="fas fa-cogs"></i>
+                                <strong>Ação de Automação</strong>
+                            </div>
+                        </div>
+
+                        <!-- Coluna 2 (Central) -->
+                        <div class="workflow-column">
+                            <div class="workflow-item" id="wi-tarefas">
+                                <i class="fas fa-tasks"></i>
+                                <strong>Tarefas Delegadas</strong>
+                            </div>
+                            <div class="workflow-item main-agent" id="wi-agente">
+                                <i class="fas fa-robot"></i>
+                                <strong>Agente de IA</strong>
+                            </div>
+                            <div class="workflow-item" id="wi-ferramentas">
+                                <div class="tools-box">
+                                    <h4>Ferramentas</h4>
+                                    <div><i class="fas fa-code"></i><span>Chamadas de API</span></div>
+                                    <div><i class="fas fa-globe"></i><span>Acesso à Internet</span></div>
+                                    <div><i class="fas fa-file-code"></i><span>Interpretação de Código</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Coluna 3 -->
+                        <div class="workflow-column">
+                            <div class="workflow-item" id="wi-memoria">
+                                <i class="fas fa-brain"></i>
+                                <strong>Memória</strong>
+                            </div>
+                            <div class="workflow-item" id="wi-reatividade">
+                                <i class="fas fa-eye"></i>
+                                <strong>Reatividade</strong>
+                            </div>
+                             <div class="workflow-item" id="wi-ambiente">
+                                <i class="fas fa-cloud"></i>
+                                <strong>Ambiente</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Parte Inferior Esquerda: Tipos de Agentes -->
+                <div class="diagram-section">
+                    <h3 class="diagram-section-title">Tipos de Agentes</h3>
+                    <div class="interactive-types-container">
+                        <div class="types-center-item">
+                            <strong>Agentes de IA</strong>
+                        </div>
+                        <div class="types-orbit-item" style="--angle: -150deg;"><span>Agentes Baseados em Utilidade</span></div>
+                        <div class="types-orbit-item" style="--angle: -90deg;"><span>Agentes de Aprendizagem</span></div>
+                        <div class="types-orbit-item" style="--angle: -30deg;"><span>Agentes Reflexivos Simples</span></div>
+                        <div class="types-orbit-item" style="--angle: 30deg;"><span>Agentes Reflexivos Baseados em Modelo</span></div>
+                        <div class="types-orbit-item" style="--angle: 90deg;"><span>Agentes Baseados em Objetivos</span></div>
+                    </div>
+                </div>
+
+                <!-- Parte Inferior Direita: Arquitetura -->
+                <div class="diagram-section">
+                    <h3 class="diagram-section-title">Arquitetura do Sistema de Agente de IA</h3>
+                    <div class="architecture-list">
+                        <div class="architecture-item">
+                            <div>
+                                <h4>Agente Único</h4>
+                                <p>Atua como um assistente pessoal</p>
+                            </div>
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="architecture-item">
+                            <div>
+                                <h4>Multiagentes</h4>
+                                <p>Agentes interagem entre eles de forma colaborativa</p>
+                            </div>
+                            <div class="multi-agent-icons">
+                                <i class="fas fa-robot"></i>
+                                <i class="fas fa-exchange-alt"></i>
+                                <i class="fas fa-robot"></i>
+                            </div>
+                        </div>
+                        <div class="architecture-item">
+                            <div>
+                                <h4>Máquina e Humano</h4>
+                                <p>Agentes interagem com humanos para fornecer assistência</p>
+                            </div>
+                             <div class="multi-agent-icons">
+                                <i class="fas fa-robot"></i>
+                                <i class="fas fa-exchange-alt"></i>
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Secção de Serviços -->
+        <section class="services-section" id="services">
+            <h2 class="section-title">Serviços de IA Personalizados para seu Nicho</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-comments"></i>
+                    <h3>Atendimento ao Cliente 24/7</h3>
+                    <p>Um agente que resolve dúvidas, agenda serviços e oferece suporte personalizado a qualquer hora do dia.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-funnel-dollar"></i>
+                    <h3>Qualificação de Leads</h3>
+                    <p>Seu agente identifica, conversa e qualifica potenciais clientes, entregando apenas os melhores para sua equipa de vendas.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Marketing e Vendas</h3>
+                    <p>Cria e executa campanhas, interage em redes sociais e personaliza ofertas para aumentar a conversão.</p>
+                </div>
+                 <div class="service-card">
+                    <i class="fas fa-cogs"></i>
+                    <h3>Automação de Processos</h3>
+                    <p>Otimiza tarefas internas, como preenchimento de relatórios, gestão de e-mails e organização de dados.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Secção de Contato (CTA Final) -->
+        <section id="contact" class="contact-section">
+          <h2 class="section-title">Vamos Construir o Futuro do seu Negócio?</h2>
+          <p class="contact-subtitle">Preencha o formulário abaixo e eu entrarei em contato para agendar uma conversa sem compromisso sobre como um Agente de IA pode transformar sua empresa.</p>
+          <form id="contact-form">
+            <input type="text" id="name" name="name" placeholder="Seu nome completo" required>
+            <input type="email" id="email" name="email" placeholder="Seu melhor e-mail" required>
+            <textarea id="message" name="message" placeholder="Descreva brevemente seu negócio e o que você gostaria de automatizar..." required></textarea>
+            <button type="submit">Solicitar Contato</button>
+          </form>
+          <p id="form-feedback" class="feedback-message"></p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Manoel Coelho — Desenvolvimento de Soluções com Inteligência Artificial com ❤️ e ☕︎</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+      // Inicialização do EmailJS
+      (function(){
+          emailjs.init("2jJfFDoTtluxM6jA4"); // Cole seu User ID aqui
+      })();
+
+      // Lógica do formulário de contato
+      document.getElementById('contact-form').addEventListener('submit', function(event) {
+          event.preventDefault();
+          const feedback = document.getElementById('form-feedback');
+          const submitButton = this.querySelector('button');
+          feedback.textContent = 'Enviando sua mensagem...';
+          feedback.style.color = 'var(--cor-texto-secundario)';
+          submitButton.disabled = true;
+          
+          emailjs.sendForm('service_zzelyg3', 'template_ra7we6f', this) // Cole seu Service ID e Template ID
+              .then(function() {
+                  feedback.textContent = 'Mensagem enviada com sucesso! Entrarei em contato em breve.';
+                  feedback.style.color = '#32cd32';
+                  document.getElementById('contact-form').reset();
+                  submitButton.disabled = false;
+              }, function(error) {
+                  feedback.textContent = 'Ocorreu um erro ao enviar. Por favor, tente novamente mais tarde.';
+                  feedback.style.color = '#ff4d4d';
+                  submitButton.disabled = false;
+              });
+      });
+
+      // Lógica para desenhar as setas do workflow
+      function drawWorkflowArrows() {
+          const container = document.querySelector('.workflow-grid');
+          const svg = container.querySelector('.workflow-arrows');
+          if (!container || !svg) return;
+
+          const getCoords = (id) => {
+              const el = document.getElementById(id);
+              if (!el) return null;
+              const rect = el.getBoundingClientRect();
+              const containerRect = container.getBoundingClientRect();
+              return {
+                  x: rect.left - containerRect.left + rect.width / 2,
+                  y: rect.top - containerRect.top + rect.height / 2,
+                  top: rect.top - containerRect.top,
+                  bottom: rect.bottom - containerRect.top,
+                  left: rect.left - containerRect.left,
+                  right: rect.right - containerRect.left
+              };
+          };
+
+          const connections = [
+              { from: 'wi-controle', to: 'wi-acao', fromSide: 'bottom', toSide: 'top' },
+              { from: 'wi-acao', to: 'wi-agente', fromSide: 'right', toSide: 'left' },
+              { from: 'wi-tarefas', to: 'wi-agente', fromSide: 'bottom', toSide: 'top' },
+              { from: 'wi-agente', to: 'wi-memoria', fromSide: 'left', toSide: 'top' },
+              { from: 'wi-agente', to: 'wi-reatividade', fromSide: 'bottom', toSide: 'right' },
+              { from: 'wi-reatividade', to: 'wi-ambiente', fromSide: 'right', toSide: 'left' },
+              { from: 'wi-agente', to: 'wi-ferramentas', fromSide: 'right', toSide: 'left' },
+              { from: 'wi-ambiente', to: 'wi-agente', fromSide: 'top', toSide: 'bottom' }
+          ];
+
+          let paths = '';
+          connections.forEach((conn, index) => {
+              const from = getCoords(conn.from);
+              const to = getCoords(conn.to);
+              if (!from || !to) return;
+
+              const path = `M ${from.x} ${from.y} C ${from.x} ${to.y}, ${to.x} ${from.y}, ${to.x} ${to.y}`;
+              paths += `<path d="${path}" style="animation-delay: ${index * 0.2}s" />`;
+          });
+
+          svg.innerHTML += paths;
+      }
+
+      // Lógica do menu hambúrguer
+      const hamburger = document.getElementById('hamburger-menu');
+      const menuMobile = document.getElementById('menu-mobile');
+      const closeMenu = document.getElementById('close-menu');
+      const menuLinks = menuMobile.querySelectorAll('a');
+
+      function toggleMenu() {
+        menuMobile.classList.toggle('open');
+        document.body.classList.toggle('no-scroll');
+      }
+
+      hamburger.addEventListener('click', toggleMenu);
+      closeMenu.addEventListener('click', toggleMenu);
+      menuLinks.forEach(link => link.addEventListener('click', () => {
+          if (menuMobile.classList.contains('open')) {
+              toggleMenu();
+          }
+      }));
+
+      // Desenha as setas quando o DOM estiver pronto
+      document.addEventListener('DOMContentLoaded', drawWorkflowArrows);
+      window.addEventListener('resize', () => {
+          const svg = document.querySelector('.workflow-arrows');
+          if(svg) svg.innerHTML = svg.querySelector('defs').outerHTML; // Limpa setas antigas
+          drawWorkflowArrows();
+      });
+    </script>
+</body>
+</html>

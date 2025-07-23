@@ -617,7 +617,7 @@
           <h3 id="modal-service-title"></h3>
           <p id="modal-service-description"></p>
           <div class="modal-footer">
-            <button class="modal-action">Orçamento</button>
+            <a class="modal-action" href="#">Orçamento</a>
           </div>
         </div>
       </div>
@@ -642,6 +642,13 @@
             const key = card.getAttribute('data-service');
             titleEl.textContent = info[key].title;
             descEl.textContent = info[key].description;
+            // Atualiza link conforme serviço
+            const actionLink = modal.querySelector('.modal-action');
+            if (key === 'logic-ai') {
+              actionLink.setAttribute('href', 'services/logica-ia.html');
+            } else {
+              actionLink.setAttribute('href', '#');
+            }
             modal.classList.add('show');
           });
         });

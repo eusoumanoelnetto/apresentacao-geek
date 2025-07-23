@@ -2603,13 +2603,25 @@ body, .apresentacao__conteudo__texto, .timeline__card p, .card-flip__front p, .c
   margin-bottom: 40px;
   font-family: 'Orbitron', sans-serif;
 }
-.digital-solutions__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 20px;
-  max-width: 1000px;
-  margin: 0 auto;
-}
+ .digital-solutions__grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+   gap: 20px;
+   max-width: 1000px;
+   margin: 0 auto;
+ }
+ /* Versão Tablet: 3 colunas na grid de Digital Solutions */
+ @media (min-width: 601px) and (max-width: 992px) {
+   .digital-solutions__grid {
+     grid-template-columns: repeat(3, 1fr);
+     grid-auto-rows: 1fr;  /* linhas de altura igual */
+   }
+   .digital-solutions__card {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+   }
+ }
 .digital-solutions__card {
   background: #1e1e1e;
   border: 2px solid transparent;
@@ -2719,7 +2731,8 @@ body, .apresentacao__conteudo__texto, .timeline__card p, .card-flip__front p, .c
 }
 .digital-solutions-modal .modal-action {
   background: #00bfff;
-  color: #000;
+  color: #fff;
+  text-decoration: none;
   border: none;
   padding: 12px 22px;
   border-radius: 6px;
@@ -2735,101 +2748,24 @@ body, .apresentacao__conteudo__texto, .timeline__card p, .card-flip__front p, .c
     box-shadow: 0 0 15px #fff;
 }
 
-/* Desktop-only overrides for Digital Solutions modal */
-@media (min-width: 601px) {
-  .digital-solutions-modal .modal-content {
-    background: #031e2a;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: left;
-    /* max-width: 340px; */
-    width: 90%;
-    height: 50%;
-    overflow-y: auto;
-    position: relative;
-    border: 1px solid #00bfff;
-    box-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
-    transform: scale(0.8);
-    opacity: 0;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-  }
-
-  .modal-footer {
+.digital-solutions-modal .modal-footer {
     text-align: right;
-    margin-top: 7%;
+}
+
+/* Tablet-only override para footer do Digital Solutions modal */
+@media (min-width: 601px) and (max-width: 992px) {
+  .digital-solutions-modal .modal-footer {
+    text-align: right;
+    margin-top: 10%;
+  }
+  .digital-solutions-modal .modal-content {
+    height: 35%;
   }
 }
 
-/* Pop-up de Aviso de Localização */
-.popup-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  display: none; /* Começa oculto */
-  align-items: center;
-  justify-content: center;
-  z-index: 20000;
-  backdrop-filter: blur(5px);
-}
-
-.popup-content {
-  position: relative;
-  background: #0a192f;
-  color: #ccd6f6;
-  padding: 2rem;
-  border-radius: 15px;
-  border: 1px solid #64ffda;
-  max-width: 500px;
-  width: 90%;
-  text-align: center;
-  box-shadow: 0 0 20px rgba(100, 255, 218, 0.5);
-  font-family: 'Fira Code', monospace;
-}
-
-.popup-content h2 {
-  color: #64ffda;
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-}
-
-.popup-content p {
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
-}
-
-.popup-close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  background: none;
-  border: none;
-  color: #64ffda;
-  font-size: 2rem;
-  cursor: pointer;
-}
-
-.popup-action-btn {
-  background-color: #64ffda;
-  color: #0a192f;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.popup-action-btn:hover {
-  background-color: #a7ffea;
-}
-
-/* Override para modal em mobile (somente versão notebook/pc inverso */
+/* Mobile-only: ajustar altura do modal Digital Solutions */
 @media (max-width: 600px) {
   .digital-solutions-modal .modal-content {
-    padding: 15px;
-    max-width: 340px;
+    height: 45%;
   }
 }
