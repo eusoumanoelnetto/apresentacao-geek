@@ -2769,3 +2769,82 @@ body, .apresentacao__conteudo__texto, .timeline__card p, .card-flip__front p, .c
     height: 45%;
   }
 }
+
+/* Estilos para o Pop-up de Localização com design neon */
+ .popup-overlay {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: rgba(0, 0, 0, 0.8);
+   display: none; /* Começa oculto e é exibido via JS */
+  align-items: center;
+  justify-content: center;
+  z-index: 20000;
+  backdrop-filter: blur(5px);
+}
+
+.popup-content {
+  background: #031e2a;
+  padding: 25px;
+  border-radius: 8px;
+  text-align: left;
+  width: 90%;
+  max-width: 450px;
+  position: relative;
+  border: 1px solid #00bfff;
+  box-shadow: 0 0 25px rgba(0, 191, 255, 0.6);
+  color: #ccc;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.popup-content h2 {
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  text-shadow: 0 0 5px #00bfff;
+  text-align: center;
+}
+
+.popup-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.popup-close {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: #fff;
+  cursor: pointer;
+  font-family: 'Share Tech Mono', monospace;
+  text-shadow: 0 0 5px #fff;
+}
+
+.popup-action-btn {
+  background: #00bfff;
+  color: #ffffff;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.popup-action-btn:hover {
+    background: #fff;
+    color: #00bfff;
+    box-shadow: 0 0 15px #fff;
+}
